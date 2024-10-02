@@ -32,9 +32,9 @@ function Box() { // Makes a cube that has a random position and can be clicked t
   );
 }
 
-function App() {
+function SceneBackground() {
   return (
-        <Canvas style={{ backgroundColor: 'lightblue', height: '100vh'}}>
+    <Canvas >
           <ambientLight intensity={Math.PI / 2}/>
           <pointLight position={[0, 10, -10]} decay={0} intensity={Math.PI / 2} />
           {/* add four boxes to the canvas. It uses the Box() function we defined above. */}
@@ -43,6 +43,19 @@ function App() {
           <Box />
           <Box />
         </Canvas>
+  );
+}
+function App() {
+  return (
+    <div className="App">
+        <SceneBackground className='App-background-scene'/>
+        <div style={{position: 'absolute', top: '50vh', left: '50vw'}}> {/* This is a button that does nothing. */}
+        <button>
+          hi
+        </button>
+
+        </div>
+    </div> 
   )
 }
 
