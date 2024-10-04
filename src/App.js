@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import React, { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import MinMaxForm from "./components/MinMaxForm";
 import Accordion from "./components/Accordion";
 
