@@ -1,0 +1,100 @@
+
+/* Custom Slider change to green and makes with accounting for different browsers */
+
+.custom-slider {
+    -webkit-appearance: none; 
+    width: 100%; 
+    height: 1px; 
+    border-radius: 0px; 
+    background: #198753; 
+    outline: none;
+  }
+  
+  .custom-slider::-webkit-slider-runnable-track {
+    background: #198753; 
+    height: 1px; 
+    border-radius: 0px; 
+  }
+  
+  .custom-slider::-moz-range-track {
+    background: #198753; 
+    height: 1px; 
+    border-radius: 0px;
+  }
+  
+  .custom-slider::-ms-track {
+    background: #198753;
+    height: 1px; 
+    border-radius: 0px; 
+    border: none;
+    color: transparent;
+  }
+
+  /* Change Thumb on slider color with accounting for different browsers */
+  
+  .custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #198753; 
+    cursor: pointer; 
+  }
+  
+  .custom-slider::-moz-range-thumb {
+    width: 15px; 
+    height: 15px; 
+    border-radius: 50%; 
+    background: #198753;
+    cursor: pointer; 
+  }
+  
+  .custom-slider::-ms-thumb {
+    width: 15px;
+    height: 15px; 
+    border-radius: 50%; 
+    background: #198753; 
+    cursor: pointer; 
+  }
+
+  /* Custom label Changes for forms */
+
+  .title-label {
+    font-weight: bolder;
+    color: #198753;
+    padding-bottom: 15px;
+
+  }
+  
+  .small-label {
+    font-size: 0.7rem; 
+  }
+  
+  .selected-label {
+    font-size: 1.1rem; 
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+    color: #198753;
+  }
+  
+  .question-label {
+    padding-bottom: 0px;
+    color: #198753;
+    font-weight: bold;
+    font-family: monospace;
+
+  }
+
+  /* The thin green separator */
+  
+  .separator {
+    border-bottom: 1px solid #198753;
+    width: calc(100% + 40px); 
+    margin: 0 -20px; 
+    padding: 0; 
+    position: relative; 
+    left: 0; 
+  }
+  
