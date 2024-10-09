@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/customBootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
-import ProfileForm from './components/ProfileForm';
-import PlantGrid from './components/PlantGrid';
-import PlantModal from './components/PlantModal';
+import ProfileForm from "./components/ProfileForm";
+import PlantGrid from "./components/PlantGrid";
+import PlantModal from "./components/PlantModal";
 
 function App() {
-  // Constant to store user profile data
+  // The current profile in progress
   const [profile, setProfile] = useState({
     lightLevel: 1,
     hasPet: false,
@@ -17,50 +17,7 @@ function App() {
     minTemp: 30,
   });
 
-  // State for modal control
-  const [selectedPlant, setSelectedPlant] = useState(null); // Tracks selected plant for modal
-  const [showModal, setShowModal] = useState(false); // Controls modal visibility
-
-  // Function to handle card click and show modal
-  const handleCardClick = (plant) => {
-    setSelectedPlant(plant);
-    setShowModal(true); // Show the modal
-  };
-
-  // Function to hide the modal
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedPlant(null); // Clear the selected plant
-  };
-
-  // Handle Changes in the Form (Rewrite profile with new answers after save)
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    // to make sure the profile doesn't reset apon save profile
-    e.preventDefault();
-
-    //placeholder for what we will do once we have the fomula
-    console.log("Profile saved:", profile);
-  };
-
-  // State to store the plant match percentages
-  const [plantMatches, setPlantMatches] = useState([]);
-
-  // Placeholder function to calculate percentage match for each plant
-  const calculateMatch = (plantIdx) => {
-    //put in formula to calculate percent match ! !
-    // right now it just returns a random percentage
-
-    return Math.floor(Math.random() * 100);
-  };
-
+  // Array of plant image URLs
   const plantImages = [
     "https://www.thesill.com/cdn/shop/files/the-sill_Small-Snake-Hahnii_Small_Hyde_Cream_Variant.jpg?v=1725982079&width=1100",
     "https://www.thesill.com/cdn/shop/files/the-sill_Large-Dracaena-Mass-Cane_Large_Mexia_Cream_Variant.jpg?v=1727274636&width=1100",
@@ -69,42 +26,102 @@ function App() {
     "https://www.thesill.com/cdn/shop/files/the-sill_Small-Extra-Tall-Red-Guzmania-Bromeliad-Quinn-White_Variant.jpg?v=1727710475&width=1100",
   ];
 
+  // Function to get a random image
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * plantImages.length);
     return plantImages[randomIndex];
   };
 
-  // Mock plant data for illustration purposes
-  const plantData = Array.from({ length: 20 }).map((_, idx) => ({
-    id: idx + 1,
-    title: `Plant ${idx + 1}`,
-    imageUrl: getRandomImage(),
-    description: `Very detailed description of Plant ${idx + 1}`,
-    matchPercentage: calculateMatch(idx),
-  }));
+  // Function to calculate match percentage for a plant
+  const calculateMatch = (plant) => {
+    // TODO: Add formula for matching plants to profile
+
+    // this is a placeholder for now
+    return Math.floor(Math.random() * 100);
+  };
+
+  // Profile created on save changes used for plant matching
+  const [savedProfile, setSavedProfile] = useState({ ...profile });
+
+  // Function to handle changes in the profile form
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  // Function to handle form submission and update saved profile
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSavedProfile({ ...profile });
+    console.log("Profile saved:", profile);
+  };
+
+  // Modal controls
+
+  // Modal States
+  const [selectedPlant, setSelectedPlant] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  // Function to handle plant card click and show modal
+  const handleCardClick = (plant) => {
+    setSelectedPlant(plant);
+    setShowModal(true);
+  };
+
+  // Function to close the modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedPlant(null);
+  };
+
+  // Generate Plant Data considering the savedProfile
+  // This should only recalculate when savedProfile changes
+  const plantData = useMemo(() => {
+    return Array.from({ length: 20 }).map((_, idx) => ({
+      // TODO: Change this to actual plant data from database
+
+      id: idx + 1,
+      title: `Plant ${idx + 1}`,
+      imageUrl: getRandomImage(),
+      description: `Very detailed description of Plant ${idx + 1}`,
+      matchPercentage: calculateMatch(),
+    }));
+  }, [savedProfile]);
 
   return (
     <Container fluid>
       <Row>
+        {/* Profile Form Column */}
         <Col xs={12} md={4} className="p-0">
-          <div style={{ backgroundColor: "#DFF7E6", padding: "20px", height: "100%" }}>
+          <div
+            style={{
+              backgroundColor: "#DFF7E6",
+              padding: "20px",
+              height: "100%",
+            }}
+          >
             <div className="separator"></div>
             <h4 className="title-label">❉ ✽ ❉ SUNHOSE</h4>
-            <ProfileForm 
-              profile={profile} 
-              handleChange={handleChange} 
-              handleSubmit={handleSubmit} 
+            <ProfileForm
+              profile={profile}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
             />
           </div>
         </Col>
+        {/* Plant Grid Column */}
         <Col xs={12} md={8} className="p-4">
           <PlantGrid plantData={plantData} handleCardClick={handleCardClick} />
         </Col>
       </Row>
-      <PlantModal 
-        plant={selectedPlant} 
-        show={showModal} 
-        onHide={handleCloseModal} 
+      {/* Plant Modal */}
+      <PlantModal
+        plant={selectedPlant}
+        show={showModal}
+        onHide={handleCloseModal}
       />
     </Container>
   );
