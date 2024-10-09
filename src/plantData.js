@@ -10,10 +10,10 @@ import {
     Timestamp,
     runTransaction,
     where,
-    addDoc,
     getFirestore,
 } from 'firebase/firestore';
-import { db } from './firebase';
+import { ref, getDownloadURL } from 'firebase/storage';
+import { db, store } from './firebase';
 import React, { useEffect, useState } from 'react';
 
 // This file contains functions that interact with the Firestore database. They return promises that resolve to the requested data.
@@ -59,6 +59,10 @@ export function getPlant(id) {
     });
 };
 
+export function getPlantImageURL(id) {
+    const plantRef = ref(store, `plantPics/${id}.png`);
+    return getDownloadURL(plantRef);
+}
 // function getFilteredPlants(filters, renderer) {
 //     var query = collection(db, 'plants');
 
