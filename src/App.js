@@ -8,9 +8,9 @@ import PlantModal from "./components/PlantModal";
 //import { getPlantMatches, getPlantProfiles, defaultQuery } from "./plantData";
 import { collection, getDocs } from "firebase/firestore";
 import { db, store } from './firebase';
-import { getPlantImageURL, calculateMatch } from "./plantData";
+import { fetchPlantData, updatePlantMatches } from "./plantData";
 function App() {
-  
+  const [query, setQuery] = useState(collection(db, 'plants')); // we can use setquery later on to make the search more scalable
   // The current profile in progress
   const [profile, setProfile] = useState({
     lightLevel: 1,
@@ -24,69 +24,17 @@ function App() {
   // Profile created on save changes used for plant matching
   const [savedProfile, setSavedProfile] = useState({ ...profile });
 
-  const [plantData, setPlantData] = useState({});
-  const getPlantData = async () => {
-    const plants = await getDocs(collection(db, 'plants'));
-      const plantProfiles = plants.docs.map((plant) => {
-        console.log('plant ' + plant.data());
-        const title = plant.id.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-        const url = getPlantImageURL(plant.id);
-        return {
-          id: plant.id,
-          title: title,
-          imageUrl: url,
-          //description: plant.data().description, // add descriptions to the database maybe, this field will be blank for now.
-          description: `Very detailed description of Plant ${plant.id}`,
-          //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
-          data: plant.data(), // save the raw database values in case we need them later
-        };
-      });
-      return plantProfiles;
-  };
+  const [plantData, setPlantData] = useState();
 
   useEffect(() => {
-    async function fetchPlantData() {
-      const plants = await getDocs(collection(db, 'plants'));
-      const plantProfiles = plants.docs.map((plant) => {
-        const title = plant.id.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-        const url = getPlantImageURL(plant.id);
-        return {
-          id: plant.id,
-          title: title,
-          imageUrl: url,
-          //description: plant.data().description, // add descriptions to the database maybe, this field will be blank for now.
-          description: `Very detailed description of Plant ${plant.id}`,
-          //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
-          data: plant.data(), // save the raw database values in case we need them later
-        };
-      });
-      console.log("Plant Data fetched:", plantProfiles);
-      setPlantData(plantProfiles);
-    }
-    fetchPlantData();
-  }, []);
+    fetchPlantData(query, setPlantData);
+  }, [query]);
 
   // Generate Plant Data considering the savedProfile
   // This should only recalculate when savedProfile changes
   const [plantScores, setPlantScores] = useState(null);
   useEffect(() => {
-    async function getPlantScores() {
-      const plantProfiles = await getPlantData();
-      if (!plantProfiles) {
-        return null;
-      }
-      return plantProfiles.map((plant) => {
-        return {
-            id: plant.id,
-            data: plant,
-            matchPercentage: calculateMatch(plant, savedProfile),
-        };
-    });
-    
-    }
-    console.log("Profile changed:", getPlantScores());
-    
-    setPlantScores(getPlantScores());
+    updatePlantMatches(savedProfile, plantData, setPlantScores);
   }, [savedProfile, plantData]);
 
   // Function to handle changes in the profile form
