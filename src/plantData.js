@@ -16,16 +16,66 @@ import { ref, getDownloadURL } from 'firebase/storage';
 import { db, store } from './firebase';
 import React, { useEffect, useState } from 'react';
 
-// This file contains functions that interact with the Firestore database. They return promises that resolve to the requested data.
+export async function getPlantProfiles() {
+    const plants = await getDocs(collection(db, 'plants'));
+    if (plants.empty) {
+        console.log('No plants found!');
+        return [];
+    }
+    const plantProfiles = plants.docs.map((plant) => {
+        console.log('plant ' + plant.data());
+        const title = plant.id.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+        const url = getPlantImageURL(plant.id);
+        return {
+            id: plant.id,
+            title: title,
+            imageUrl: url,
+            //description: plant.data().description, // add descriptions to the database maybe, this field will be blank for now.
+            description: `Very detailed description of Plant ${plant.id}`,
+            //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
+            data: plant.data(), // save the raw database values in case we need them later
+        };
+    });
+    return plantProfiles;
+}
 
 /**
- * Fetches all documents from the 'plants' collection in the database.
+ * Gets plant matches based on the user profile.
  *
- * @returns {Promise<QuerySnapshot>} A promise that resolves to a QuerySnapshot containing all plant documents.
+ * @param {Object} userProfile - The user's profile object.
+ * @returns {Array<Object>} An array of objects representing the plant matches, each containing:
+ *   - {string} id - The ID of the plant.
+ *   - {Object} data - The plant profile data.
+ *   - {number} matchPercentage - The match percentage between the plant and the user profile.
  */
-export function getAllPlants() {
-    return getDocs(collection(db, 'plants'));
-};
+export async function getPlantMatches(userProfile) {
+    // returns an array that looks like this, feel free to change the structure!
+    // [{id: "snake_plant", data: {data}, matchPercentage: 50}, {id: "spider_plant",  data: {data}, matchPercentage: 50}, ...]
+    
+    const plantProfiles = await getPlantProfiles();
+    return plantProfiles.map((plant) => {
+        return {
+            id: plant.id,
+            data: plant,
+            matchPercentage: calculateMatch(plant, userProfile),
+        };
+    });
+}
+
+/**
+ * Calculates the match percentage for the given data.
+ * 
+ * @param {Object} data - The plant data from the database.
+ * @param {Object} profile - The user's profile data.
+ * @returns {number} - The calculated match percentage.
+ */
+export const calculateMatch = (plantData, profile) => {
+    //put in formula to calculate percent match ! !
+    // right now it just returns a random percentage
+    //you can use getPlant(id) to get the specific plant data, and 
+
+    return Math.floor(Math.random() * 100);
+  };
 
 //   export function getDocumentsInQuery(query, renderer) {
 //     query.onSnapshot(function(snapshot) {
@@ -59,7 +109,7 @@ export function getPlant(id) {
     });
 };
 
-export function getPlantImageURL(id) {
+export async function getPlantImageURL(id) {
     const plantRef = ref(store, `plantPics/${id}.png`);
     return getDownloadURL(plantRef);
 }

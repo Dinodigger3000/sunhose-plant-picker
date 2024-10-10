@@ -1,12 +1,16 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/customBootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
 import ProfileForm from "./components/ProfileForm";
 import PlantGrid from "./components/PlantGrid";
 import PlantModal from "./components/PlantModal";
-
+//import { getPlantMatches, getPlantProfiles, defaultQuery } from "./plantData";
+import { collection, getDocs } from "firebase/firestore";
+import { db, store } from './firebase';
+import { getPlantImageURL, calculateMatch } from "./plantData";
 function App() {
+  
   // The current profile in progress
   const [profile, setProfile] = useState({
     lightLevel: 1,
@@ -16,32 +20,74 @@ function App() {
     maxTemp: 50,
     minTemp: 30,
   });
-
-  // Array of plant image URLs
-  const plantImages = [
-    "https://www.thesill.com/cdn/shop/files/the-sill_Small-Snake-Hahnii_Small_Hyde_Cream_Variant.jpg?v=1725982079&width=1100",
-    "https://www.thesill.com/cdn/shop/files/the-sill_Large-Dracaena-Mass-Cane_Large_Mexia_Cream_Variant.jpg?v=1727274636&width=1100",
-    "https://www.thesill.com/cdn/shop/products/the-sill_stromanthe-triostar_medium_growpot_all.jpg?v=1725897825&width=1100",
-    "https://www.thesill.com/cdn/shop/files/the-sill_Small-Senizo-Mount-Everest-Stick-Succulent_Gayle_Pot_Quinn_Gray_White_Quinn_Variant_94dd458c-4ecc-4617-9e36-8932337ba78f.jpg?v=1727714290&width=1100",
-    "https://www.thesill.com/cdn/shop/files/the-sill_Small-Extra-Tall-Red-Guzmania-Bromeliad-Quinn-White_Variant.jpg?v=1727710475&width=1100",
-  ];
-
-  // Function to get a random image
-  const getRandomImage = () => {
-    const randomIndex = Math.floor(Math.random() * plantImages.length);
-    return plantImages[randomIndex];
-  };
-
-  // Function to calculate match percentage for a plant
-  const calculateMatch = (plant) => {
-    // TODO: Add formula for matching plants to profile
-
-    // this is a placeholder for now
-    return Math.floor(Math.random() * 100);
-  };
-
+  
   // Profile created on save changes used for plant matching
   const [savedProfile, setSavedProfile] = useState({ ...profile });
+
+  const [plantData, setPlantData] = useState({});
+  const getPlantData = async () => {
+    const plants = await getDocs(collection(db, 'plants'));
+      const plantProfiles = plants.docs.map((plant) => {
+        console.log('plant ' + plant.data());
+        const title = plant.id.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+        const url = getPlantImageURL(plant.id);
+        return {
+          id: plant.id,
+          title: title,
+          imageUrl: url,
+          //description: plant.data().description, // add descriptions to the database maybe, this field will be blank for now.
+          description: `Very detailed description of Plant ${plant.id}`,
+          //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
+          data: plant.data(), // save the raw database values in case we need them later
+        };
+      });
+      return plantProfiles;
+  };
+
+  useEffect(() => {
+    async function fetchPlantData() {
+      const plants = await getDocs(collection(db, 'plants'));
+      const plantProfiles = plants.docs.map((plant) => {
+        const title = plant.id.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+        const url = getPlantImageURL(plant.id);
+        return {
+          id: plant.id,
+          title: title,
+          imageUrl: url,
+          //description: plant.data().description, // add descriptions to the database maybe, this field will be blank for now.
+          description: `Very detailed description of Plant ${plant.id}`,
+          //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
+          data: plant.data(), // save the raw database values in case we need them later
+        };
+      });
+      console.log("Plant Data fetched:", plantProfiles);
+      setPlantData(plantProfiles);
+    }
+    fetchPlantData();
+  }, []);
+
+  // Generate Plant Data considering the savedProfile
+  // This should only recalculate when savedProfile changes
+  const [plantScores, setPlantScores] = useState(null);
+  useEffect(() => {
+    async function getPlantScores() {
+      const plantProfiles = await getPlantData();
+      if (!plantProfiles) {
+        return null;
+      }
+      return plantProfiles.map((plant) => {
+        return {
+            id: plant.id,
+            data: plant,
+            matchPercentage: calculateMatch(plant, savedProfile),
+        };
+    });
+    
+    }
+    console.log("Profile changed:", getPlantScores());
+    
+    setPlantScores(getPlantScores());
+  }, [savedProfile, plantData]);
 
   // Function to handle changes in the profile form
   const handleChange = (e) => {
@@ -77,20 +123,6 @@ function App() {
     setSelectedPlant(null);
   };
 
-  // Generate Plant Data considering the savedProfile
-  // This should only recalculate when savedProfile changes
-  const plantData = useMemo(() => {
-    return Array.from({ length: 20 }).map((_, idx) => ({
-      // TODO: Change this to actual plant data from database
-
-      id: idx + 1,
-      title: `Plant ${idx + 1}`,
-      imageUrl: getRandomImage(),
-      description: `Very detailed description of Plant ${idx + 1}`,
-      matchPercentage: calculateMatch(),
-    }));
-  }, [savedProfile]);
-
   return (
     <Container fluid>
       <Row>
@@ -114,7 +146,7 @@ function App() {
         </Col>
         {/* Plant Grid Column */}
         <Col xs={12} md={8} className="p-4">
-          <PlantGrid plantData={plantData} handleCardClick={handleCardClick} />
+          <PlantGrid plantScores={plantScores} handleCardClick={handleCardClick} />
         </Col>
       </Row>
       {/* Plant Modal */}
