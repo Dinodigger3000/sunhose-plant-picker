@@ -68,7 +68,50 @@ const calculateMatch = (plantData, profile) => {
     // right now it just returns a random percentage
     //you can use getPlant(id) to get the specific plant data, and 
 
-    return Math.floor(Math.random() * 100);
+    var matchPercentage = 0;
+
+    //light level
+
+    if (profile.lightLevel == 1 && plantData.data.light_level.localeCompare("low") == 0) {
+        matchPercentage = matchPercentage + 20;
+    } else if (profile.lightLevel == 2 && plantData.data.light_level.localeCompare("medium") == 0){
+        matchPercentage = matchPercentage + 20;
+    } else if (profile.lightLevel == 3 && plantData.data.light_level.localeCompare("high") == 0) {
+        matchPercentage = matchPercentage + 20;
+    } else if (profile.lightLevel == 4 && plantData.data.light_level.localeCompare("very_high") == 0) {
+        matchPercentage = matchPercentage + 20;
+    }
+
+    //pet safe
+
+    if (profile.hasPet) {
+        if (plantData.data.pet_safe) {
+            matchPercentage = matchPercentage + 20;
+        }
+    } else {
+        matchPercentage = matchPercentage + 20;
+    }
+
+    //budget
+
+    if (plantData.data.avg_cost <= profile.budget) {
+        matchPercentage = matchPercentage + 20;
+    }
+
+    //care level
+
+    if (plantData.data.care_level <= profile.careLevel) {
+        matchPercentage = matchPercentage + 20
+    }
+    //temp in range
+
+    if (profile.minTemp >= plantData.data.min_temp){
+        if (profile.maxTemp <= plantData.data.max_temp) {
+            matchPercentage = matchPercentage + 20;
+        }
+    }
+
+    return matchPercentage;
   };
 
 
