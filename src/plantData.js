@@ -53,6 +53,7 @@ export async function updatePlantMatches(userProfile, plantProfiles, callBack) {
             matchPercentage: calculateMatch(plant, userProfile),
         };
     });
+    scores.sort((a, b) => b.matchPercentage - a.matchPercentage); // you can change this to sort by any other criteria!
     callBack(scores);
 }
 
@@ -72,13 +73,13 @@ const calculateMatch = (plantData, profile) => {
 
     //light level
 
-    if (profile.lightLevel == 1 && plantData.data.light_level.localeCompare("low") == 0) {
+    if (profile.lightLevel === 1 && plantData.data.light_level.localeCompare("low") === 0) {
         matchPercentage = matchPercentage + 20;
-    } else if (profile.lightLevel == 2 && plantData.data.light_level.localeCompare("medium") == 0){
+    } else if (profile.lightLevel === 2 && plantData.data.light_level.localeCompare("medium") === 0){
         matchPercentage = matchPercentage + 20;
-    } else if (profile.lightLevel == 3 && plantData.data.light_level.localeCompare("high") == 0) {
+    } else if (profile.lightLevel === 3 && plantData.data.light_level.localeCompare("high") === 0) {
         matchPercentage = matchPercentage + 20;
-    } else if (profile.lightLevel == 4 && plantData.data.light_level.localeCompare("very_high") == 0) {
+    } else if (profile.lightLevel === 4 && plantData.data.light_level.localeCompare("very_high") === 0) {
         matchPercentage = matchPercentage + 20;
     }
 
