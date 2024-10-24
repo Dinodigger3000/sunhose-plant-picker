@@ -1,5 +1,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
+import { Room } from "./modelComponents/Room";
+import { Stool } from "./modelComponents/Stool";
 
 function Box() {
     // Makes a cube that has a random position and can be clicked to toggle a rotation animation.
@@ -35,13 +37,16 @@ function Box() {
 function Viewport() {
     return (
         <Canvas>
-          <ambientLight intensity={Math.PI / 2} />
+          {/* <ambientLight intensity={Math.PI / 2} /> */}
+          <ambientLight />
           <pointLight position={[0, 10, -10]} decay={0} intensity={Math.PI / 2} />
           {/* add four boxes to the canvas. It uses the Box() function we defined above. */}
+          {/* <Box />
           <Box />
           <Box />
-          <Box />
-          <Box />
+          <Box /> */}
+          <Room />
+          <Stool position={[1.5, -1, 3]} />
         </Canvas>
     );
 }
