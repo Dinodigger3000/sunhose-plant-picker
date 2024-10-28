@@ -30,7 +30,8 @@ export async function fetchPlantData(query, callBack) {
             title: title,
             imageUrl: url,
             //description: plant.data().description, // add descriptions to the database maybe, this field will be blank for now.
-            description: `Very detailed description of Plant ${plant.id}`,
+            description: plant.data().description,
+            fun_fact: "Fun Fact: " + plant.data().fun_fact,
             //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
             data: plant.data(), // save the raw database values in case we need them later
         };

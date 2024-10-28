@@ -38,6 +38,7 @@ function PlantModal({ plant, show, onHide }) {
           </Col>
           <Col xs={8}>
             <p>{plant.data.description}</p>
+            <p>{plant.data.fun_fact}</p>
           </Col>
         </Row>
       </Modal.Body>
