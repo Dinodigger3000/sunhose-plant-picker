@@ -2,7 +2,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { Room } from "./modelComponents/Room";
 import { Stool } from "./modelComponents/Stool";
-
+import { PerspectiveCamera } from "@react-three/drei";
 function Box() {
     // Makes a cube that has a random position and can be clicked to toggle a rotation animation.
     const meshRef = useRef(null);
@@ -35,11 +35,20 @@ function Box() {
   }
 
 function Viewport() {
-    return (
-        <Canvas>
-          {/* <ambientLight intensity={Math.PI / 2} /> */}
-          <ambientLight />
-          <pointLight position={[0, 10, -10]} decay={0} intensity={Math.PI / 2} />
+  return (
+    <Canvas>
+      <PerspectiveCamera
+        makeDefault={true}
+        // far={100}
+        // near={0.1}
+        // fov={35.115}
+        position={[2.8, 1.2, -2.9]}
+        rotation={[0, Math.PI, 0]}
+      />
+      {/* <ambientLight intensity={Math.PI / 2} /> */}
+      <color args={['#c4fffd']} attach="background" />
+      <ambientLight />
+      <pointLight position={[0, 10, -10]} decay={0} intensity={Math.PI / 2} />
           {/* add four boxes to the canvas. It uses the Box() function we defined above. */}
           {/* <Box />
           <Box />
