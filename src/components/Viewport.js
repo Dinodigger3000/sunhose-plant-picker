@@ -36,26 +36,32 @@ function Box() {
 function Viewport() {
   return (
     <Canvas>
-      <PerspectiveCamera
+      {/* <PerspectiveCamera
         makeDefault={true}
         // far={100}
         // near={0.1}
         // fov={35.115}
         position={[2.8, 1.2, -2.9]}
         rotation={[0, Math.PI, 0]}
+      /> */}
+      <PerspectiveCamera makeDefault={true} far={100} near={0.1} />
+      <directionalLight
+        intensity={2}
+        decay={2}
+        color="#fffb00"
+        position={[-7.59, 8.84, -19.97]}
+        rotation={[-2.16, -0.3, 2]}
       />
-      {/* <ambientLight intensity={Math.PI / 2} /> */}
+      <pointLight
+        intensity={20.05}
+        decay={2}
+        position={[0, 0.61, -2.58]}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
       <color args={['#c4fffd']} attach="background" />
-      {/* <ambientLight />
-      <pointLight position={[0, 10, -10]} decay={0} intensity={Math.PI / 2} /> */}
-          {/* add four boxes to the canvas. It uses the Box() function we defined above. */}
-          {/* <Box />
-          <Box />
-          <Box />
-          <Box /> */}
-          <Room />
-        </Canvas>
-    );
+      <Room />
+    </Canvas>
+  );
 }
 
 export default Viewport;
