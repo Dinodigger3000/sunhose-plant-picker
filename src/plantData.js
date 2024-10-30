@@ -29,7 +29,6 @@ export async function fetchPlantData(query, callBack) {
             id: plant.id,
             title: title,
             imageUrl: url,
-            //description: plant.data().description, // add descriptions to the database maybe, this field will be blank for now.
             description: plant.data().description,
             fun_fact: "Fun Fact: " + plant.data().fun_fact,
             //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
