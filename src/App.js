@@ -9,6 +9,7 @@ import PlantModal from "./components/PlantModal";
 import { collection, getDocs } from "firebase/firestore";
 import { db, store } from './firebase';
 import { fetchPlantData, updatePlantMatches } from "./plantData";
+import Viewport from "./components/Viewport";
 function App() {
   const [query, setQuery] = useState(collection(db, 'plants')); // we can use setquery later on to make the search more scalable
   // The current profile in progress
@@ -72,38 +73,9 @@ function App() {
   };
 
   return (
-    <Container fluid>
-      <Row>
-        {/* Profile Form Column */}
-        <Col xs={12} md={4} className="p-0">
-          <div
-            style={{
-              backgroundColor: "#DFF7E6",
-              padding: "20px",
-              height: "100%",
-            }}
-          >
-            <div className="separator"></div>
-            <h4 className="title-label">❉ ✽ ❉ SUNHOSE</h4>
-            <ProfileForm
-              profile={profile}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-            />
-          </div>
-        </Col>
-        {/* Plant Grid Column */}
-        <Col xs={12} md={8} className="p-4">
-          <PlantGrid plantScores={plantScores} handleCardClick={handleCardClick} />
-        </Col>
-      </Row>
-      {/* Plant Modal */}
-      <PlantModal
-        plant={selectedPlant}
-        show={showModal}
-        onHide={handleCloseModal}
-      />
-    </Container>
+    <div style={{ height: "100vh" }}>
+      <Viewport />
+    </div>
   );
 }
 
