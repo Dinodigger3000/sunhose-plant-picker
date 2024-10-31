@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
+import "./styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/customBootstrap.css";
 import { Container, Col, Row } from "react-bootstrap";
@@ -73,7 +74,7 @@ function App() {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div className="App">
       <Viewport />
     </div>
   );

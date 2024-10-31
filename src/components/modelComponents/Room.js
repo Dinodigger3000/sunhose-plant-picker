@@ -7,67 +7,55 @@ import { useGLTF, PerspectiveCamera, OrbitControls } from '@react-three/drei'
 
 export function Room(props) {
   const { nodes, materials } = useGLTF('/models/room.glb')
+
   return (
     <group {...props} dispose={null}>
-      <directionalLight
-        intensity={2}
-        decay={2}
-        color="#fffb00"
-        position={[-7.59, 8.84, -19.97]}
-        rotation={[-2.16, -0.3, 2]}
-      />
-      <PerspectiveCamera makeDefault={true} far={100} near={0.1}/>
-      <group position={[2.5, -1.29, -5.57]} rotation={[Math.PI, 0, Math.PI]}>
-        <mesh castShadow receiveShadow geometry={nodes.temp.geometry} material={materials.Floor} />
+      {/* <OrbitControls /> */}
+      <group position={[2.5, -1.29, -5.572]} rotation={[Math.PI, 0, Math.PI]}>
+        <mesh castShadow receiveShadow geometry={nodes.Walls.geometry} material={materials.Floor} />
         <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.temp_1.geometry}
+          castShadow={true}
+          receiveShadow={true}
+          geometry={nodes.Walls_1.geometry}
           material={materials.Ceiling}
         />
         <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.temp_2.geometry}
+          castShadow={true}
+          receiveShadow={true}
+          geometry={nodes.Walls_2.geometry}
           material={materials.Wallpaper}
         />
         <mesh
-          castShadow
-          receiveShadow
+          castShadow={true}
+          receiveShadow={true}
           geometry={nodes.Baseboard.geometry}
           material={materials.Baseboards}
         />
-        <group position={[3.86, 0.66, 0]}>
+        <group position={[3.862, 0.66, 0]}>
           <mesh
-            castShadow
-            receiveShadow
+            castShadow={true}
+            receiveShadow={true}
             geometry={nodes.Window_1.geometry}
             material={materials.Marble}
           />
           <mesh
-            castShadow
-            receiveShadow
+            castShadow={true}
+            receiveShadow={true}
             geometry={nodes.Window_2.geometry}
             material={materials.Baseboards}
           />
         </group>
       </group>
-      <pointLight
-        intensity={20.05}
-        decay={2}
-        position={[0, 0.61, -2.58]}
-        rotation={[-Math.PI / 2, 0, 0]}
-      />
       <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cylinder.geometry}
+        castShadow={true}
+        receiveShadow={true}
+        geometry={nodes.Stool.geometry}
         material={materials.Stool}
-        position={[-1, -1.26, -5]}
+        position={[-1, -1.257, -5]}
       />
-      <group position={[-1, -0.89, -5]}>
-        <mesh castShadow receiveShadow geometry={nodes.Mesh.geometry} material={materials.Pot1} />
-        <mesh castShadow receiveShadow geometry={nodes.Mesh_1.geometry} material={materials.Soil} />
+      <group position={[-1, -0.889, -5]}>
+        <mesh castShadow receiveShadow geometry={nodes.Pot1_1.geometry} material={materials.Pot1} />
+        <mesh castShadow receiveShadow geometry={nodes.Pot1_2.geometry} material={materials.Soil} />
       </group>
     </group>
   )
