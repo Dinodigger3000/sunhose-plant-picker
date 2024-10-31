@@ -35,7 +35,7 @@ function Box() {
 
 function Viewport() {
   return (
-    <Canvas>
+    <Canvas shadows={{}} >
       {/* <PerspectiveCamera
         makeDefault={true}
         // far={100}
@@ -44,20 +44,38 @@ function Viewport() {
         position={[2.8, 1.2, -2.9]}
         rotation={[0, Math.PI, 0]}
       /> */}
-      <PerspectiveCamera makeDefault={true} far={100} near={0.1} />
+
+      <PerspectiveCamera
+        makeDefault={true}
+        far={100}
+        near={0.1}
+        fov={30}
+      />
       <directionalLight
-        intensity={2}
+        intensity={4}
         decay={2}
         color="#fffb00"
         position={[-7.59, 8.84, -19.97]}
         rotation={[-2.16, -0.3, 2]}
+        castShadow={true}
+        shadow-normalBias={0.1}
+        shadow-bias={0.0004}
+        shadow-radius={2}
+        shadow-mapSize={[1024, 1024]}
+
       />
       <pointLight
-        intensity={20.05}
+        intensity={4.05}
         decay={2}
         position={[0, 0.61, -2.58]}
-        rotation={[-Math.PI / 2, 0, 0]}
+        castShadow={true}
+        shadow-radius={5}
+        
+        // shadow-blurSamples={1}
+        shadow-normalBias={0.1}
+        // shadow-mapSize={[1024, 1024]}
       />
+      <ambientLight intensity={1} />
       <color args={['#c4fffd']} attach="background" />
       <Room />
     </Canvas>

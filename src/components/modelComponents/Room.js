@@ -10,44 +10,45 @@ export function Room(props) {
 
   return (
     <group {...props} dispose={null}>
+      {/* <OrbitControls /> */}
       <group position={[2.5, -1.29, -5.572]} rotation={[Math.PI, 0, Math.PI]}>
         <mesh castShadow receiveShadow geometry={nodes.Walls.geometry} material={materials.Floor} />
         <mesh
-          castShadow
-          receiveShadow
+          castShadow={true}
+          receiveShadow={true}
           geometry={nodes.Walls_1.geometry}
           material={materials.Ceiling}
         />
         <mesh
-          castShadow
-          receiveShadow
+          castShadow={true}
+          receiveShadow={true}
           geometry={nodes.Walls_2.geometry}
           material={materials.Wallpaper}
         />
         <mesh
-          castShadow
-          receiveShadow
+          castShadow={true}
+          receiveShadow={true}
           geometry={nodes.Baseboard.geometry}
           material={materials.Baseboards}
         />
         <group position={[3.862, 0.66, 0]}>
           <mesh
-            castShadow
-            receiveShadow
+            castShadow={true}
+            receiveShadow={true}
             geometry={nodes.Window_1.geometry}
             material={materials.Marble}
           />
           <mesh
-            castShadow
-            receiveShadow
+            castShadow={true}
+            receiveShadow={true}
             geometry={nodes.Window_2.geometry}
             material={materials.Baseboards}
           />
         </group>
       </group>
       <mesh
-        castShadow
-        receiveShadow
+        castShadow={true}
+        receiveShadow={true}
         geometry={nodes.Stool.geometry}
         material={materials.Stool}
         position={[-1, -1.257, -5]}
