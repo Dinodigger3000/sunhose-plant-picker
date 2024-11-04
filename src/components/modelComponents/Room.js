@@ -80,16 +80,16 @@ export function Room(props) {
         receiveShadow={true}
         geometry={nodes.Stool.geometry}
         material={toonMaterial}
-        position={[-1, -1.257, -5]}
+        position={[-1, -1.247, -5]}
       />
       <mesh
         castShadow={true}
         receiveShadow={true}
         geometry={nodes.Stool.geometry}
         material={outlineMaterial}
-        position={[-1, -1.257, -5]}
+        position={[-1, -1.247, -5]}
       />
-      <group position={[-1, -0.889, -5]}>
+      <group position={[-1, -0.87, -5]}>
         <mesh
           castShadow
           receiveShadow
