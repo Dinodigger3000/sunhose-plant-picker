@@ -22,75 +22,67 @@ export function Room(props) {
 
   return (
     <group {...props} dispose={null}>
-      <directionalLight
-        intensity={2}
-        decay={2}
-        color="#ffffff"
-        position={[-7.59, 8.84, -19.97]}
-        rotation={[-2.16, -0.3, 2]}
-      />
-      <directionalLight intensity={1.5} position={[5, 5, -10]} />
-      <ambientLight intensity={0} />
-
-      {/* sun spotlight */}
-      <spotLight
-        intensity={1.5}
-        angle={0.3}
-        penumbra={0.5}
-        position={[3.9, 5, 0]}
-        castShadow
-        color="#ffffff"
-      />
-
-      <PerspectiveCamera makeDefault={true} far={100} near={0.1} />
-
-      {/* Room Structure */}
-      <group position={[2.5, -1.29, -5.57]} rotation={[Math.PI, 0, Math.PI]}>
-        <mesh geometry={nodes.temp.geometry} material={toonMaterial} />
-        <mesh geometry={nodes.temp_1.geometry} material={toonMaterial} />
-        <mesh geometry={nodes.temp_2.geometry} material={toonMaterial} />
-        <mesh geometry={nodes.Baseboard.geometry} material={toonMaterial} />
-
-        {/* Outline for Room Structure */}
-        <mesh geometry={nodes.temp.geometry} material={outlineMaterial} />
-        <mesh geometry={nodes.temp_1.geometry} material={outlineMaterial} />
-        <mesh geometry={nodes.temp_2.geometry} material={outlineMaterial} />
-        <mesh geometry={nodes.Baseboard.geometry} material={outlineMaterial} />
-
-        {/* Window Group */}
-        <group position={[3.86, 0.66, 0]}>
-          <mesh geometry={nodes.Window_1.geometry} material={toonMaterial} />
-          <mesh geometry={nodes.Window_2.geometry} material={toonMaterial} />
-
-          {/* Outlines for Window */}
-          <mesh geometry={nodes.Window_1.geometry} material={outlineMaterial} />
-          <mesh geometry={nodes.Window_2.geometry} material={outlineMaterial} />
+      {/* <OrbitControls /> */}
+      <group position={[2.5, -1.29, -5.572]} rotation={[Math.PI, 0, Math.PI]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Walls.geometry}
+          material={materials.Floor}
+        />
+        <mesh
+          castShadow={true}
+          receiveShadow={true}
+          geometry={nodes.Walls_1.geometry}
+          material={materials.Ceiling}
+        />
+        <mesh
+          castShadow={true}
+          receiveShadow={true}
+          geometry={nodes.Walls_2.geometry}
+          material={materials.Wallpaper}
+        />
+        <mesh
+          castShadow={true}
+          receiveShadow={true}
+          geometry={nodes.Baseboard.geometry}
+          material={materials.Baseboards}
+        />
+        <group position={[3.862, 0.66, 0]}>
+          <mesh
+            castShadow={true}
+            receiveShadow={true}
+            geometry={nodes.Window_1.geometry}
+            material={materials.Marble}
+          />
+          <mesh
+            castShadow={true}
+            receiveShadow={true}
+            geometry={nodes.Window_2.geometry}
+            material={materials.Baseboards}
+          />
         </group>
       </group>
-
-      {/* Stool*/}
-      <group>
+      <mesh
+        castShadow={true}
+        receiveShadow={true}
+        geometry={nodes.Stool.geometry}
+        material={materials.Stool}
+        position={[-1, -1.257, -5]}
+      />
+      <group position={[-1, -0.889, -5]}>
         <mesh
-          geometry={nodes.Cylinder.geometry}
-          material={toonMaterial}
-          position={[-1, -1.26, -5]}
+          castShadow
+          receiveShadow
+          geometry={nodes.Pot1_1.geometry}
+          material={materials.Pot1}
         />
-        {/* Outline for Stool */}
         <mesh
-          geometry={nodes.Cylinder.geometry}
-          material={outlineMaterial}
-          position={[-1, -1.26, -5]}
+          castShadow
+          receiveShadow
+          geometry={nodes.Pot1_2.geometry}
+          material={materials.Soil}
         />
-      </group>
-
-      {/* Pot with outline */}
-      <group position={[-1, -0.89, -5]}>
-        <mesh geometry={nodes.Mesh.geometry} material={toonMaterial} />
-        <mesh geometry={nodes.Mesh_1.geometry} material={toonMaterial} />
-
-        {/* Outline for Pot */}
-        <mesh geometry={nodes.Mesh.geometry} material={outlineMaterial} />
-        <mesh geometry={nodes.Mesh_1.geometry} material={outlineMaterial} />
       </group>
     </group>
   );
