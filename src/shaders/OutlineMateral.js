@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-export function createOutlineMaterial(thickness = 0.02) {
+export function createOutlineMaterial(thickness = 0.005) {
   return new THREE.ShaderMaterial({
     vertexShader: /* glsl */ `
       void main() {
