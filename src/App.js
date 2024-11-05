@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div className="App">
-      <Viewport />
+      <Viewport profile={profile}/>
     </div>
   );
 }

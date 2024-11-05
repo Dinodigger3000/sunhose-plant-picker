@@ -2,6 +2,8 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { Room } from "./modelComponents/Room";
 import { PerspectiveCamera } from "@react-three/drei";
+import { useSpring, animated } from '@react-spring/three'
+
 function Box() {
   // Makes a cube that has a random position and can be clicked to toggle a rotation animation.
   const meshRef = useRef(null);
@@ -33,7 +35,48 @@ function Box() {
   );
 }
 
-function Viewport() {
+//   function AnimatedSun(props) {
+//     const {profile} = props;
+//     const lightRef = useRef();
+
+//     const spring = useSpring(() => ({
+//       sunPos: (profile === 4) ? [-2.16, -0.3, 2] : [0, 0, 0],
+//     }),
+//       [profile]);
+
+//   useFrame(() => {
+//     // Optional: Add some subtle movement to the light
+//     // lightRef.current.position.y += 0.01; 
+//   });
+
+//   return (
+//     <animated.directionalLight 
+//     ref={lightRef} 
+//     rotation={spring.sunPos} 
+    
+//     intensity={4}
+//     decay={2}
+//     color="#fffb00"
+//     position={[-7.59, 8.84, -19.97]}
+//     castShadow={true}
+//     shadow-normalBias={0.1}
+//     shadow-bias={0.0004}
+//     shadow-radius={2}
+//     shadow-mapSize={[1024, 1024]}
+
+//     {...spring} />
+//   );
+// }
+
+function Viewport(props) {
+  const { profile } = props;
+  const [sun, setSun] = useState(0);
+  
+  const [active, setActive] = useState(false);
+  const { sunAngle, sunBrightness } = useSpring({ 
+    sunAngle: active ? [-7.59, 8.84, -19.97] : [0, 20, -30],
+    sunBrightness: active ? 4 : 0});
+
   return (
     <Canvas shadows={{}}>
       {/* <PerspectiveCamera
@@ -45,18 +88,26 @@ function Viewport() {
         rotation={[0, Math.PI, 0]}
       /> */}
 
-      <PerspectiveCamera makeDefault={true} far={100} near={0.1} fov={30} />
-      <directionalLight
-        intensity={4}
-        decay={2}
-        color="#fffb00"
-        position={[-7.59, 8.84, -19.97]}
-        rotation={[-2.16, -0.3, 2]}
-        castShadow={true}
-        shadow-normalBias={0.1}
-        shadow-bias={0.0004}
-        shadow-radius={2}
-        shadow-mapSize={[1024, 1024]}
+      <PerspectiveCamera
+        makeDefault={true}
+        far={100}
+        near={0.1}
+        fov={30}
+      />
+      {/* <AnimatedSun
+        profile={sun}
+      /> */}
+      <animated.directionalLight
+    
+      intensity={sunBrightness}
+      position={sunAngle}
+      decay={2}
+      color="#fffb00"
+      castShadow={true}
+      shadow-normalBias={0.1}
+      shadow-bias={0.0004}
+      shadow-radius={2}
+      shadow-mapSize={[1024, 1024]}
       />
       <pointLight
         intensity={4.05}
@@ -70,7 +121,10 @@ function Viewport() {
       />
       <ambientLight intensity={1} />
       <color args={["#c4fffd"]} attach="background" />
-      <Room />
+      <Room 
+        onClick={() => {setActive(!active); console.log("clicked "+active)}}
+
+      />
     </Canvas>
   );
 }
