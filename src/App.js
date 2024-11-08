@@ -1,18 +1,24 @@
 import React, { useState, useMemo, useEffect } from "react";
+
 import "./styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/customBootstrap.css";
+import "./styles/fonts.css";
+
 import { Container, Col, Row } from "react-bootstrap";
-import ProfileForm from "./components/ProfileForm";
-import PlantGrid from "./components/PlantGrid";
-import PlantModal from "./components/PlantModal";
+import ProfileForm from "./components/MVPcomponents/ProfileForm";
+import PlantGrid from "./components/MVPcomponents/PlantGrid";
+import PlantModal from "./components/MVPcomponents/PlantModal";
+
 //import { getPlantMatches, getPlantProfiles, defaultQuery } from "./plantData";
 import { collection, getDocs } from "firebase/firestore";
-import { db, store } from './firebase';
+import { db, store } from "./firebase";
 import { fetchPlantData, updatePlantMatches } from "./plantData";
 import Viewport from "./components/Viewport";
+import ProfileBuilder from "./components/ProfileBuilder";
+
 function App() {
-  const [query, setQuery] = useState(collection(db, 'plants')); // we can use setquery later on to make the search more scalable
+  const [query, setQuery] = useState(collection(db, "plants")); // we can use setquery later on to make the search more scalable
   // The current profile in progress
   const [profile, setProfile] = useState({
     lightLevel: 1,
@@ -22,7 +28,7 @@ function App() {
     maxTemp: 50,
     minTemp: 30,
   });
-  
+
   // Profile created on save changes used for plant matching
   const [savedProfile, setSavedProfile] = useState({ ...profile });
 
@@ -75,7 +81,12 @@ function App() {
 
   return (
     <div className="App">
-      <Viewport profile={profile}/>
+      <Viewport profile={profile} />
+      <ProfileBuilder
+        profile={profile}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }

@@ -1,3 +1,9 @@
+:root {
+  --theme-color3: rgb(226, 235, 201);
+  --theme-color4: rgb(249, 250, 230);
+  --theme-color5: rgb(255, 255, 255);
+}
+
 .App {
   min-width: 1200px;
   min-height: 600px;

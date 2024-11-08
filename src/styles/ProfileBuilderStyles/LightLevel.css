@@ -1,0 +1,225 @@
+/* layout */
+.intro-layout {
+  position: absolute;
+  left: 37%;
+  top: 17%;
+  display: flex;
+  flex-direction: column;
+  width: 57%;
+  height: 55vh;
+  box-sizing: border-box;
+}
+
+/* top row */
+.header-section {
+  display: grid;
+  grid-template-columns: 75fr 20fr;
+  grid-gap: 2%;
+  flex: 0 0 55%;
+  margin-bottom: 2%;
+}
+
+/* bottom row */
+.content-section {
+  display: grid;
+  grid-template-columns: 35fr 60fr;
+  grid-gap: 2%;
+  flex: 0 0 40%;
+}
+
+/* cards */
+.card {
+  position: relative;
+  border: 1.5px solid var(--base);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+/* top left rectangle */
+.logo-card {
+  background: var(--color3);
+}
+
+.logo-inner {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* logo text */
+.logo-text {
+  font-family: "Whoopass", sans-serif;
+  color: white;
+  font-size: 5.4rem;
+  letter-spacing: 0.125em;
+  -webkit-text-stroke: 1.5px var(--base);
+  text-stroke: 1.5px var(--base);
+  -moz-text-stroke: 1.5px var(--base);
+  -ms-text-stroke: 1.5px var(--base);
+  margin-bottom: -1rem;
+}
+
+/* little circles */
+.dot-row {
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+  background: white;
+}
+
+/* clover oval */
+.badge {
+  position: relative;
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.badge-inner {
+  position: relative;
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+  width: 80%;
+  height: 86%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.badge-icon {
+  fill: var(--color3);
+  stroke: var(--base);
+  stroke-width: 2.5px;
+  width: 125%;
+  height: 125%;
+  margin: 0;
+  top: 5%;
+  left: 7%;
+  position: absolute;
+  overflow: visible;
+}
+
+/* welcome to sunhose */
+.welcome-card {
+  background: white;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+/* continue button */
+.continue-card {
+  background: var(--color4);
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* thumbtacks */
+.dot-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accent-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+}
+
+/* welcome to sunhose text */
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.welcome-message {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  color: var(--base);
+  font-size: 1.2rem;
+  margin: 1rem 0 0.25rem;
+  text-align: left;
+}
+
+/* continue button */
+.continue-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.continue-icon {
+  fill: var(--color3);
+  stroke: var(--base);
+  stroke-width: 3px;
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.continue-text {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-weight: bold;
+  color: var(--color3);
+  font-size: 2.5rem;
+  margin-top: -3.5rem;
+  -webkit-text-stroke: 1.5px var(--base);
+  text-stroke: 1.5px var(--base);
+  -moz-text-stroke: 1.5px var(--base);
+  -ms-text-stroke: 1.5px var(--base);
+}
+
+.theme-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-button {
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Alte Haas Grotesk", sans-serif;
+}
+
+.theme-controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
