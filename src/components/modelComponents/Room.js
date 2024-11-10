@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useMemo } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { createOutlineMaterial } from "../../shaders/OutlineMateral";
+import { useSpring, animated } from "@react-spring/three";
 import { getCurrentTheme, subscribeToThemeChanges } from "../ColorTheme";
 
 // load the toon gradient texture once at site startup
@@ -45,7 +46,9 @@ export function Room(props) {
     return () => unsubscribe();
   }, []);
 
-  // render room model
+  // render room model  
+  const [active, setActive] = useState(false);
+  const {potRotation} = useSpring({ potRotation: active ? [0, Math.PI, 0] : [0, 0, 0] });
   return (
     <group {...props} dispose={null}>
       {/* main room structure */}
@@ -103,22 +106,28 @@ export function Room(props) {
         </group>
       </group>
 
-      {/* pot and stool */}
-      <mesh
-        castShadow={true}
-        receiveShadow={true}
-        geometry={nodes.Stool.geometry}
-        material={materials.color2}
-        position={[-1, -1.247, -5]}
-      />
-      <mesh
-        castShadow={true}
-        receiveShadow={true}
-        geometry={nodes.Stool.geometry}
-        material={materials.outline}
-        position={[-1, -1.247, -5]}
-      />
-      <group position={[-1, -0.87, -5]}>
+      {/* stool */}
+      <group >
+        <mesh
+          castShadow={true}
+          receiveShadow={true}
+          geometry={nodes.Stool.geometry}
+          material={materials.color2}
+          position={[-1, -1.247, -5]}
+        />
+        <mesh
+          castShadow={true}
+          receiveShadow={true}
+          geometry={nodes.Stool.geometry}
+          material={materials.outline}
+          position={[-1, -1.247, -5]}
+        />
+      </group>
+      {/* plant pot with rotate animation */}
+      <animated.group 
+          position={[-1, -0.87, -5]} 
+          rotation={potRotation} 
+          onClick={() => {setActive(!active); console.log("clicked pot "+active)}}>
         <mesh
           castShadow
           receiveShadow
@@ -131,7 +140,31 @@ export function Room(props) {
           geometry={nodes.Pot1_1.geometry}
           material={materials.outline}
         />
-      </group>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Pot1_2.geometry}
+          material={materials.color1}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Pot1_2.geometry}
+          material={materials.outline}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Pot1_3.geometry}
+          material={materials.color1}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Pot1_3.geometry}
+          material={materials.outline}
+        />
+      </animated.group>
     </group>
   );
 }

@@ -71,7 +71,7 @@ function Box() {
 function Viewport(props) {
   const { profile } = props;
   const [sun, setSun] = useState(0);
-
+  
   const [active, setActive] = useState(false);
   const { sunAngle, sunBrightness } = useSpring({
     sunAngle: active ? [-7.59, 8.84, -19.97] : [0, 20, -30],
@@ -80,19 +80,8 @@ function Viewport(props) {
 
   return (
     <Canvas shadows={{}}>
-      {/* <PerspectiveCamera
-        makeDefault={true}
-        // far={100}
-        // near={0.1}
-        // fov={35.115}
-        position={[2.8, 1.2, -2.9]}
-        rotation={[0, Math.PI, 0]}
-      /> */}
 
       <PerspectiveCamera makeDefault={true} far={100} near={0.1} fov={30} />
-      {/* <AnimatedSun
-        profile={sun}
-      /> */}
       <animated.directionalLight
         intensity={sunBrightness}
         position={sunAngle}
