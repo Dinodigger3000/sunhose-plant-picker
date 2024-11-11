@@ -103,7 +103,7 @@ function Viewport(props) {
         shadow-normalBias={0.1}
         // shadow-mapSize={[1024, 1024]}
       />
-      <ambientLight intensity={1} />
+      <ambientLight intensity={Math.PI/2} />
       <color args={["#ffffff"]} attach="background" />
       <Room
         onClick={() => {

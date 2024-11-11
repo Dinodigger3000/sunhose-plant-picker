@@ -48,7 +48,9 @@ export function Room(props) {
 
   // render room model  
   const [active, setActive] = useState(false);
-  const {potRotation} = useSpring({ potRotation: active ? [0, Math.PI, 0] : [0, 0, 0] });
+  const {potRotation, sunAngle: sunRotation} = useSpring({ 
+    potRotation: active ? [0, Math.PI, 0] : [0, 0, 0],
+    sunAngle: active ? [0, 0, 0] : [0, 0.1, 0]});
   return (
     <group {...props} dispose={null}>
       {/* main room structure */}
@@ -164,6 +166,13 @@ export function Room(props) {
           geometry={nodes.Pot1_3.geometry}
           material={materials.outline}
         />
+      </animated.group>
+      <animated.group
+        rotation={sunRotation}>
+        <mesh geometry={nodes.Sun_1.geometry} material={materials.color5} position={[-5.393, -2.919, -18.015]}/>
+        <mesh geometry={nodes.Sun_1.geometry} material={materials.outline} position={[-5.393, -2.919, -18.015]}/>
+        <mesh geometry={nodes.Sun_2.geometry} material={materials.color1} position={[-5.393, -2.919, -18.015]}/>
+        <mesh geometry={nodes.Sun_2.geometry} material={materials.outline} position={[-5.393, -2.919, -18.015]}/>
       </animated.group>
     </group>
   );
