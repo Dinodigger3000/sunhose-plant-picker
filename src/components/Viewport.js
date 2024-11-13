@@ -106,6 +106,7 @@ function Viewport(props) {
       <ambientLight intensity={Math.PI/2} />
       <color args={["#ffffff"]} attach="background" />
       <Room
+        active={active}
         onClick={() => {
           setActive(!active);
           console.log("clicked " + active);

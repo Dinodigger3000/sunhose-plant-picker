@@ -50,7 +50,7 @@ export function Room(props) {
   const [active, setActive] = useState(false);
   const {potRotation, sunAngle: sunRotation} = useSpring({ 
     potRotation: active ? [0, Math.PI, 0] : [0, 0, 0],
-    sunAngle: active ? [0, 0, 0] : [0, 0.1, 0]});
+    sunAngle: props.active ? [0, 0, 0] : [0, 0.1, 0]});
   return (
     <group {...props} dispose={null}>
       {/* main room structure */}
@@ -167,13 +167,26 @@ export function Room(props) {
           material={materials.outline}
         />
       </animated.group>
-      <animated.group
+      <animated.group //sun with rotate animation
         rotation={sunRotation}>
         <mesh geometry={nodes.Sun_1.geometry} material={materials.color5} position={[-5.393, -2.919, -18.015]}/>
         <mesh geometry={nodes.Sun_1.geometry} material={materials.outline} position={[-5.393, -2.919, -18.015]}/>
         <mesh geometry={nodes.Sun_2.geometry} material={materials.color1} position={[-5.393, -2.919, -18.015]}/>
         <mesh geometry={nodes.Sun_2.geometry} material={materials.outline} position={[-5.393, -2.919, -18.015]}/>
       </animated.group>
+      <group position={[0, 0, -20]}>
+        <mesh geometry={nodes.Hill_1.geometry} material={materials.color4}/>
+        <mesh geometry={nodes.Hill_1.geometry} material={materials.outline}/>
+        <mesh geometry={nodes.Hill_2.geometry} material={materials.color3}/>
+        <mesh geometry={nodes.Hill_2.geometry} material={materials.outline}/>
+      </group>
+      
+        <mesh
+          geometry={new THREE.PlaneGeometry(1, 1)}
+          material={materials.base}
+          position={[-1, -0.16, -5]}
+        />
+      
     </group>
   );
 }
