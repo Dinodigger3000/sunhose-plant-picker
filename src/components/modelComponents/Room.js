@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { createOutlineMaterial } from "../../shaders/OutlineMateral";
 import { useSpring, animated } from "@react-spring/three";
 import { getCurrentTheme, subscribeToThemeChanges } from "../ColorTheme";
+import { Pot } from "./Pot";
 
 // load the toon gradient texture once at site startup
 const gradientMap = new THREE.TextureLoader().load(
@@ -47,9 +48,7 @@ export function Room(props) {
   }, []);
 
   // render room model  
-  const [active, setActive] = useState(false);
-  const {potRotation, sunAngle: sunRotation} = useSpring({ 
-    potRotation: active ? [0, Math.PI, 0] : [0, 0, 0],
+  const {sunAngle: sunRotation} = useSpring({ 
     sunAngle: props.active ? [0, 0, 0] : [0, 0.1, 0]});
   return (
     <group {...props} dispose={null}>
@@ -126,47 +125,7 @@ export function Room(props) {
         />
       </group>
       {/* plant pot with rotate animation */}
-      <animated.group 
-          position={[-1, -0.87, -5]} 
-          rotation={potRotation} 
-          onClick={() => {setActive(!active); console.log("clicked pot "+active)}}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Pot1_1.geometry}
-          material={materials.color4}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Pot1_1.geometry}
-          material={materials.outline}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Pot1_2.geometry}
-          material={materials.color1}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Pot1_2.geometry}
-          material={materials.outline}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Pot1_3.geometry}
-          material={materials.color1}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Pot1_3.geometry}
-          material={materials.outline}
-        />
-      </animated.group>
+      <Pot profile={props.profile} materials={materials} />
       <animated.group //sun with rotate animation
         rotation={sunRotation}>
         <mesh geometry={nodes.Sun_1.geometry} material={materials.color5} position={[-5.393, -2.919, -18.015]}/>
@@ -180,13 +139,6 @@ export function Room(props) {
         <mesh geometry={nodes.Hill_2.geometry} material={materials.color3}/>
         <mesh geometry={nodes.Hill_2.geometry} material={materials.outline}/>
       </group>
-      
-        <mesh
-          geometry={new THREE.PlaneGeometry(1, 1)}
-          material={materials.base}
-          position={[-1, -0.16, -5]}
-        />
-      
     </group>
   );
 }
