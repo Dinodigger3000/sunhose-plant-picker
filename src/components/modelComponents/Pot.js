@@ -5,18 +5,16 @@ import * as THREE from "three";
 export function Pot(props) {
   const { profile, materials } = props;
   const { nodes } = useGLTF("/models/pot.glb");
-  const [active, setActive] = useState(false);
 
   const { potRotation } = useSpring({
-    potRotation: active ? [0, Math.PI, 0] : [0, 0, 0],
+    potRotation: (profile.budget > 25) ? [0, Math.PI, 0] : [0, 0, 0],
   });
 
   return (
     <group group {...props}>
       <animated.group
         position={[-1, -0.87, -5]}
-        rotation={potRotation}
-        onClick={() => { setActive(!active); console.log("clicked pot " + active) }}>
+        rotation={potRotation}>
         <mesh
           castShadow
           receiveShadow
@@ -55,8 +53,8 @@ export function Pot(props) {
         />
       </animated.group>
       <mesh
-          geometry={new THREE.PlaneGeometry(1, 1)}
-          material={materials.color5}
+          // geometry={new THREE.PlaneGeometry(1, 1)}
+          // material={materials.color5}
           position={[-1, -0.16, -5]}
         />
     </group>

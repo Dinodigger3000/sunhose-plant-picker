@@ -32,6 +32,7 @@ const createToonMaterial = (color) => {
 
 // room component that creates the 3D room model
 export function Room(props) {
+  const { profile } = props;
   const { nodes } = useGLTF("/models/room.glb");
   // track current theme colors
   const [theme, setTheme] = React.useState(getCurrentTheme());
@@ -58,7 +59,7 @@ export function Room(props) {
 
   // render room model
   const { sunAngle: sunRotation } = useSpring({
-    sunAngle: props.active ? [0, 0, 0] : [0, 0.1, 0],
+    sunAngle: (profile.lightLevel > 3) ? [0, 0, 0] : [0, 0.1, 0],
   });
   return (
     <group {...props} dispose={null}>
@@ -160,6 +161,12 @@ export function Room(props) {
           position={[-5.393, -2.919, -18.015]}
         />
       </animated.group>
+      <group position={[0, 0, -20]}>
+        <mesh geometry={nodes.Hill_1.geometry} material={materials.color4}/>
+        <mesh geometry={nodes.Hill_1.geometry} material={materials.outline}/>
+        <mesh geometry={nodes.Hill_2.geometry} material={materials.color3}/>
+        <mesh geometry={nodes.Hill_2.geometry} material={materials.outline}/>
+      </group>
     </group>
   );
 }

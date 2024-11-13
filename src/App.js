@@ -21,7 +21,15 @@ import ProfileBuilder from "./components/ProfileBuilder";
 import AdaptiveScene from "./components/AdaptiveScene";
 
 function App() {
-  const [savedProfile, setSavedProfile] = useState(null);
+  const [savedProfile, setSavedProfile] = useState({
+    lightLevel: 1,
+    petSafe: false,
+    careLevel: 1,
+    budget: 0,
+    maxTemp: 80,
+    minTemp: 65,
+    priorities: ["light", "care", "budget", "pets", "temp"],
+  });
   const [currentPage, setCurrentPage] = useState(0);
 
   const handleProfileUpdate = (newProfile, page) => {
