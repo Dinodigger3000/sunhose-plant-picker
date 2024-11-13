@@ -1,0 +1,105 @@
+/* Layout Sections */
+.priorityHeader {
+  display: grid;
+  grid-template-columns: 48% 50%;
+  gap: 2%;
+  margin-bottom: 2%;
+}
+
+.priorityContent {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 2%;
+}
+
+/* Info Box Styles */
+.infoBox {
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.infoBoxContent {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+
+.descriptionText {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  color: var(--base);
+  font-size: 1.2rem;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+/* Ranking Section Styles */
+.rankingBox {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.rankingInstruction {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  color: var(--base);
+  font-size: 1.2rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.rankingList {
+  min-height: 300px;
+  padding: 8px;
+}
+
+.rankingItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 8px;
+  cursor: grab;
+  user-select: none;
+}
+
+.rankingItem:active {
+  cursor: grabbing;
+}
+
+.rankNumber {
+  width: 36px;
+  height: 36px;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--base);
+}
+
+.rankContent {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: 1.4rem;
+  color: var(--base);
+}
+
+.dragging {
+  background: var(--color3) !important;
+  box-shadow: 0 5px 10px var(--color2);
+}
+
+.draggingOver {
+  background-color: var(--color2);
+  border-radius: 10px;
+}

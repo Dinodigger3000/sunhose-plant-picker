@@ -1,91 +1,103 @@
-import React, { useEffect } from "react";
-import "../../styles/ProfileBuilderStyles/Introduction.css";
-import { ReactComponent as Clover } from "../../assets/clover.svg";
-import { ReactComponent as Arrow } from "../../assets/arrow.svg";
-import { setTheme, getCurrentTheme } from "../ColorTheme";
+import React, { useEffect, useState } from "react";
+import styles from "../../styles/ProfileBuilderStyles/LightLevel.module.css";
+import "../../styles/ProfileBuilderStyles/MainStyles.css";
+import { ReactComponent as Sunrise } from "../../assets/sunrise.svg";
+import { setTheme } from "../ColorTheme";
 
-// top right logo section
-const LogoSection = () => (
-  <div className="logo-inner">
-    <span className="logo-text">light level</span>
-    <div className="dot-row">
-      {[...Array(4)].map((_, i) => (
-        <div key={i} className="dot" />
-      ))}
+const InfoCard = () => (
+  <div className={styles.lightCard}>
+    <div className="corner-dots">
+      <div className="accent-dot" />
+      <div className="accent-dot" />
+    </div>
+    <div className={styles.lightInfoContent}>
+      <div className={styles.lightInfoLeftColumn}>
+        <span className="question-number">Question 1</span>
+        <h2 className="title">Light Level</h2>
+      </div>
+      <div className={styles.lightInfoRightColumn}>
+        <p className={styles.lightInfoDescription}>
+          Choose, on average, how much natural sunlight your space might receive
+          throughout the day. If not sure how what to choose, please conslut
+          below.
+        </p>
+        <button className="learn-more-btn">
+          Learn More about Light Levels
+        </button>
+      </div>
     </div>
   </div>
 );
 
-// top right clover oval
-const CloverBadge = () => (
-  <div className="badge">
-    <div className="badge-inner">
-      <Clover className="badge-icon" />
+const SunriseBadge = () => (
+  <div className={styles.lightSunriseBadge}>
+    <div className={styles.lightSunriseInner}>
+      <Sunrise className={styles.lightSunriseIcon} />
     </div>
   </div>
 );
 
-// top row
 const HeaderSection = () => (
-  <div className="header-section">
-    <div className="card logo-card">
-      <LogoSection />
-    </div>
-    <CloverBadge />
+  <div className={styles.lightHeaderSection}>
+    <InfoCard />
+    <SunriseBadge />
   </div>
 );
 
-// welcome
-const WelcomeCard = () => (
-  <div className="card welcome-card">
-    <div className="dot-container">
-      {[...Array(2)].map((_, i) => (
-        <div key={i} className="accent-dot" />
-      ))}
-    </div>
-    <div className="welcome-content">
-      <span className="welcome-message">
-        <strong>Welcome to SUNHOSE</strong>, the all-in-one plant picking tool,
-        perfect for everyone from experts to beginners.
-      </span>
-    </div>
+const ContentSection = ({ profile, handleChange }) => (
+  <div className={styles.lightContentSection}>
+    <LightLevelSlider profile={profile} handleChange={handleChange} />
   </div>
 );
 
-// continue button
-const ContinueCard = ({ onContinue }) => (
-  <div
-    className="card continue-card"
-    onClick={onContinue}
-    style={{ cursor: "pointer" }}
-  >
-    <div className="dot-container">
-      {[...Array(2)].map((_, i) => (
-        <div key={i} className="accent-dot" />
-      ))}
-    </div>
-    <div className="continue-content">
-      <Arrow className="continue-icon" />
-      <span className="continue-text">CONTINUE</span>
-    </div>
-    <div className="dot-container">
-      {[...Array(2)].map((_, i) => (
-        <div key={i} className="accent-dot" />
-      ))}
-    </div>
-  </div>
-);
+const LightLevelSlider = ({ profile, handleChange }) => {
+  const [selectedLevel, setSelectedLevel] = useState(profile?.lightLevel || 0);
+  const levels = ["Low Light", "Medium Light", "High Light", "Very High Light"];
 
-// bottom row
-const ContentSection = ({ onContinue }) => (
-  <div className="content-section">
-    <WelcomeCard />
-    <ContinueCard onContinue={onContinue} />
-  </div>
-);
+  const handleSliderChange = (e) => {
+    const value = parseInt(e.target.value);
+    setSelectedLevel(value);
+    handleChange({
+      target: {
+        name: "lightLevel",
+        value: value,
+      },
+    });
+  };
 
-// main component
-const LightLevel = ({ onContinue }) => {
+  return (
+    <div className={styles.lightSliderBox}>
+      <div className="corner-dots">
+        <div className="accent-dot" />
+        <div className="accent-dot" />
+      </div>
+      <div className={styles.lightSliderContainer}>
+        <input
+          type="range"
+          min="1"
+          max="4"
+          value={selectedLevel}
+          onChange={handleSliderChange}
+          className={styles.lightSlider}
+        />
+        <div className={styles.lightSliderTicks}>
+          {levels.map((_, index) => (
+            <div key={index} className={styles.lightTick} />
+          ))}
+        </div>
+        <div className={styles.lightSliderLabels}>
+          {levels.map((level, index) => (
+            <span key={level} className={styles.lightSliderLabel}>
+              {level}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const LightLevel = ({ profile, handleChange }) => {
   useEffect(() => {
     const baseColor = { r: 41, g: 64, b: 124 };
     setTheme(baseColor);
@@ -93,9 +105,9 @@ const LightLevel = ({ onContinue }) => {
 
   return (
     <>
-      <div className="intro-layout">
+      <div>
         <HeaderSection />
-        <ContentSection onContinue={onContinue} />
+        <ContentSection profile={profile} handleChange={handleChange} />
       </div>
     </>
   );

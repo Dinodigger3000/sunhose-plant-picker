@@ -9,9 +9,31 @@ import PetSafe from "./ProfileBuilderComponents/PetSafe";
 import Temperature from "./ProfileBuilderComponents/Temperature";
 
 import PriorityRanking from "./ProfileBuilderComponents/PriorityRanking";
+import Review from "./ProfileBuilderComponents/Review";
 
-const ProfileBuilder = ({ profile, handleChange, handleSubmit }) => {
+import "../styles/ProfileBuilderStyles/MainStyles.css";
+
+const ProfileBuilder = ({ onProfileUpdate }) => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [profile, setProfile] = useState({
+    lightLevel: 1,
+    petSafe: false,
+    careLevel: 1,
+    budget: 0,
+    maxTemp: 80,
+    minTemp: 65,
+    priorities: ["light", "care", "budget", "pets", "temp"],
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newProfile = {
+      ...profile,
+      [name]: type === "checkbox" ? checked : value,
+    };
+    setProfile(newProfile);
+    onProfileUpdate(newProfile, currentPage);
+  };
 
   // the array of pages/components
   const pages = [
@@ -69,11 +91,53 @@ const ProfileBuilder = ({ profile, handleChange, handleSubmit }) => {
         handleChange: handleChange,
       },
     },
+    {
+      component: Review,
+      props: {
+        profile: profile,
+      },
+    },
   ];
 
   const getCurrentPage = () => {
     const { component: Component, props } = pages[currentPage];
-    return <Component {...props} />;
+    return (
+      <div className="layout">
+        <NavigationButtons
+          currentPage={currentPage}
+          totalPages={pages.length}
+          setCurrentPage={setCurrentPage}
+        />
+        <Component {...props} />
+      </div>
+    );
+  };
+
+  const NavigationButtons = ({ currentPage, totalPages, setCurrentPage }) => {
+    if (currentPage === 0) return null;
+
+    const isLastPage = currentPage === totalPages - 1;
+
+    return (
+      <div className="navigation-container">
+        <div className="navigation-buttons">
+          <button
+            className="nav-btn back-btn"
+            onClick={() => setCurrentPage(currentPage - 1)}
+          >
+            Go Back
+          </button>
+          {!isLastPage && (
+            <button
+              className="nav-btn next-btn"
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              Next Page
+            </button>
+          )}
+        </div>
+      </div>
+    );
   };
 
   return <div className="profile-builder">{getCurrentPage()}</div>;

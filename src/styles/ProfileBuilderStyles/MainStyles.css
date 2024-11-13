@@ -1,0 +1,100 @@
+.layout {
+  position: absolute;
+  left: 40%;
+  top: 17%;
+  display: flex;
+  flex-direction: column;
+  width: 57%;
+  height: 55vh;
+}
+
+.navigation-container {
+  position: relative;
+  border: 1.5px solid var(--base);
+  border-radius: 25px;
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 2%;
+  margin-top: -3rem;
+  background: white;
+}
+
+.navigation-buttons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-btn {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-weight: bold;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  color: var(--base);
+  padding: 0.3rem 0.9rem;
+  border-radius: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nav-btn:hover {
+  background: var(--color4);
+}
+
+/* Pushpin dots */
+.accent-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+}
+
+.corner-dots {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.learn-more-btn {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-weight: bold;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  color: var(--base);
+  padding: 0.3rem 0.9rem;
+  border-radius: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.learn-more-btn:hover {
+  background: var(--color4);
+}
+
+.question-number {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--base);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: "Whoopass", sans-serif;
+  letter-spacing: 0.125em;
+  text-align: left;
+  color: var(--color3);
+  font-size: 3.6rem;
+  line-height: 1;
+  margin: 0;
+  -webkit-text-stroke: 1.5px var(--base);
+  text-stroke: 1.5px var(--base);
+}

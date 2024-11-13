@@ -101,15 +101,22 @@ export const setTheme = (baseColor) => {
   const generateTheme = (base) => {
     const [h, s, l] = rgbToHsl(base.r, base.g, base.b);
 
-    // create progression of colors with increasing lightness and decreasing saturation
+    // create the base color
     const colors = {
       base: `rgb(${base.r}, ${base.g}, ${base.b})`,
     };
 
-    // generate colors
-    [1, 2, 3, 4, 5].forEach((i) => {
-      const newL = Math.min(l + i * 16, 95); // increase lightness
-      const newS = Math.max(s - i * 7, 10); // decrease saturation
+    // generate contrasting color1
+    const oppositeHue = (h + 180) % 360; // opposite
+    const contrastS = Math.min(s + 20, 100); // ++ saturation
+    const contrastL = Math.min(l + 10, 90); // + lightness
+    const [r1, g1, b1] = hslToRgb(oppositeHue, contrastS, contrastL);
+    colors.color1 = `rgb(${r1}, ${g1}, ${b1})`;
+
+    // generate remaining colors
+    [2, 3, 4, 5].forEach((i) => {
+      const newL = Math.min(l + i * 16, 95); // ++ lightness
+      const newS = Math.max(s - i * 7, 10); // -- saturation
       const [r, g, b] = hslToRgb(h, newS, newL);
       colors[`color${i}`] = `rgb(${r}, ${g}, ${b})`;
     });

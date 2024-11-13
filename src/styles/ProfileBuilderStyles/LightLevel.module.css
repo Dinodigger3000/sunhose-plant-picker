@@ -1,0 +1,171 @@
+/* Layout Sections */
+.lightHeaderSection {
+  display: grid;
+  grid-template-columns: 82% 16%;
+  gap: 2%;
+  flex: 0 0 30%;
+  margin-bottom: 2%;
+}
+
+.lightContentSection {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 2%;
+  flex: 0 0 40%;
+}
+
+/* Info Card Styles */
+.lightCard {
+  background: white;
+  position: relative;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.lightInfoContent {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.lightInfoLeftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.lightInfoRightColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  align-items: flex-start;
+}
+
+.lightInfoDescription {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  color: var(--base);
+  padding-right: 1rem;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+/* Sunrise Badge Styles */
+.lightSunriseBadge {
+  position: relative;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.lightSunriseInner {
+  position: relative;
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.lightSunriseIcon {
+  padding-top: 55%;
+  padding-left: 32%;
+  fill: var(--color3);
+  stroke: var(--base);
+  stroke-width: 2.5px;
+  width: 300%;
+  height: 300%;
+  margin: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* Slider Styles */
+.lightSliderBox {
+  position: relative;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 2rem;
+  background: white;
+}
+
+.lightSliderContainer {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Slider Input Styles */
+.lightSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 1.5px;
+  background: var(--base);
+  outline: none;
+  margin: 1rem 0;
+  z-index: 2;
+}
+
+.lightSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.lightSlider::-webkit-slider-thumb:hover {
+  background: var(--color4);
+}
+
+/* Slider Ticks and Labels */
+.lightSliderTicks {
+  position: absolute;
+  width: calc(100% - 24px);
+  top: 3.1rem;
+  left: 12px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.lightTick {
+  width: 1.5px;
+  height: 15px;
+  background-color: var(--base);
+  transform: translateY(-105%);
+}
+
+.lightSliderLabels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.lightSliderLabel {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: 1.2rem;
+  color: var(--base);
+  text-align: center;
+  position: relative;
+  line-height: 1.2;
+}

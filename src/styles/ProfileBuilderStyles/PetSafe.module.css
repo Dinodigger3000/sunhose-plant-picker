@@ -1,0 +1,140 @@
+/* Layout styles */
+.petSafeHeader {
+  display: grid;
+  grid-template-columns: 34% 64%;
+  gap: 2%;
+  margin-bottom: 2%;
+}
+
+.petSafeContent {
+  display: grid;
+  grid-template-columns: 58% 40%;
+  gap: 2%;
+}
+
+/* Info and description boxes  */
+.infoBox {
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.infoBoxContent {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+
+.descriptionBox {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.descriptionText {
+  padding-top: 6%;
+  text-align: left;
+  font-family: "Alte Haas Grotesk", sans-serif;
+  color: var(--base);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Pet safety question box styles */
+.petSafetyBox {
+  position: relative;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--color3);
+}
+
+.innerBox {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  height: 100%;
+}
+
+.question {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: 1.2rem;
+  color: var(--base);
+  margin: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.choiceButton {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: 1.4rem;
+  color: var(--base);
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 2% 15%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choiceButton:hover {
+  background: var(--color3);
+}
+
+.choiceButton.selected {
+  background: var(--color3);
+}
+
+/* Dog badge styles */
+.dogBadge {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+  padding: 0.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dogBadgeInner {
+  position: relative;
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 50%;
+  width: 89%;
+  height: 86%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.dogIcon {
+  fill: var(--color3);
+  stroke: var(--base);
+  stroke-width: 2.5px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  margin-left: -5%;
+  margin-top: 12%;
+  position: absolute;
+  overflow: visible;
+}

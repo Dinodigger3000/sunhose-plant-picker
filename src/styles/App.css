@@ -54,3 +54,16 @@
     transform: rotate(360deg);
   }
 }
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.app-container > canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

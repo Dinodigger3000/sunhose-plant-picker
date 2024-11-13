@@ -1,26 +1,14 @@
-/* layout */
-.intro-layout {
-  position: absolute;
-  left: 37%;
-  top: 17%;
-  display: flex;
-  flex-direction: column;
-  width: 57%;
-  height: 55vh;
-  box-sizing: border-box;
-}
-
 /* top row */
-.header-section {
+.introHeaderSection {
   display: grid;
-  grid-template-columns: 75fr 20fr;
-  grid-gap: 2%;
+  grid-template-columns: 80% 18%;
   flex: 0 0 55%;
+  gap: 2%;
   margin-bottom: 2%;
 }
 
 /* bottom row */
-.content-section {
+.introContentSection {
   display: grid;
   grid-template-columns: 35fr 60fr;
   grid-gap: 2%;
@@ -28,7 +16,7 @@
 }
 
 /* cards */
-.card {
+.introCard {
   position: relative;
   border: 1.5px solid var(--base);
   display: flex;
@@ -40,11 +28,12 @@
 }
 
 /* top left rectangle */
-.logo-card {
+.introLogoCard {
+  composes: introCard;
   background: var(--color3);
 }
 
-.logo-inner {
+.introLogoInner {
   background: var(--color4);
   border: 1.5px solid var(--base);
   padding: 8px;
@@ -56,8 +45,7 @@
   height: 100%;
 }
 
-/* logo text */
-.logo-text {
+.introLogoText {
   font-family: "Whoopass", sans-serif;
   color: white;
   font-size: 5.4rem;
@@ -66,16 +54,16 @@
   text-stroke: 1.5px var(--base);
   -moz-text-stroke: 1.5px var(--base);
   -ms-text-stroke: 1.5px var(--base);
-  margin-bottom: -1rem;
+  margin-top: -0.9rem;
+  margin-bottom: -1.7rem;
 }
 
-/* little circles */
-.dot-row {
+.introDotRow {
   display: flex;
   gap: 10px;
 }
 
-.dot {
+.introDot {
   width: 20px;
   height: 20px;
   border: 1.5px solid var(--base);
@@ -83,8 +71,7 @@
   background: white;
 }
 
-/* clover oval */
-.badge {
+.introBadge {
   position: relative;
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -97,7 +84,7 @@
   height: 100%;
 }
 
-.badge-inner {
+.introBadgeInner {
   position: relative;
   background: white;
   border: 1.5px solid var(--base);
@@ -110,7 +97,7 @@
   overflow: hidden;
 }
 
-.badge-icon {
+.introBadgeIcon {
   fill: var(--color3);
   stroke: var(--base);
   stroke-width: 2.5px;
@@ -123,103 +110,80 @@
   overflow: visible;
 }
 
-/* welcome to sunhose */
-.welcome-card {
+.introWelcomeCard {
+  composes: introCard;
   background: white;
   align-items: stretch;
   justify-content: flex-start;
   padding: 1rem;
 }
 
-/* continue button */
-.continue-card {
+.introContinueCard {
+  composes: introCard;
   background: var(--color4);
   align-items: stretch;
   justify-content: space-between;
   padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* thumbtacks */
-.dot-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.accent-dot {
-  width: 20px;
-  height: 20px;
+.introContinueCard:hover {
   background: var(--color3);
-  border: 1.5px solid var(--base);
-  border-radius: 50%;
 }
 
-/* welcome to sunhose text */
-.welcome-content {
+.introContinueCard:hover .introContinueText {
+  color: var(--color4);
+}
+
+.introContinueCard:hover .introContinueIcon {
+  fill: var(--color4);
+}
+
+.introWelcomeContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
 }
 
-.welcome-message {
+.introWelcomeMessage {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
   font-size: 1.2rem;
-  margin: 1rem 0 0.25rem;
+  margin: 2rem 0 0.25rem;
   text-align: left;
 }
 
-/* continue button */
-.continue-content {
+.introContinueContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 2rem;
 }
 
-.continue-icon {
+
+.introContinueIcon {
+  padding-top: 2rem;
   fill: var(--color3);
   stroke: var(--base);
-  stroke-width: 3px;
+  stroke-width: 2.5px;
   width: 80%;
   height: auto;
   overflow: visible;
+  transition: fill 0.3s ease;
 }
 
-.continue-text {
+.introContinueText {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
   color: var(--color3);
   font-size: 2.5rem;
-  margin-top: -3.5rem;
+  margin-left: -6rem;
+  margin-top: -4.5rem;
   -webkit-text-stroke: 1.5px var(--base);
   text-stroke: 1.5px var(--base);
   -moz-text-stroke: 1.5px var(--base);
   -ms-text-stroke: 1.5px var(--base);
-}
-
-.theme-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.theme-button {
-  padding: 8px 16px;
-  border: 2px solid white;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-family: "Alte Haas Grotesk", sans-serif;
-}
-
-.theme-controls {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 1000;
+  transition: color 0.3s ease;
 }

@@ -1,0 +1,236 @@
+/* Layout Sections */
+.tempHeader {
+  display: grid;
+  grid-template-columns: 48% 50%;
+  gap: 2%;
+  flex: 0 0 40%;
+  margin-bottom: 2%;
+}
+
+.tempContent {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 2%;
+  flex: 0 0 40%;
+}
+
+/* Info Box Styles */
+.infoBox {
+  background: white;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.infoBoxContent {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+
+/* Description Box Styles */
+.descriptionBox {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.descriptionText {
+  padding-top: 6%;
+  text-align: left;
+  font-family: "Alte Haas Grotesk", sans-serif;
+  color: var(--base);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Slider Styles */
+.tempSliderBox {
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  background: var(--color4);
+  display: flex;
+  align-items: center;
+}
+
+.edgeMarkerLeft {
+  width: 5%;
+  height: 100%;
+  border-right: 1.5px solid var(--base);
+  background: var(--color3);
+}
+
+.edgeMarkerRight {
+  width: 5%;
+  height: 100%;
+  border-left: 1.5px solid var(--base);
+  background: var(--color3);
+}
+
+.sliderMainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  padding: 1.5rem 2rem;
+}
+
+.currentTemp {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  align-self: flex-start;
+  font-size: 1.4rem;
+  color: var(--base);
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.rangeSliderWrapper {
+  position: relative;
+  width: 100%;
+  height: 15px;
+}
+
+.tempSlider {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: transparent;
+  outline: none;
+  pointer-events: none;
+}
+
+.baseLine {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 1.5px;
+  background: var(--base);
+  z-index: 1;
+}
+
+.baseLine::before,
+.baseLine::after {
+  content: '';
+  position: absolute;
+  width: 1.5px;
+  height: 15px;
+  background: var(--base);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.baseLine::before {
+  left: 0;
+}
+
+.baseLine::after {
+  right: 0;
+}
+
+.tempSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color2);
+  border: 1.5px solid var(--base);
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+.tempSlider::-webkit-slider-thumb:hover {
+  background: var(--color4);
+}
+
+.progressBar {
+  position: absolute;
+  top: 3px;
+  left: var(--min-progress);
+  right: calc(100% - var(--max-progress));
+  height: 10px;
+  background: var(--color3);
+  border: 1.5px solid var(--base);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.minSlider {
+  z-index: 1;
+}
+
+.maxSlider {
+  z-index: 1;
+}
+
+.tempSlider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.sliderLabels {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  font-family: "Alte Haas Grotesk", sans-serif;
+  color: var(--base);
+  font-size: 1.2rem;
+}
+
+.infoBoxHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.iconContainer {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 0.5rem;
+  height: 147px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thermometerIcon {
+  fill: var(--color3);
+  stroke: var(--base);
+  stroke-width: 1.5px;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

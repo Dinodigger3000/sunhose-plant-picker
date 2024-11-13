@@ -14,10 +14,18 @@ const gradientMap = new THREE.TextureLoader().load(
   }
 );
 
-// create toon materials with consistent settings
+// default theme
+const defaultTheme = {
+  base: { r: 82, g: 45, b: 128 },
+  color3: { r: 255, g: 255, b: 255 },
+  color4: { r: 245, g: 245, b: 245 },
+};
+
+//create toon material (with default theme if current theme is null)
 const createToonMaterial = (color) => {
+  const currentTheme = getCurrentTheme() || defaultTheme;
   return new THREE.MeshToonMaterial({
-    color: color,
+    color: color || currentTheme.base,
     gradientMap: gradientMap,
   });
 };
@@ -30,14 +38,15 @@ export function Room(props) {
 
   // memoize materials so that they don't get recreated
   const materials = useMemo(() => {
+    const currentTheme = theme || defaultTheme;
     return {
-      base: createToonMaterial(theme.base),
-      color1: createToonMaterial(theme.color1),
-      color2: createToonMaterial(theme.color2),
-      color3: createToonMaterial(theme.color3),
-      color4: createToonMaterial(theme.color4),
-      color5: createToonMaterial(theme.color5),
-      outline: createOutlineMaterial(0.005), // create outline effect material
+      base: createToonMaterial(currentTheme.base),
+      color1: createToonMaterial(currentTheme.color1),
+      color2: createToonMaterial(currentTheme.color2),
+      color3: createToonMaterial(currentTheme.color3),
+      color4: createToonMaterial(currentTheme.color4),
+      color5: createToonMaterial(currentTheme.color5),
+      outline: createOutlineMaterial(0.005),
     };
   }, [theme]);
 
@@ -47,9 +56,10 @@ export function Room(props) {
     return () => unsubscribe();
   }, []);
 
-  // render room model  
-  const {sunAngle: sunRotation} = useSpring({ 
-    sunAngle: props.active ? [0, 0, 0] : [0, 0.1, 0]});
+  // render room model
+  const { sunAngle: sunRotation } = useSpring({
+    sunAngle: props.active ? [0, 0, 0] : [0, 0.1, 0],
+  });
   return (
     <group {...props} dispose={null}>
       {/* main room structure */}
@@ -108,7 +118,7 @@ export function Room(props) {
       </group>
 
       {/* stool */}
-      <group >
+      <group>
         <mesh
           castShadow={true}
           receiveShadow={true}
@@ -127,18 +137,29 @@ export function Room(props) {
       {/* plant pot with rotate animation */}
       <Pot profile={props.profile} materials={materials} />
       <animated.group //sun with rotate animation
-        rotation={sunRotation}>
-        <mesh geometry={nodes.Sun_1.geometry} material={materials.color5} position={[-5.393, -2.919, -18.015]}/>
-        <mesh geometry={nodes.Sun_1.geometry} material={materials.outline} position={[-5.393, -2.919, -18.015]}/>
-        <mesh geometry={nodes.Sun_2.geometry} material={materials.color1} position={[-5.393, -2.919, -18.015]}/>
-        <mesh geometry={nodes.Sun_2.geometry} material={materials.outline} position={[-5.393, -2.919, -18.015]}/>
+        rotation={sunRotation}
+      >
+        <mesh
+          geometry={nodes.Sun_1.geometry}
+          material={materials.color5}
+          position={[-5.393, -2.919, -18.015]}
+        />
+        <mesh
+          geometry={nodes.Sun_1.geometry}
+          material={materials.outline}
+          position={[-5.393, -2.919, -18.015]}
+        />
+        <mesh
+          geometry={nodes.Sun_2.geometry}
+          material={materials.color1}
+          position={[-5.393, -2.919, -18.015]}
+        />
+        <mesh
+          geometry={nodes.Sun_2.geometry}
+          material={materials.outline}
+          position={[-5.393, -2.919, -18.015]}
+        />
       </animated.group>
-      <group position={[0, 0, -20]}>
-        <mesh geometry={nodes.Hill_1.geometry} material={materials.color4}/>
-        <mesh geometry={nodes.Hill_1.geometry} material={materials.outline}/>
-        <mesh geometry={nodes.Hill_2.geometry} material={materials.color3}/>
-        <mesh geometry={nodes.Hill_2.geometry} material={materials.outline}/>
-      </group>
     </group>
   );
 }
