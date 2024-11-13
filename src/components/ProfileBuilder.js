@@ -16,7 +16,7 @@ import "../styles/ProfileBuilderStyles/MainStyles.css";
 const ProfileBuilder = ({ onProfileUpdate }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [profile, setProfile] = useState({
-    lightLevel: 1,
+    lightLevel: 3,
     petSafe: false,
     careLevel: 1,
     budget: 0,
