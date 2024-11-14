@@ -7,14 +7,12 @@ export function Pot(props) {
   const { nodes } = useGLTF("/models/pot.glb");
 
   const { potRotation } = useSpring({
-    potRotation: (profile.budget > 25) ? [0, Math.PI, 0] : [0, 0, 0],
+    potRotation: profile.budget > 25 ? [0, Math.PI, 0] : [0, 0, 0],
   });
 
   return (
     <group group {...props}>
-      <animated.group
-        position={[-1, -0.87, -5]}
-        rotation={potRotation}>
+      <animated.group position={[-1, -0.87, -5]} rotation={potRotation}>
         <mesh
           castShadow
           receiveShadow
@@ -31,7 +29,7 @@ export function Pot(props) {
           castShadow
           receiveShadow
           geometry={nodes.Pot1_2.geometry}
-          material={materials.color1}
+          material={materials.color2}
         />
         <mesh
           castShadow
@@ -43,7 +41,7 @@ export function Pot(props) {
           castShadow
           receiveShadow
           geometry={nodes.Pot1_3.geometry}
-          material={materials.color1}
+          material={materials.color2}
         />
         <mesh
           castShadow
@@ -53,10 +51,10 @@ export function Pot(props) {
         />
       </animated.group>
       <mesh
-          // geometry={new THREE.PlaneGeometry(1, 1)}
-          // material={materials.color5}
-          position={[-1, -0.16, -5]}
-        />
+        // geometry={new THREE.PlaneGeometry(1, 1)}
+        // material={materials.color5}
+        position={[-1, -0.16, -5]}
+      />
     </group>
   );
 }

@@ -138,6 +138,10 @@ export const setTheme = (baseColor) => {
     generateTheme(base).color2
   );
   document.documentElement.style.setProperty(
+    "--color2-rgb",
+    `${generateTheme(base).color2.match(/\d+/g).join(", ")}`
+  );
+  document.documentElement.style.setProperty(
     "--color3",
     generateTheme(base).color3
   );

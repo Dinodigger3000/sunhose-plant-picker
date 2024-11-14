@@ -14,8 +14,8 @@ const InfoBox = () => (
       <span className="question-number">Question 3</span>
       <h2 className="title">Budget Range</h2>
       <p className={styles.descriptionText}>
-        Provide a ballpark estimate for the amount of money you are willing to
-        spend on a houseplant.
+        Provide an estimate for the amount of money you are willing to spend on
+        a houseplant.
       </p>
     </div>
   </div>

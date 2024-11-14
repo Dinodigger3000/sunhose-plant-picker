@@ -94,7 +94,7 @@
 }
 
 .choiceButton:hover {
-  background: var(--color3);
+  background: var(--color4);
 }
 
 .choiceButton.selected {

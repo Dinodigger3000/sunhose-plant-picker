@@ -3,6 +3,7 @@ import styles from "../../styles/ProfileBuilderStyles/CareLevel.module.css";
 import "../../styles/ProfileBuilderStyles/MainStyles.css";
 import { ReactComponent as Hearts } from "../../assets/hearts.svg";
 import { setTheme } from "../ColorTheme";
+import Modal from "./Modal";
 
 const InfoBox = () => (
   <div className={styles.infoBox}>
@@ -17,19 +18,55 @@ const InfoBox = () => (
   </div>
 );
 
-const DescriptionBox = () => (
-  <div className={styles.descriptionBox}>
-    <div className="corner-dots">
-      <div className="accent-dot" />
-      <div className="accent-dot" />
+const DescriptionBox = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const careLevelModalContent = (
+    <>
+      <p>
+        <strong>Low Maintenance:</strong> These plants are perfect for beginners
+        or busy people. They can tolerate irregular watering, inconsistent light
+        conditions, and don't need frequent attention.
+      </p>
+      <p>
+        <strong>Medium Maintenance:</strong> These plants need regular care but
+        are still forgiving. They require consistent watering schedules and
+        occasional pruning or fertilizing.
+      </p>
+      <p>
+        <strong>High Maintenance:</strong> These plants need dedicated
+        attention. They require specific conditions, regular monitoring,
+        frequent watering, and may need special care like humidity trays or
+        precise fertilizing schedules.
+      </p>
+    </>
+  );
+
+  return (
+    <div className={styles.descriptionBox}>
+      <div className="corner-dots">
+        <div className="accent-dot" />
+        <div className="accent-dot" />
+      </div>
+      <p className={styles.descriptionText}>
+        Choose how much time and effort you're willing to dedicate to plant
+        care. If not sure what to choose, please consult below.
+      </p>
+      <button className="learn-more-btn" onClick={() => setShowModal(true)}>
+        Learn More about Care Levels
+      </button>
+
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        title="Understanding Plant Care Levels"
+        subheading="Different plants require different levels of attention, and we've categorized them into three levels."
+      >
+        {careLevelModalContent}
+      </Modal>
     </div>
-    <p className={styles.descriptionText}>
-      Choose how much time and effort you're willing to dedicate to plant care.
-      If not sure how what to choose, please conslut below.
-    </p>
-    <button className="learn-more-btn">Learn More about Care Levels</button>
-  </div>
-);
+  );
+};
 
 const CareSlider = ({ profile, handleChange }) => {
   const [selectedLevel, setSelectedLevel] = useState(profile?.careLevel || 1);

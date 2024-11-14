@@ -3,31 +3,62 @@ import styles from "../../styles/ProfileBuilderStyles/LightLevel.module.css";
 import "../../styles/ProfileBuilderStyles/MainStyles.css";
 import { ReactComponent as Sunrise } from "../../assets/sunrise.svg";
 import { setTheme } from "../ColorTheme";
+import Modal from "./Modal";
 
-const InfoCard = () => (
-  <div className={styles.lightCard}>
-    <div className="corner-dots">
-      <div className="accent-dot" />
-      <div className="accent-dot" />
-    </div>
-    <div className={styles.lightInfoContent}>
-      <div className={styles.lightInfoLeftColumn}>
-        <span className="question-number">Question 1</span>
-        <h2 className="title">Light Level</h2>
+const InfoCard = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const lightLevelModalContent = (
+    <>
+      <p>
+        <strong>Low Light:</strong> definition from book !!
+      </p>
+      <p>
+        <strong>Medium Light:</strong> definition from book !!
+      </p>
+      <p>
+        <strong>High Light:</strong> definition from book !!
+      </p>
+      <p>
+        <strong>Very High Light:</strong> definition from book !!
+      </p>
+    </>
+  );
+
+  return (
+    <div className={styles.lightCard}>
+      <div className="corner-dots">
+        <div className="accent-dot" />
+        <div className="accent-dot" />
       </div>
-      <div className={styles.lightInfoRightColumn}>
-        <p className={styles.lightInfoDescription}>
-          Choose, on average, how much natural sunlight your space might receive
-          throughout the day. If not sure how what to choose, please conslut
-          below.
-        </p>
-        <button className="learn-more-btn">
-          Learn More about Light Levels
-        </button>
+      <div className={styles.lightInfoContent}>
+        <div className={styles.lightInfoLeftColumn}>
+          <span className="question-number">Question 1</span>
+          <h2 className="title">Light Level</h2>
+        </div>
+        <div className={styles.lightInfoRightColumn}>
+          <p className={styles.lightInfoDescription}>
+            Choose, on average, how much natural sunlight your space might
+            receive throughout the day. If not sure how what to choose, please
+            consult below.
+          </p>
+          <button className="learn-more-btn" onClick={() => setShowModal(true)}>
+            Learn More about Light Levels
+          </button>
+        </div>
       </div>
+
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        title="Choosing a Light Level for Your Space"
+        subheading="Each plant has a light level preference, which should match the light level of your space. The light level of your space is the average amount of sunlight it receives throughout the day, and can be categorized into these four levels:"
+      >
+        {lightLevelModalContent}
+      </Modal>
     </div>
-  </div>
-);
+  );
+};
 
 const SunriseBadge = () => (
   <div className={styles.lightSunriseBadge}>

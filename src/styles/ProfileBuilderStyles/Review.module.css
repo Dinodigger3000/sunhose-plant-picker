@@ -7,7 +7,7 @@
 .reviewContent {
   display: grid;
   grid-template-columns: 100%;
-  gap: 2%;
+  gap: 6%;
 }
 
 .infoBox {
@@ -27,6 +27,9 @@
   border-radius: 8px;
   padding: 2rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .summaryColumns {
@@ -43,14 +46,20 @@
 
 .profileItem {
   display: flex;
+  cursor: pointer;
   align-items: center;
   gap: 0.5rem;
   background: var(--color4);
   border: 1.5px solid var(--base);
   border-radius: 8px;
   padding: 0.6rem 0.8rem;
+  margin-bottom: 5%;
+  transition: background-color 0.2s;
 }
 
+.profileItem:hover {
+  background: var(--color3);
+}
 
 .itemTitle {
   font-family: "Alte Haas Grotesk", sans-serif;
@@ -96,12 +105,12 @@
 
 .discoverButton {
   width: 60%;
-  margin: 2% auto 0;
+  margin: 1rem auto 0;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color4);
+  background: var(--color3);
   border: 1.5px solid var(--base);
   border-radius: 25px;
   cursor: pointer;
@@ -117,4 +126,13 @@
   font-weight: bold;
   color: var(--base);
   font-size: 1.2rem;
+}
+
+.clickableHeading {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-weight: bold;
+  color: var(--base);
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 1rem;
 }

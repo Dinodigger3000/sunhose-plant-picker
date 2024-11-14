@@ -5,28 +5,65 @@ import "../../styles/ProfileBuilderStyles/MainStyles.css";
 import { ReactComponent as ThermometerIcon } from "../../assets/thermometer.svg";
 
 import { setTheme } from "../ColorTheme";
+import Modal from "./Modal";
 
-const InfoBox = () => (
-  <div className={styles.infoBox}>
-    <div className="corner-dots">
-      <div className="accent-dot" />
-      <div className="accent-dot" />
-    </div>
-    <div className={styles.infoBoxContent}>
-      <div className={styles.infoBoxHeader}>
-        <div className={styles.iconContainer}>
-          <ThermometerIcon className={styles.thermometerIcon} />
-        </div>
-        <div className={styles.textContainer}>
-          <span className="question-number">Question 5</span>
-          <h2 className="title">Temp. Range</h2>
+const InfoBox = ({ showModal, setShowModal }) => {
+  const temperatureModalContent = (
+    <>
+      <p>
+        To select a temperature range for your space, we reccomend using &nbsp;
+        <a href="https://weatherspark.com/" target="_blank" rel="noreferrer">
+          WeatherSpark
+        </a>
+        . On the WeatherSpark website, you can input your location, and find the
+        average outside lower and upper temperature ranges for your location.
+      </p>
+
+      <p>
+        As well as considering the outside temperature, think about what
+        temperature you like to keep your thermostat at, or if you like to keep
+        your window open, even in colder months.
+      </p>
+
+      <p>
+        Please note that temperature range does not need to be exact to find a
+        good plant selection, any guess estimate is helpful in building your
+        plant profile. A broad range is totally okay!
+      </p>
+    </>
+  );
+
+  return (
+    <div className={styles.infoBox}>
+      <div className="corner-dots">
+        <div className="accent-dot" />
+        <div className="accent-dot" />
+      </div>
+      <div className={styles.infoBoxContent}>
+        <div className={styles.infoBoxHeader}>
+          <div className={styles.iconContainer}>
+            <ThermometerIcon className={styles.thermometerIcon} />
+          </div>
+          <div className={styles.textContainer}>
+            <span className="question-number">Question 5</span>
+            <h2 className="title">Temp. Range</h2>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-);
 
-const DescriptionBox = () => (
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        title="Understanding Temperature Ranges"
+        subheading="Houseplants are sensitive to the temperature of their environment, so it is important to estimate the lower and upper temperature ranges of your space so that plants can stay happy and healthy."
+      >
+        {temperatureModalContent}
+      </Modal>
+    </div>
+  );
+};
+
+const DescriptionBox = ({ showModal, setShowModal }) => (
   <div className={styles.descriptionBox}>
     <div className="corner-dots">
       <div className="accent-dot" />
@@ -36,7 +73,9 @@ const DescriptionBox = () => (
       Choose the temperature range your space typically is throughout the year.
       If not sure how what to choose, please consult below.
     </p>
-    <button className="learn-more-btn">Learn More about Temp. Range</button>
+    <button className="learn-more-btn" onClick={() => setShowModal(true)}>
+      Learn More about Temp. Range
+    </button>
   </div>
 );
 
@@ -119,12 +158,16 @@ const TemperatureSlider = ({ profile, handleChange }) => {
   );
 };
 
-const HeaderSection = () => (
-  <div className={styles.tempHeader}>
-    <InfoBox />
-    <DescriptionBox />
-  </div>
-);
+const HeaderSection = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <div className={styles.tempHeader}>
+      <InfoBox showModal={showModal} setShowModal={setShowModal} />
+      <DescriptionBox showModal={showModal} setShowModal={setShowModal} />
+    </div>
+  );
+};
 
 const ContentSection = ({ profile, handleChange }) => (
   <div className={styles.tempContent}>

@@ -98,3 +98,23 @@
   -webkit-text-stroke: 1.5px var(--base);
   text-stroke: 1.5px var(--base);
 }
+
+a:link {
+  color: var(--base);
+  font-weight: bold;
+}
+
+a:visited {
+  color: var(--base);
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--color2);
+  font-weight: bold;
+}
+
+a:active {
+  color: var(--color2);
+  font-weight: bold;
+}

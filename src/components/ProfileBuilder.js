@@ -95,6 +95,7 @@ const ProfileBuilder = ({ onProfileUpdate }) => {
       component: Review,
       props: {
         profile: profile,
+        setCurrentPage: setCurrentPage,
       },
     },
   ];

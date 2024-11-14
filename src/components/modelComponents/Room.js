@@ -59,7 +59,7 @@ export function Room(props) {
 
   // render room model
   const { sunAngle: sunRotation } = useSpring({
-    sunAngle: (profile.lightLevel > 3) ? [0, 0, 0] : [0, 0.1, 0],
+    sunAngle: profile.lightLevel > 3 ? [0, 0, 0] : [0, 0.1, 0],
   });
   return (
     <group {...props} dispose={null}>
@@ -152,7 +152,7 @@ export function Room(props) {
         />
         <mesh
           geometry={nodes.Sun_2.geometry}
-          material={materials.color1}
+          material={materials.color2}
           position={[-5.393, -2.919, -18.015]}
         />
         <mesh
@@ -162,10 +162,10 @@ export function Room(props) {
         />
       </animated.group>
       <group position={[0, 0, -20]}>
-        <mesh geometry={nodes.Hill_1.geometry} material={materials.color4}/>
-        <mesh geometry={nodes.Hill_1.geometry} material={materials.outline}/>
-        <mesh geometry={nodes.Hill_2.geometry} material={materials.color3}/>
-        <mesh geometry={nodes.Hill_2.geometry} material={materials.outline}/>
+        <mesh geometry={nodes.Hill_1.geometry} material={materials.color4} />
+        <mesh geometry={nodes.Hill_1.geometry} material={materials.outline} />
+        <mesh geometry={nodes.Hill_2.geometry} material={materials.color3} />
+        <mesh geometry={nodes.Hill_2.geometry} material={materials.outline} />
       </group>
     </group>
   );
