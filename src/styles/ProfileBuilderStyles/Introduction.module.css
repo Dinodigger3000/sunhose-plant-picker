@@ -2,7 +2,6 @@
 .introHeaderSection {
   display: grid;
   grid-template-columns: 80% 18%;
-  flex: 0 0 55%;
   gap: 2%;
   margin-bottom: 2%;
 }
@@ -12,7 +11,6 @@
   display: grid;
   grid-template-columns: 35fr 60fr;
   grid-gap: 2%;
-  flex: 0 0 40%;
 }
 
 /* cards */
@@ -24,7 +22,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 /* top left rectangle */
@@ -36,7 +34,7 @@
 .introLogoInner {
   background: var(--color4);
   border: 1.5px solid var(--base);
-  padding: 8px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +46,7 @@
 .introLogoText {
   font-family: "Whoopass", sans-serif;
   color: white;
-  font-size: 5.4rem;
+  font-size: var(--title-size);
   letter-spacing: 0.125em;
   -webkit-text-stroke: 1.5px var(--base);
   text-stroke: 1.5px var(--base);
@@ -64,8 +62,8 @@
 }
 
 .introDot {
-  width: 20px;
-  height: 20px;
+  width: 1.1rem;
+  height: 1.1rem;
   border: 1.5px solid var(--base);
   border-radius: 50%;
   background: white;
@@ -100,7 +98,7 @@
 .introBadgeIcon {
   fill: var(--color3);
   stroke: var(--base);
-  stroke-width: 2.5px;
+  stroke-width: clamp(1.5px, calc(0.5vh + 0.5vw), 2.5px);
   width: 125%;
   height: 125%;
   margin: 0;
@@ -150,7 +148,7 @@
 .introWelcomeMessage {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
+  font-size: var(--font-size-body);
   margin: 2rem 0 0.25rem;
   text-align: left;
 }
@@ -159,17 +157,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  height: 100%;
 }
 
 
 .introContinueIcon {
-  padding-top: 2rem;
   fill: var(--color3);
   stroke: var(--base);
-  stroke-width: 2.5px;
-  width: 80%;
+  stroke-width: clamp(1.5px, calc(0.6vh + 0.6vw), 3px);
+  width: 60%;
   height: auto;
+  transform: rotate(-5deg);
   overflow: visible;
   transition: fill 0.3s ease;
 }
@@ -178,9 +177,7 @@
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
   color: var(--color3);
-  font-size: 2.5rem;
-  margin-left: -6rem;
-  margin-top: -4.5rem;
+  font-size: var(--font-size-h1);
   -webkit-text-stroke: 1.5px var(--base);
   text-stroke: 1.5px var(--base);
   -moz-text-stroke: 1.5px var(--base);

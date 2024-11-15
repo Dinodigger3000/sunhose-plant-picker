@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: 34% 64%;
   gap: 2%;
-  flex: 0 0 40%;
   margin-bottom: 2%;
 }
 
@@ -12,7 +11,6 @@
   display: grid;
   grid-template-columns: 58% 40%;
   gap: 2%;
-  flex: 0 0 40%;
 }
 
 .infoBox {
@@ -45,7 +43,6 @@
   text-align: left;
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
@@ -116,16 +113,16 @@
 }
 
 .sliderLabels {
+  margin-top: -0.75rem;
   display: flex;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 0.75rem;
   width: 100%;
 }
 
 .sliderLabel {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
-  font-size: 1.2rem;
   color: var(--base);
   text-align: center;
   position: relative;

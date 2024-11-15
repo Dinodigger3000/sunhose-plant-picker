@@ -63,7 +63,7 @@ const DescriptionBox = () => {
         more about pet safe plants, and for more pet specific information.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
-        Learn More about Pet Safety
+        Learn More
       </button>
       <Modal
         show={showModal}

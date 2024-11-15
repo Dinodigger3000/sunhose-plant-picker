@@ -43,7 +43,6 @@
   text-align: left;
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
@@ -70,7 +69,7 @@
 
 .question {
   font-family: "Alte Haas Grotesk", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--base);
   margin: 0;
 }
@@ -83,7 +82,7 @@
 
 .choiceButton {
   font-family: "Alte Haas Grotesk", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: var(--base);
   background: white;
   border: 1.5px solid var(--base);

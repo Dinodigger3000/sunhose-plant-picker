@@ -6,8 +6,10 @@
   top: 17%;
   display: flex;
   flex-direction: column;
-  width: 100vh;
-  height: 55vh;
+  width: 55%;
+  height: 50%;
+  max-height: 300px;
+  max-width: 800px;
 }
 /* holds the back/next buttons and page title */
 .navigation-container {
@@ -65,6 +67,7 @@
 .learn-more-btn {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
+  font-size: var(--font-size-body);
   background: var(--color3);
   border: 1.5px solid var(--base);
   color: var(--base);
@@ -84,9 +87,8 @@
   font-family: "Alte Haas Grotesk", sans-serif;
   text-align: left;
   font-weight: bold;
-  font-size: 1.2rem;
   color: var(--base);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .title {
@@ -94,7 +96,7 @@
   letter-spacing: 0.125em;
   text-align: left;
   color: var(--color3);
-  font-size: 3.6rem;
+  font-size: var(--font-size-page-title);
   line-height: 1;
   margin: 0;
   -webkit-text-stroke: 1.5px var(--base);

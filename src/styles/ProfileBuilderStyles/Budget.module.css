@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: 82% 16%;
   gap: 2%;
-  flex: 0 0 25%;
   margin-bottom: 2%;
 }
 
@@ -11,7 +10,6 @@
   display: grid;
   grid-template-columns: 100%;
   gap: 2%;
-  flex: 0 0 45%;
 }
 
 /* Info Box Styles */
@@ -34,7 +32,6 @@
 .descriptionText {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
   text-align: left;
 }
 
@@ -98,7 +95,6 @@
 .currentBudget {
   font-family: "Alte Haas Grotesk", sans-serif;
   align-self: flex-start;
-  font-size: 1.4rem;
   color: var(--base);
 }
 
@@ -169,5 +165,4 @@
   justify-content: space-between;
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
 }

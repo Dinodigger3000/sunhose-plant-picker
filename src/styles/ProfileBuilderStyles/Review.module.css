@@ -1,47 +1,43 @@
-.reviewHeader {
-  display: grid;
-  grid-template-columns: 100%;
-  margin-bottom: 2%;
-}
-
 .reviewContent {
+  margin-top: -2.5rem;
   display: grid;
   grid-template-columns: 100%;
-  gap: 6%;
+  gap: 1rem;
 }
 
 .infoBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1rem 0 0 0;
   position: relative;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 }
-
 
 .summaryBox {
   background: white;
   border: 1.5px solid var(--base);
   border-radius: 8px;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
   display: flex;
   flex-direction: column;
-
 }
 
 .summaryColumns {
   display: grid;
   grid-template-columns: 40% 58%;
-  gap: 2%;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .leftColumn,
 .rightColumn {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 .profileItem {
@@ -53,7 +49,6 @@
   border: 1.5px solid var(--base);
   border-radius: 8px;
   padding: 0.6rem 0.8rem;
-  margin-bottom: 5%;
   transition: background-color 0.2s;
 }
 
@@ -65,19 +60,21 @@
   font-family: "Alte Haas Grotesk", sans-serif;
   align-self: flex-start;
   color: var(--base);
-  font-size: 1.2rem;
   flex: 0 0 auto;
 }
 
 .itemValue {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
   font-weight: bold;
   flex: 1;
 }
 
 .priorityList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   list-style-position: inside;
   margin: 0;
   padding: 0;
@@ -88,15 +85,14 @@
 .priorityItem {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
 }
 
 .customTitle {
   font-family: "Whoopass", sans-serif;
   letter-spacing: 0.125em;
-  text-align: left;
+  text-align: center;
   color: var(--color3);
-  font-size: 3.6rem;
+  font-size: var(--font-size-page-title);
   line-height: 1;
   margin-bottom: -1rem;
   -webkit-text-stroke: 1.5px var(--base);
@@ -105,7 +101,7 @@
 
 .discoverButton {
   width: 60%;
-  margin: 1rem auto 0;
+  margin: 0 auto 0;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -125,14 +121,17 @@
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
   color: var(--base);
-  font-size: 1.2rem;
 }
 
 .clickableHeading {
   font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--base);
-  font-size: 1.2rem;
   text-align: center;
-  padding-bottom: 1rem;
+  padding: 1rem 0 0.5rem 0;
+}
+
+.rightColumn .profileItem:last-child {
+  flex: 1;
 }

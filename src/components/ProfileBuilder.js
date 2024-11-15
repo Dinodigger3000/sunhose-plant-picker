@@ -115,9 +115,7 @@ const ProfileBuilder = ({ onProfileUpdate }) => {
   };
 
   const NavigationButtons = ({ currentPage, totalPages, setCurrentPage }) => {
-    if (currentPage === 0) return null;
-
-    const isLastPage = currentPage === totalPages - 1;
+    if (currentPage === 0 || currentPage === totalPages - 1) return null;
 
     return (
       <div className="navigation-container">
@@ -128,14 +126,12 @@ const ProfileBuilder = ({ onProfileUpdate }) => {
           >
             Go Back
           </button>
-          {!isLastPage && (
-            <button
-              className="nav-btn next-btn"
-              onClick={() => setCurrentPage(currentPage + 1)}
-            >
-              Next Page
-            </button>
-          )}
+          <button
+            className="nav-btn next-btn"
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            Next Page
+          </button>
         </div>
       </div>
     );

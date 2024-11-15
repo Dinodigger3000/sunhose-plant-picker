@@ -43,7 +43,7 @@ const InfoCard = () => {
             consult below.
           </p>
           <button className="learn-more-btn" onClick={() => setShowModal(true)}>
-            Learn More about Light Levels
+            Learn More
           </button>
         </div>
       </div>
@@ -98,10 +98,6 @@ const LightLevelSlider = ({ profile, handleChange }) => {
 
   return (
     <div className={styles.lightSliderBox}>
-      <div className="corner-dots">
-        <div className="accent-dot" />
-        <div className="accent-dot" />
-      </div>
       <div className={styles.lightSliderContainer}>
         <input
           type="range"

@@ -6,6 +6,9 @@ import { setTheme } from "../ColorTheme";
 const InfoBox = () => (
   <div className={styles.infoBox}>
     <h2 className={styles.customTitle}>Profile Review</h2>
+    <h3 className={styles.clickableHeading}>
+      Click on the elements below to go back and change them.
+    </h3>
   </div>
 );
 
@@ -43,9 +46,7 @@ const ProfileSummary = ({ profile, setCurrentPage }) => {
 
   return (
     <div className={styles.summaryBox}>
-      <h3 className={styles.clickableHeading}>
-        Click on the elements below to go back and change them.
-      </h3>
+      <InfoBox />
       <div className={styles.summaryColumns}>
         <div className={styles.leftColumn}>
           <div
@@ -125,14 +126,9 @@ const Review = ({ profile, setCurrentPage }) => {
   }, []);
 
   return (
-    <>
-      <div className={styles.reviewHeader}>
-        <InfoBox />
-      </div>
-      <div className={styles.reviewContent}>
-        <ProfileSummary profile={profile} setCurrentPage={setCurrentPage} />
-      </div>
-    </>
+    <div className={styles.reviewContent}>
+      <ProfileSummary profile={profile} setCurrentPage={setCurrentPage} />
+    </div>
   );
 };
 

@@ -1,12 +1,21 @@
 :root {
-  --theme-color3: rgb(226, 235, 201);
-  --theme-color4: rgb(249, 250, 230);
-  --theme-color5: rgb(255, 255, 255);
+  --font-size-body: clamp(1rem, calc(0.9vh + 0.9vw), 1.2rem);
+  --font-size-page-title: clamp(3.2rem, calc(2vh + 2vw), 4rem);
+  --font-size-h1: clamp(2.5rem, calc(2vh + 2vw), 3rem);
+  --title-size: clamp(4.1rem, calc(4vh + 4vw), 5.6rem);
 }
 
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+html {
+  font-size: var(--font-size-body);
+}
+
+body {
+  font-size: var(--font-size-body);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -54,10 +63,3 @@
   overflow-x:auto;
   position: relative;
 }
-
-/* .app-container > canvas {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  z-index: -1;
-} */

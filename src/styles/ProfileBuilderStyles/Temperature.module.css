@@ -1,7 +1,7 @@
 /* Layout Sections */
 .tempHeader {
   display: grid;
-  grid-template-columns: 48% 50%;
+  grid-template-columns: 50% 48%;
   gap: 2%;
   flex: 0 0 40%;
   margin-bottom: 2%;
@@ -46,7 +46,6 @@
   text-align: left;
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
@@ -88,7 +87,7 @@
 .currentTemp {
   font-family: "Alte Haas Grotesk", sans-serif;
   align-self: flex-start;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: var(--base);
 }
 
@@ -199,13 +198,13 @@
   justify-content: space-between;
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-  font-size: 1.2rem;
 }
 
 .infoBoxHeader {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .iconContainer {
@@ -213,11 +212,10 @@
   border: 1.5px solid var(--base);
   border-radius: 8px;
   padding: 0.5rem;
-  height: 147px;
-  width: 30%;
-  display: flex;
-  justify-content: center;
+  height: 8rem;
+  width: 80%;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .thermometerIcon {

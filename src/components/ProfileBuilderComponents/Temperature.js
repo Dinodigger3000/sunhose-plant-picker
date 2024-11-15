@@ -74,7 +74,7 @@ const DescriptionBox = ({ showModal, setShowModal }) => (
       If not sure how what to choose, please consult below.
     </p>
     <button className="learn-more-btn" onClick={() => setShowModal(true)}>
-      Learn More about Temp. Range
+      Learn More
     </button>
   </div>
 );

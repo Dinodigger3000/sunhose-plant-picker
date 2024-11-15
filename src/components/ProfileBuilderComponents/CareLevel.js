@@ -53,7 +53,7 @@ const DescriptionBox = () => {
         care. If not sure what to choose, please consult below.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
-        Learn More about Care Levels
+        Learn More
       </button>
 
       <Modal
