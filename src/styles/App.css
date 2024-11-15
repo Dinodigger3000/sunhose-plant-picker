@@ -4,14 +4,6 @@
   --theme-color5: rgb(255, 255, 255);
 }
 
-.App {
-  min-width: 1200px;
-  min-height: 600px;
-  height: 100vh;
-  overflow-x:auto;
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -56,14 +48,16 @@
 }
 
 .app-container {
-  width: 100vw;
+  min-width: 1200px;
+  min-height: 600px;
   height: 100vh;
+  overflow-x:auto;
   position: relative;
 }
 
-.app-container > canvas {
+/* .app-container > canvas {
   position: fixed !important;
   top: 0;
   left: 0;
   z-index: -1;
-}
+} */

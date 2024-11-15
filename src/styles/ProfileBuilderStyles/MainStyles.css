@@ -1,10 +1,11 @@
 .layout {
   position: absolute;
+  border: dashed 1.5px var(--base);
   left: 40%;
   top: 17%;
   display: flex;
   flex-direction: column;
-  width: 57%;
+  width: 100vh;
   height: 55vh;
 }
 

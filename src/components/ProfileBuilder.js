@@ -141,7 +141,7 @@ const ProfileBuilder = ({ onProfileUpdate }) => {
     );
   };
 
-  return <div className="profile-builder">{getCurrentPage()}</div>;
+  return getCurrentPage();
 };
 
 export default ProfileBuilder;
