@@ -1,5 +1,5 @@
 :root {
-  --font-size-body: clamp(1rem, calc(0.9vh + 0.9vw), 1.2rem);
+  --font-size-body: clamp(1.1rem, calc(0.9vh + 0.9vw), 1.2rem);
   --font-size-page-title: clamp(3.2rem, calc(2vh + 2vw), 4rem);
   --font-size-h1: clamp(2.5rem, calc(2vh + 2vw), 3rem);
   --title-size: clamp(4.1rem, calc(4vh + 4vw), 5.6rem);

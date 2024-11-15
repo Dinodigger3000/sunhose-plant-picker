@@ -1,7 +1,7 @@
 /* Layout Sections */
 .tempHeader {
   display: grid;
-  grid-template-columns: 50% 48%;
+  grid-template-columns: 40% 58%;
   gap: 2%;
   flex: 0 0 40%;
   margin-bottom: 2%;
@@ -87,7 +87,7 @@
 .currentTemp {
   font-family: "Alte Haas Grotesk", sans-serif;
   align-self: flex-start;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--base);
 }
 
@@ -213,7 +213,7 @@
   border-radius: 8px;
   padding: 0.5rem;
   height: 8rem;
-  width: 80%;
+  width: 4rem;
   align-items: center;
   margin-top: 0.5rem;
 }

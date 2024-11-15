@@ -1,7 +1,6 @@
 /* The frame that holds all of the ui elements*/
 .layout {
   position: absolute;
-  border: dashed 3px var(--base);
   left: 40%;
   top: 17%;
   display: flex;

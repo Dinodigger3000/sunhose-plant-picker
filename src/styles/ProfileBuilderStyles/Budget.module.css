@@ -94,6 +94,7 @@
 
 .currentBudget {
   font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: 1.2rem;
   align-self: flex-start;
   color: var(--base);
 }
