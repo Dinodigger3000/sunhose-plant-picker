@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 import * as THREE from "three";
 export function Pot(props) {
@@ -9,6 +9,7 @@ export function Pot(props) {
   const { potRotation } = useSpring({
     potRotation: profile.budget > 25 ? [0, Math.PI, 0] : [0, 0, 0],
   });
+  const plantMaterial = useTexture("/textures/laceleaf.png");
 
   return (
     <group group {...props}>
@@ -50,11 +51,10 @@ export function Pot(props) {
           material={materials.outline}
         />
       </animated.group>
-      <mesh
-        // geometry={new THREE.PlaneGeometry(1, 1)}
-        // material={materials.color5}
-        position={[-1, -0.16, -5]}
-      />
+      <mesh position={[-1, -0.16, -5]}>
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial transparent map={plantMaterial}/>
+      </mesh>
     </group>
   );
 }
