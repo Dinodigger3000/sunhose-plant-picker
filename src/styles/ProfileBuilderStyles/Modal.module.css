@@ -16,7 +16,9 @@
   border: 1.5px solid var(--base);
   border-radius: 8px;
   max-width: 70%;
+  min-width: 70%;
   max-height: 70%;
+  min-height: 70%;
   position: relative;
   display: flex;
   flex-direction: column;

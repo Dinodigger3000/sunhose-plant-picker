@@ -177,7 +177,7 @@ const ContentSection = ({ profile, handleChange }) => (
 
 const Temperature = ({ profile, handleChange }) => {
   useEffect(() => {
-    const baseColor = { r: 156, g: 89, b: 31 };
+    const baseColor = { r: 154, g: 64, b: 11 };
     setTheme(baseColor);
   }, []);
 

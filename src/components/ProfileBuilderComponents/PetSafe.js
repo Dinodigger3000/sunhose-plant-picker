@@ -141,7 +141,7 @@ const ContentSection = ({ profile, handleChange }) => (
 
 const PetSafe = ({ profile, handleChange }) => {
   useEffect(() => {
-    const baseColor = { r: 155, g: 122, b: 63 };
+    const baseColor = { r: 143, g: 88, b: 5 };
     setTheme(baseColor);
   }, []);
 

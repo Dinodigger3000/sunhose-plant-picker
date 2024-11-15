@@ -103,7 +103,7 @@ const RankingSection = ({ profile, handleChange }) => {
 };
 const PriorityRanking = ({ profile, handleChange }) => {
   useEffect(() => {
-    const baseColor = { r: 82, g: 45, b: 128 };
+    const baseColor = { r: 93, g: 53, b: 127 };
     setTheme(baseColor);
   }, []);
 

@@ -108,7 +108,7 @@ const ContentSection = ({ profile, handleChange }) => (
 
 const Budget = ({ profile, handleChange }) => {
   useEffect(() => {
-    const baseColor = { r: 76, g: 97, b: 56 }; // Green theme
+    const baseColor = { r: 37, g: 90, b: 38 };
     setTheme(baseColor);
   }, []);
 

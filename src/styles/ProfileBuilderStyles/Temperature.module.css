@@ -1,7 +1,7 @@
 /* Layout Sections */
 .tempHeader {
   display: grid;
-  grid-template-columns: 40% 58%;
+  grid-template-columns: 45% 53%;
   gap: 2%;
   flex: 0 0 40%;
   margin-bottom: 2%;
@@ -213,7 +213,7 @@
   border-radius: 8px;
   padding: 0.5rem;
   height: 8rem;
-  width: 4rem;
+  width: 80%;
   align-items: center;
   margin-top: 0.5rem;
 }

@@ -121,7 +121,7 @@ const ProfileSummary = ({ profile, setCurrentPage }) => {
 
 const Review = ({ profile, setCurrentPage }) => {
   useEffect(() => {
-    const baseColor = { r: 39, g: 94, b: 56 };
+    const baseColor = { r: 34, g: 97, b: 97 };
     setTheme(baseColor);
   }, []);
 

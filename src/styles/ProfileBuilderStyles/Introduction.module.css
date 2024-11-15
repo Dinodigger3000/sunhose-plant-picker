@@ -9,7 +9,7 @@
 /* bottom row */
 .introContentSection {
   display: grid;
-  grid-template-columns: 35fr 60fr;
+  grid-template-columns: 60% 38%;
   grid-gap: 2%;
 }
 
@@ -149,7 +149,7 @@
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
   font-size: var(--font-size-body);
-  margin: 2rem 0 0.25rem;
+  margin: 2rem 0;
   text-align: left;
 }
 
@@ -165,8 +165,8 @@
 .introContinueIcon {
   fill: var(--color3);
   stroke: var(--base);
-  stroke-width: clamp(1.5px, calc(0.6vh + 0.6vw), 3px);
-  width: 60%;
+  stroke-width: 0.25rem;
+  width: 80%;
   height: auto;
   transform: rotate(-5deg);
   overflow: visible;

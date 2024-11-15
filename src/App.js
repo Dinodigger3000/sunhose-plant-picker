@@ -19,6 +19,7 @@ import { setTheme } from "./components/ColorTheme";
 import Viewport from "./components/Viewport";
 import ProfileBuilder from "./components/ProfileBuilder";
 import AdaptiveScene from "./components/AdaptiveScene";
+
 function App() {
   const [savedProfile, setSavedProfile] = useState({
     lightLevel: 3,
@@ -30,7 +31,7 @@ function App() {
     priorities: ["light", "care", "budget", "pets", "temp"],
   });
   const [currentPage, setCurrentPage] = useState(0);
-  const [query, setQuery] = useState(collection(db, 'plants')); 
+  const [query, setQuery] = useState(collection(db, "plants"));
   const [plantData, setPlantData] = useState();
 
   useEffect(() => {
