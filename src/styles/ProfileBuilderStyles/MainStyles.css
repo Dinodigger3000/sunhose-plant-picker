@@ -1,6 +1,7 @@
+/* The frame that holds all of the ui elements*/
 .layout {
   position: absolute;
-  border: dashed 1.5px var(--base);
+  border: dashed 3px var(--base);
   left: 40%;
   top: 17%;
   display: flex;
@@ -8,7 +9,7 @@
   width: 100vh;
   height: 55vh;
 }
-
+/* holds the back/next buttons and page title */
 .navigation-container {
   position: relative;
   border: 1.5px solid var(--base);
