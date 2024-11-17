@@ -11,16 +11,16 @@ const InfoCard = () => {
   const lightLevelModalContent = (
     <>
       <p>
-        <strong>Low Light:</strong> definition from book !!
+        <strong>Low Light:</strong> The amount of daylight in this area is not enough to read by. This could mean a basement or a window that is blocked and very shady.
       </p>
       <p>
-        <strong>Medium Light:</strong> definition from book !!
+        <strong>Medium Light:</strong> There is a readable amount of daylight in the area, but it does not recieve any direct sunlight. North and South facing windows are usually in this category, depending on how much light they recieve.
       </p>
       <p>
-        <strong>High Light:</strong> definition from book !!
+        <strong>High Light:</strong> The area recieves at least two hours of direct sunlight daily. East and West facing windows typically are within this category.
       </p>
       <p>
-        <strong>Very High Light:</strong> definition from book !!
+        <strong>Very High Light:</strong> The area gets more than six hours of direct sunlight every day. This usually fits areas such as corners with windows on multiple sides or sunrooms.
       </p>
     </>
   );
@@ -38,8 +38,7 @@ const InfoCard = () => {
         </div>
         <div className={styles.lightInfoRightColumn}>
           <p className={styles.lightInfoDescription}>
-            Choose, on average, how much natural sunlight your space might
-            receive throughout the day. If not sure how what to choose, please
+            Choose, on average, how much natural sunlight your space recieves throughout the day. If you aren't sure which light level applies to you, please
             consult below.
           </p>
           <button className="learn-more-btn" onClick={() => setShowModal(true)}>
@@ -52,7 +51,7 @@ const InfoCard = () => {
         show={showModal}
         onClose={() => setShowModal(false)}
         title="Choosing a Light Level for Your Space"
-        subheading="Each plant has a light level preference, which should match the light level of your space. The light level of your space is the average amount of sunlight it receives throughout the day, and can be categorized into these four levels:"
+        subheading="Each plant has a light level preference, which should match the light level of your space. The light level of your space is the average amount of sunlight it receives throughout the day, and can be categorized into four levels:"
       >
         {lightLevelModalContent}
       </Modal>

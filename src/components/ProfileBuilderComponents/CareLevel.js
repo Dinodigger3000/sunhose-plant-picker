@@ -50,7 +50,7 @@ const DescriptionBox = () => {
       </div>
       <p className={styles.descriptionText}>
         Choose how much time and effort you're willing to dedicate to plant
-        care. If not sure what to choose, please consult below.
+        care. For a more detailed description of what each care level means, please consult below.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More
@@ -60,7 +60,7 @@ const DescriptionBox = () => {
         show={showModal}
         onClose={() => setShowModal(false)}
         title="Understanding Plant Care Levels"
-        subheading="Different plants require different levels of attention, and we've categorized them into three levels."
+        subheading="Different plants require different levels of attention, and we've categorized them into three levels:"
       >
         {careLevelModalContent}
       </Modal>

@@ -30,8 +30,7 @@ const DescriptionBox = () => {
       </p>
       <p>
         Our plant picking algorithm considers pet safety mostly with cats and
-        dogs in mind. If you own another pet, we reccomend you seek out the
-        &nbsp;
+        dogs in mind. If you own another pet, we reccomend you seek out the&nbsp;
         <a
           href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants"
           target="_blank"
