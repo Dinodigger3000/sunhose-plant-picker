@@ -11,18 +11,10 @@ const InfoBox = ({ showModal, setShowModal }) => {
   const temperatureModalContent = (
     <>
       <p>
-        To select a temperature range for your space, we reccomend using &nbsp;
-        <a href="https://weatherspark.com/" target="_blank" rel="noreferrer">
-          WeatherSpark
-        </a>
-        . On the WeatherSpark website, you can input your location, and find the
-        average outside lower and upper temperature ranges for your location.
-      </p>
-
-      <p>
-        As well as considering the outside temperature, think about what
-        temperature you like to keep your thermostat at, or if you like to keep
-        your window open, even in colder months.
+        To have the best estimate of what plants suit your space, guess the range of temperatures 
+        you have throughout the year. If you have central air and heating, this is easy as you can 
+        choose what your thermostat is set at. Otherwise, make your best guess based on your experience 
+        in your space.
       </p>
 
       <p>
@@ -70,7 +62,7 @@ const DescriptionBox = ({ showModal, setShowModal }) => (
       <div className="accent-dot" />
     </div>
     <p className={styles.descriptionText}>
-      Choose the temperature range your space typically is throughout the year.
+      Choose the temperature range your space typically is throughout the year. Consider both the coldest winter and hottest summer temperatures that you have indoors.
     </p>
     <button className="learn-more-btn" onClick={() => setShowModal(true)}>
       Learn More

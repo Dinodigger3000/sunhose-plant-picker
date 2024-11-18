@@ -42,9 +42,17 @@ const WelcomeCard = () => {
   const welcomeModalContent = (
     <>
       <p>
-        <strong>some stuff</strong>
+        <strong>Instructions:</strong>
       </p>
-      <p>what sunhose is/does?</p>
+      <p>
+        As you navigate through the pages, make the selections that apply best to you and the space
+        where you want to keep your houseplant. For more information on each category, you can click "Learn More" 
+        to see how we define each thing. Once you make it to the end, you can review your profile and will have the option to
+        go back and change anything you need to. 
+        When you finalize all of your options, we will recommend your best three plant matches in our database with detailed
+        plant descriptions and links to care instructions. You will have the option to view all plants in our database and 
+        how well they match you as well. 
+      </p>
     </>
   );
 
@@ -85,7 +93,10 @@ const WelcomeCard = () => {
         show={showModal}
         onClose={() => setShowModal(false)}
         title="Welcome to SUNHOSE"
-        subheading=" "
+        subheading="SUNHOSE uses your input to recommend the best houseplant for you - and does it in a beautiful and interactive way.
+        We consider more practical things for the plant like light level and temperature, and also your personal preference
+        on things like budget and care level. Ultimately, your plant recommendations are fully customized to you, down to
+        the importance we place on different categories in our recommendations."
       >
         {welcomeModalContent}
       </Modal>

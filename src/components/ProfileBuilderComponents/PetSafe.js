@@ -41,7 +41,9 @@ const DescriptionBox = () => {
         , and compare it to the plants our generation algorithm has selected for
         you.
       </p>
-
+      <p>
+        If you do have both plants and pets, it is best practice to:
+      </p>
       <ul>
         <li>Keep plants out of reach when possible</li>
         <li>Monitor pet behavior around plants</li>
