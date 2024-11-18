@@ -38,6 +38,7 @@ function PlantModal({ plant, show, onHide }) {
           </Col>
           <Col xs={8}>
             <p>{plant.data.description}</p>
+            <p>{plant.data.instructions} For more detailed instructions, click&nbsp;<a href={plant.data.link} target="_blank" rel="noreferrer">here.</a></p>
             <p>{plant.data.fun_fact}</p>
           </Col>
         </Row>
