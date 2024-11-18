@@ -58,8 +58,7 @@ const DescriptionBox = () => {
         <div className="accent-dot" />
       </div>
       <p className={styles.descriptionText}>
-        Some houseplants can be toxic to pets if eaten. Consult below to learn
-        more about pet safe plants, and for more pet specific information.
+        Some houseplants can be toxic to pets if eaten. If you have a pet that you are worried about, make sure to indicate that here for better plant recommendations.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More

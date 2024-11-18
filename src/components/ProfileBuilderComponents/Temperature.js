@@ -71,7 +71,6 @@ const DescriptionBox = ({ showModal, setShowModal }) => (
     </div>
     <p className={styles.descriptionText}>
       Choose the temperature range your space typically is throughout the year.
-      If not sure how what to choose, please consult below.
     </p>
     <button className="learn-more-btn" onClick={() => setShowModal(true)}>
       Learn More

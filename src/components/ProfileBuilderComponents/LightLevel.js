@@ -38,8 +38,7 @@ const InfoCard = () => {
         </div>
         <div className={styles.lightInfoRightColumn}>
           <p className={styles.lightInfoDescription}>
-            Choose, on average, how much natural sunlight your space recieves throughout the day. If you aren't sure which light level applies to you, please
-            consult below.
+            Choose, on average, how much natural sunlight your space recieves throughout the day.
           </p>
           <button className="learn-more-btn" onClick={() => setShowModal(true)}>
             Learn More

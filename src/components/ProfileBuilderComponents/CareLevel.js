@@ -50,7 +50,7 @@ const DescriptionBox = () => {
       </div>
       <p className={styles.descriptionText}>
         Choose how much time and effort you're willing to dedicate to plant
-        care. For a more detailed description of what each care level means, please consult below.
+        care.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More
