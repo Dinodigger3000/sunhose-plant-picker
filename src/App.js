@@ -43,8 +43,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <Viewport profile={savedProfile} />
+    <div>
       <ProfileBuilder onProfileUpdate={handleProfileUpdate} />
     </div>
   );

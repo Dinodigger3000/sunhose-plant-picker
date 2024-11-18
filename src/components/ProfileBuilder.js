@@ -12,6 +12,7 @@ import PriorityRanking from "./ProfileBuilderComponents/PriorityRanking";
 import Review from "./ProfileBuilderComponents/Review";
 
 import "../styles/ProfileBuilderStyles/MainStyles.css";
+import Viewport from "./Viewport";
 
 const ProfileBuilder = ({ onProfileUpdate }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -99,10 +100,14 @@ const ProfileBuilder = ({ onProfileUpdate }) => {
       },
     },
   ];
+  
 
   const getCurrentPage = () => {
     const { component: Component, props } = pages[currentPage];
     return (
+      <div className="app-container">
+        <Viewport profile={profile} />
+      
       <div className="layout">
         <NavigationButtons
           currentPage={currentPage}
@@ -110,7 +115,7 @@ const ProfileBuilder = ({ onProfileUpdate }) => {
           setCurrentPage={setCurrentPage}
         />
         <Component {...props} />
-      </div>
+      </div></div>
     );
   };
 
