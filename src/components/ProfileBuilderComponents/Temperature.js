@@ -4,7 +4,7 @@ import "../../styles/ProfileBuilderStyles/MainStyles.css";
 
 import { ReactComponent as ThermometerIcon } from "../../assets/thermometer.svg";
 
-import { setTheme } from "../ColorTheme";
+import { setTempertureTheme, setTheme } from "../ColorTheme";
 import Modal from "./Modal";
 
 const InfoBox = ({ showModal, setShowModal }) => {
@@ -177,9 +177,8 @@ const ContentSection = ({ profile, handleChange }) => (
 
 const Temperature = ({ profile, handleChange }) => {
   useEffect(() => {
-    const baseColor = { r: 154, g: 64, b: 11 };
-    setTheme(baseColor);
-  }, []);
+    setTempertureTheme(profile);
+  }, [profile]);
 
   return (
     <>

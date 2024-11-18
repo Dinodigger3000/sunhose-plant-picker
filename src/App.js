@@ -30,7 +30,7 @@ function App() {
     minTemp: 65,
     priorities: ["light", "care", "budget", "pets", "temp"],
   });
-  const [currentPage, setCurrentPage] = useState(0);
+  // const [currentPage, setCurrentPage] = useState(0);
   const [query, setQuery] = useState(collection(db, "plants"));
   const [plantData, setPlantData] = useState();
 
@@ -39,12 +39,11 @@ function App() {
   }, [query]);
   const handleProfileUpdate = (newProfile, page) => {
     setSavedProfile(newProfile);
-    setCurrentPage(page);
+    // setCurrentPage(page);
   };
 
   return (
     <div className="app-container">
-      <AdaptiveScene profile={savedProfile} currentPage={currentPage} />
       <Viewport profile={savedProfile} />
       <ProfileBuilder onProfileUpdate={handleProfileUpdate} />
     </div>

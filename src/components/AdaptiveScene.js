@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { setTheme } from "./ColorTheme";
 
+/**
+ * @deprecated use setTempertureTheme inside ColorTheme instead
+ */
 const AdaptiveScene = ({ profile, currentPage }) => {
   useEffect(() => {
     if (!profile) return;
