@@ -9,8 +9,12 @@ function Viewport(props) {
   const { profile } = props;
 
   const { sunAngle, sunBrightness } = useSpring({
-    sunAngle: (profile.lightLevel > 3) ? [-7.59, 8.84, -19.97] : [0, 20, -30],
-    sunBrightness: (profile.lightLevel > 3) ? 40 : 0,
+    sunAngle: (profile.lightLevel > 3) ? [-5.59, 8.84, -19.97] : [-15, 20, -30],
+    sunBrightness: 
+      (profile.lightLevel == 1) ? 0 : 
+      (profile.lightLevel == 2) ? 10 :
+      (profile.lightLevel == 3) ? 20 :
+      (profile.lightLevel == 4) ? 40 : 0,
   });
 
   return (
