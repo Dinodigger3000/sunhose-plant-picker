@@ -19,6 +19,7 @@ function App() {
     budget: 0,
     maxTemp: 50,
     minTemp: 30,
+    priorities: ["light", "care", "budget", "pets", "temp"],
   });
   
   // Profile created on save changes used for plant matching
