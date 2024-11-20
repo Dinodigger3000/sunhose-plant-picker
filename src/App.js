@@ -30,21 +30,28 @@ function App() {
     minTemp: 65,
     priorities: ["light", "care", "budget", "pets", "temp"],
   });
-  // const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0); // 0 = profile builder, 1 = results page, 2 = plant grid
   const [query, setQuery] = useState(collection(db, "plants"));
   const [plantData, setPlantData] = useState();
+  const [plantScores, setPlantScores] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { // fetch plant data
     fetchPlantData(query, setPlantData);
   }, [query]);
-  const handleProfileUpdate = (newProfile, page) => {
-    setSavedProfile(newProfile);
-    // setCurrentPage(page);
-  };
 
+  useEffect(()=> {
+    updatePlantMatches(savedProfile, plantData, setPlantScores);
+  }, [savedProfile]);
+
+  const changePage = (page) => {
+    setCurrentPage(page);
+  };
+  
   return (
     <div>
-      <ProfileBuilder onProfileUpdate={handleProfileUpdate} />
+      {currentPage === 0 && <ProfileBuilder onProfileUpdate={setSavedProfile} />} {/* profile builder */}
+      {currentPage === 1 && <>Results TBA</>} {/* results page */}
+      {currentPage === 2 && <PlantGrid plantScores={plantScores} />} {/* plant grid */}
     </div>
   );
 }

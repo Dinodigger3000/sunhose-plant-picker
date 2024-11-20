@@ -14,7 +14,7 @@ import Review from "./ProfileBuilderComponents/Review";
 import "../styles/ProfileBuilderStyles/MainStyles.css";
 import Viewport from "./Viewport";
 
-const ProfileBuilder = ({ onProfileUpdate }) => {
+const ProfileBuilder = ({ onProfileUpdate: saveProfile }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [profile, setProfile] = useState({
     lightLevel: 3,
@@ -33,7 +33,7 @@ const ProfileBuilder = ({ onProfileUpdate }) => {
       [name]: type === "checkbox" ? checked : value,
     };
     setProfile(newProfile);
-    onProfileUpdate(newProfile, currentPage);
+    saveProfile(newProfile);
   };
 
   // the array of pages/components
