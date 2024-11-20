@@ -13,7 +13,6 @@ function PlantGrid({ plantScores }) {
     }
 
     getPlantScores();
-    console.log(scores);
   }, [plantScores]);
 
   // Modal controls
@@ -35,7 +34,7 @@ function PlantGrid({ plantScores }) {
   };
   return (
     <>
-      {plantScores && // render only if plantScores is not null
+      {scores && // render only if scores is not null
         <Row style={{ margin: 0 }}>
           {scores.map((plant) => (
             <Col xs={12} sm={6} lg={3} className="p-1" key={plant.id}>

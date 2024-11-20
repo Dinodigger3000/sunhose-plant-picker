@@ -41,7 +41,7 @@ function App() {
 
   useEffect(()=> {
     updatePlantMatches(savedProfile, plantData, setPlantScores);
-  }, [savedProfile]);
+  }, [savedProfile, plantData]);
 
   const changePage = (page) => {
     setCurrentPage(page);
