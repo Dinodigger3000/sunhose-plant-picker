@@ -31,12 +31,14 @@ export async function fetchPlantData(query, callBack) {
             imageUrl: url,
             description: plant.data().description,
             fun_fact: "Fun Fact: " + plant.data().fun_fact,
-            //matchPercentage: calculateMatch(plant.data()), //can't call this method before initialization.
+            instructions: plant.data().instructions,
+            link: plant.data().link,
             data: plant.data(), // save the raw database values in case we need them later
         };
     });
     callBack(plantProfiles);
 }
+
 
 export async function updatePlantMatches(userProfile, plantProfiles, callBack) {
     // returns an array that looks like this, feel free to change the structure!
