@@ -65,50 +65,58 @@ export async function updatePlantMatches(userProfile, plantProfiles, callBack) {
  * @returns {number} - The calculated match percentage.
  */
 const calculateMatch = (plantData, profile) => {
-    //put in formula to calculate percent match ! !
-    // right now it just returns a random percentage
-    //you can use getPlant(id) to get the specific plant data, and 
 
     var matchPercentage = 0;
 
     //light level
 
+    var lightPriority = 30 - (5 * (profile.priorities.indexOf("light")));
+
     if (profile.lightLevel === 1 && plantData.data.light_level.localeCompare("low") === 0) {
-        matchPercentage = matchPercentage + 20;
+        matchPercentage = matchPercentage + lightPriority;
     } else if (profile.lightLevel === 2 && plantData.data.light_level.localeCompare("medium") === 0){
-        matchPercentage = matchPercentage + 20;
+        matchPercentage = matchPercentage + lightPriority;
     } else if (profile.lightLevel === 3 && plantData.data.light_level.localeCompare("high") === 0) {
-        matchPercentage = matchPercentage + 20;
+        matchPercentage = matchPercentage + lightPriority;
     } else if (profile.lightLevel === 4 && plantData.data.light_level.localeCompare("very_high") === 0) {
-        matchPercentage = matchPercentage + 20;
+        matchPercentage = matchPercentage + lightPriority;
     }
 
     //pet safe
 
+    var petPriority = 30 - (5 * (profile.priorities.indexOf("pets")));
+
     if (profile.hasPet) {
         if (plantData.data.pet_safe) {
-            matchPercentage = matchPercentage + 20;
+            matchPercentage = matchPercentage + petPriority;
         }
     } else {
-        matchPercentage = matchPercentage + 20;
+        matchPercentage = matchPercentage + petPriority;
     }
 
     //budget
 
+    var budgetPriority = 30 - (5 * (profile.priorities.indexOf("budget")));
+
     if (plantData.data.avg_cost <= profile.budget) {
-        matchPercentage = matchPercentage + 20;
+        matchPercentage = matchPercentage + budgetPriority;
     }
 
     //care level
 
+    var carePriority = 30 - (5 * (profile.priorities.indexOf("care")));
+
     if (plantData.data.care_level <= profile.careLevel) {
-        matchPercentage = matchPercentage + 20
+        matchPercentage = matchPercentage + carePriority;
     }
+
     //temp in range
+
+    var tempPriority = 30 - (5 * (profile.priorities.indexOf("temp")));
 
     if (profile.minTemp >= plantData.data.min_temp){
         if (profile.maxTemp <= plantData.data.max_temp) {
-            matchPercentage = matchPercentage + 20;
+            matchPercentage = matchPercentage + tempPriority;
         }
     }
 
