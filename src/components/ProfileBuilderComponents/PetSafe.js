@@ -13,7 +13,9 @@ const InfoBox = () => (
     </div>
     <div className={styles.infoBoxContent}>
       <span className="question-number">Question 4</span>
-      <h2 className="title">Pet Safe</h2>
+      <span role="heading" aria-level="1" className="title">
+        Pet Safe
+      </span>
     </div>
   </div>
 );
@@ -30,7 +32,8 @@ const DescriptionBox = () => {
       </p>
       <p>
         Our plant picking algorithm considers pet safety mostly with cats and
-        dogs in mind. If you own another pet, we reccomend you seek out the&nbsp;
+        dogs in mind. If you own another pet, we reccomend you seek out
+        the&nbsp;
         <a
           href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants"
           target="_blank"
@@ -41,9 +44,7 @@ const DescriptionBox = () => {
         , and compare it to the plants our generation algorithm has selected for
         you.
       </p>
-      <p>
-        If you do have both plants and pets, it is best practice to:
-      </p>
+      <p>If you do have both plants and pets, it is best practice to:</p>
       <ul>
         <li>Keep plants out of reach when possible</li>
         <li>Monitor pet behavior around plants</li>
@@ -60,7 +61,9 @@ const DescriptionBox = () => {
         <div className="accent-dot" />
       </div>
       <p className={styles.descriptionText}>
-        Some houseplants can be toxic to pets if eaten. If you have a pet that you are worried about, make sure to indicate that here for better plant recommendations.
+        Some houseplants can be toxic to pets if eaten. If you have a pet that
+        you are worried about, make sure to indicate that here for better plant
+        recommendations.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More

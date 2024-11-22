@@ -12,7 +12,9 @@ const InfoBox = () => (
     </div>
     <div className={styles.infoBoxContent}>
       <span className="question-number">Question 6</span>
-      <h2 className="title">Priority Ranking</h2>
+      <span role="heading" aria-level="1" className="title">
+        Priority Ranking
+      </span>
       <p className={styles.descriptionText}>
         Use the drag and drop feature to rank the factors most important to you
         in selecting the perfect plant for your space. These rankings will be

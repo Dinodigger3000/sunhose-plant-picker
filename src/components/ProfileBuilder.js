@@ -14,17 +14,14 @@ import Review from "./ProfileBuilderComponents/Review";
 import "../styles/ProfileBuilderStyles/MainStyles.css";
 import Viewport from "./Viewport";
 
-const ProfileBuilder = ({ onProfileUpdate: saveProfile }) => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [profile, setProfile] = useState({
-    lightLevel: 3,
-    petSafe: false,
-    careLevel: 1,
-    budget: 0,
-    maxTemp: 80,
-    minTemp: 65,
-    priorities: ["light", "care", "budget", "pets", "temp"],
-  });
+const ProfileBuilder = ({
+  onProfileUpdate: saveProfile,
+  changePage,
+  initialPage = 0,
+  initialProfile,
+}) => {
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [profile, setProfile] = useState(initialProfile);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -97,25 +94,26 @@ const ProfileBuilder = ({ onProfileUpdate: saveProfile }) => {
       props: {
         profile: profile,
         setCurrentPage: setCurrentPage,
+        changePage: changePage,
       },
     },
   ];
-  
 
   const getCurrentPage = () => {
     const { component: Component, props } = pages[currentPage];
     return (
       <div className="app-container">
         <Viewport profile={profile} />
-      
-      <div className="layout">
-        <NavigationButtons
-          currentPage={currentPage}
-          totalPages={pages.length}
-          setCurrentPage={setCurrentPage}
-        />
-        <Component {...props} />
-      </div></div>
+
+        <div className="layout">
+          <NavigationButtons
+            currentPage={currentPage}
+            totalPages={pages.length}
+            setCurrentPage={setCurrentPage}
+          />
+          <Component {...props} />
+        </div>
+      </div>
     );
   };
 

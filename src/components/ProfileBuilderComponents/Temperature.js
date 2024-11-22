@@ -11,10 +11,11 @@ const InfoBox = ({ showModal, setShowModal }) => {
   const temperatureModalContent = (
     <>
       <p>
-        To have the best estimate of what plants suit your space, guess the range of temperatures 
-        you have throughout the year. If you have central air and heating, this is easy as you can 
-        choose what your thermostat is set at. Otherwise, make your best guess based on your experience 
-        in your space.
+        To have the best estimate of what plants suit your space, guess the
+        range of temperatures you have throughout the year. If you have central
+        air and heating, this is easy as you can choose what your thermostat is
+        set at. Otherwise, make your best guess based on your experience in your
+        space.
       </p>
 
       <p>
@@ -38,7 +39,9 @@ const InfoBox = ({ showModal, setShowModal }) => {
           </div>
           <div className={styles.textContainer}>
             <span className="question-number">Question 5</span>
-            <h2 className="title">Temp. Range</h2>
+            <span role="heading" aria-level="1" className="title">
+              Temp. Range
+            </span>
           </div>
         </div>
       </div>
@@ -62,7 +65,9 @@ const DescriptionBox = ({ showModal, setShowModal }) => (
       <div className="accent-dot" />
     </div>
     <p className={styles.descriptionText}>
-      Choose the temperature range your space typically is throughout the year. Consider both the coldest winter and hottest summer temperatures that you have indoors.
+      Choose the temperature range your space typically is throughout the year.
+      Consider both the coldest winter and hottest summer temperatures that you
+      have indoors.
     </p>
     <button className="learn-more-btn" onClick={() => setShowModal(true)}>
       Learn More

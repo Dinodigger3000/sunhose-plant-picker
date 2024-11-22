@@ -1,27 +1,19 @@
 import React, { useState, useMemo, useEffect } from "react";
 
 import "./styles/App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/customBootstrap.css";
 import "./styles/fonts.css";
 
-import { Container, Col, Row } from "react-bootstrap";
-import ProfileForm from "./components/MVPcomponents/ProfileForm";
 import PlantGrid from "./components/MVPcomponents/PlantGrid";
-import PlantModal from "./components/MVPcomponents/PlantModal";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db, store } from "./firebase";
 import { fetchPlantData, updatePlantMatches } from "./plantData";
 
-import { setTheme } from "./components/ColorTheme";
-
-import Viewport from "./components/Viewport";
 import ProfileBuilder from "./components/ProfileBuilder";
-import AdaptiveScene from "./components/AdaptiveScene";
+import Results from "./components/Results";
 
 function App() {
-  const [savedProfile, setSavedProfile] = useState({
+  const defaultProfile = {
     lightLevel: 3,
     petSafe: false,
     careLevel: 1,
@@ -29,29 +21,61 @@ function App() {
     maxTemp: 80,
     minTemp: 65,
     priorities: ["light", "care", "budget", "pets", "temp"],
-  });
+  };
+
+  const [savedProfile, setSavedProfile] = useState(defaultProfile);
   const [currentPage, setCurrentPage] = useState(0); // 0 = profile builder, 1 = results page, 2 = plant grid
   const [query, setQuery] = useState(collection(db, "plants"));
   const [plantData, setPlantData] = useState();
   const [plantScores, setPlantScores] = useState(null);
+  const [builderPage, setBuilderPage] = useState(0);
 
-  useEffect(() => { // fetch plant data
+  useEffect(() => {
+    // fetch plant data
     fetchPlantData(query, setPlantData);
   }, [query]);
 
-  useEffect(()=> {
+  useEffect(() => {
     updatePlantMatches(savedProfile, plantData, setPlantScores);
   }, [savedProfile, plantData]);
 
-  const changePage = (page) => {
+  const changePage = (page, builderPage) => {
     setCurrentPage(page);
+    if (builderPage !== undefined && page === 0) {
+      // If we're going to ProfileBuilder and a specific page is requested
+      setBuilderPage(builderPage);
+    }
   };
-  
+
+  const resetProfile = () => {
+    setSavedProfile(defaultProfile);
+    setCurrentPage(0);
+    setBuilderPage(0);
+  };
+
   return (
     <div>
-      {currentPage === 0 && <ProfileBuilder onProfileUpdate={setSavedProfile} />} {/* profile builder */}
-      {currentPage === 1 && <>Results TBA</>} {/* results page */}
-      {currentPage === 2 && <PlantGrid plantScores={plantScores} />} {/* plant grid */}
+      {currentPage === 0 && (
+        <ProfileBuilder
+          onProfileUpdate={setSavedProfile}
+          changePage={changePage}
+          initialPage={builderPage}
+          initialProfile={savedProfile}
+        />
+      )}{" "}
+      {/* profile builder */}
+      {currentPage === 1 && (
+        <Results plantScores={plantScores} changePage={changePage} />
+      )}{" "}
+      {/* results page */}
+      {currentPage === 2 && (
+        <PlantGrid
+          plantScores={plantScores}
+          changePage={changePage}
+          resetProfile={resetProfile}
+        />
+      )}{" "}
+      {/* plant grid */}
     </div>
   );
 }

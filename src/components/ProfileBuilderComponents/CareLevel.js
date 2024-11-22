@@ -13,7 +13,9 @@ const InfoBox = () => (
     </div>
     <div className={styles.infoBoxContent}>
       <span className="question-number">Question 2</span>
-      <h2 className="title">Care Level</h2>
+      <span role="heading" aria-level="1" className="title">
+        Care Level
+      </span>
     </div>
   </div>
 );
@@ -50,7 +52,8 @@ const DescriptionBox = () => {
       </div>
       <p className={styles.descriptionText}>
         Choose how much time and effort you're willing to dedicate to plant
-        care. Low level plants are more forgiving, but high level plants require very specific care to thrive. 
+        care. Low level plants are more forgiving, but high level plants require
+        very specific care to thrive.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More

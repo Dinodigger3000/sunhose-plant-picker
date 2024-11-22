@@ -31,6 +31,7 @@
 
 .descriptionText {
   font-family: "Alte Haas Grotesk", sans-serif;
+  margin-top: -0.1rem;
   color: var(--base);
   text-align: left;
 }
@@ -161,7 +162,7 @@
 
 .sliderLabels {
   width: 100%;
-  margin-top: -1rem;
+  margin-top: -0.5rem;
   display: flex;
   justify-content: space-between;
   font-family: "Alte Haas Grotesk", sans-serif;

@@ -76,10 +76,7 @@ const hslToRgb = (h, s, l) => {
 // function to set the theme based on temperature, only used when the temperature profile page is active
 export const setTempertureTheme = (profile) => {
   if (!profile) return;
-  if (
-    profile.minTemp !== undefined &&
-    profile.maxTemp !== undefined
-  ) {
+  if (profile.minTemp !== undefined && profile.maxTemp !== undefined) {
     // Convert temperature ranges to 0-1 scale
     const minNormalized = (profile.minTemp - 30) / 70; // 30-100°F range
     const maxNormalized = (profile.maxTemp - 30) / 70;
@@ -104,18 +101,18 @@ export const setTempertureTheme = (profile) => {
       baseColor = {
         r: Math.round(
           wideRangeColor.r * blendFactor +
-          (coldColor.r * (1 - avgTemp) + warmColor.r * avgTemp) *
-          (1 - blendFactor)
+            (coldColor.r * (1 - avgTemp) + warmColor.r * avgTemp) *
+              (1 - blendFactor)
         ),
         g: Math.round(
           wideRangeColor.g * blendFactor +
-          (coldColor.g * (1 - avgTemp) + warmColor.g * avgTemp) *
-          (1 - blendFactor)
+            (coldColor.g * (1 - avgTemp) + warmColor.g * avgTemp) *
+              (1 - blendFactor)
         ),
         b: Math.round(
           wideRangeColor.b * blendFactor +
-          (coldColor.b * (1 - avgTemp) + warmColor.b * avgTemp) *
-          (1 - blendFactor)
+            (coldColor.b * (1 - avgTemp) + warmColor.b * avgTemp) *
+              (1 - blendFactor)
         ),
       };
     } else {
@@ -164,11 +161,12 @@ export const setTheme = (baseColor) => {
       base: `rgb(${base.r}, ${base.g}, ${base.b})`,
     };
 
-    // generate contrasting color1
-    const oppositeHue = (h + 180) % 360; // opposite
-    const contrastS = Math.min(s + 20, 100); // ++ saturation
-    const contrastL = Math.min(l + 10, 90); // + lightness
-    const [r1, g1, b1] = hslToRgb(oppositeHue, contrastS, contrastL);
+    // generate warmer, brighter color1
+    const warmShift = 30; // shift hue towards red/yellow
+    const newHue = (h + warmShift) % 360;
+    const newS = Math.min(s + 25, 100); // ++ saturation
+    const newL = Math.min(l + 40, 90); // ++ lightness
+    const [r1, g1, b1] = hslToRgb(newHue, newS, newL);
     colors.color1 = `rgb(${r1}, ${g1}, ${b1})`;
 
     // generate remaining colors

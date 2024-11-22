@@ -1,49 +1,144 @@
-import React from 'react';
-import { Modal, Row, Col, ProgressBar } from 'react-bootstrap';
+import React from "react";
+import styles from "../../styles/ResultsStyles/PlantModal.module.css";
 
-function PlantModal({ plant, show, onHide }) {
-  const [imageUrl, setImageUrl] = React.useState('');
-  console.log(plant);
+function PlantModal({
+  plant,
+  show,
+  onHide,
+  plantScores,
+  currentIndex,
+  onNextPlant,
+}) {
+  const [imageUrl, setImageUrl] = React.useState("");
+
   React.useEffect(() => {
-    if (!plant) {
-      return;
-    }
-    plant.data.imageUrl.then(url => setImageUrl(url));
+    if (!plant) return;
+    plant.data.imageUrl.then((url) => setImageUrl(url));
   }, [plant]);
-  
-  if (!plant) {return null};
- 
 
+  if (!plant || !show) return null;
+
+  const handleNext = () => {
+    if (currentIndex < plantScores.length - 1) {
+      const nextPlant = plantScores[currentIndex + 1];
+      onNextPlant(nextPlant);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      const prevPlant = plantScores[currentIndex - 1];
+      onNextPlant(prevPlant);
+    }
+  };
 
   return (
-    <Modal show={show} onHide={onHide} centered size="xl">
-      <Modal.Header closeButton>
-        <Modal.Title>{plant.data.title}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Row>
-          <Col xs={4}>
+    <div
+      className={styles.modalOverlay}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onHide();
+        }
+      }}
+    >
+      <div className={styles.modalContent}>
+        <div className={styles.leftContainer}>
+          <div className={styles.imageWrapper}>
             <img
               src={imageUrl}
               alt={plant.data.title}
-              className="rounded border"
-              style={{ width: "100%" }}
+              className={styles.plantImage}
             />
-            <ProgressBar
-              now={plant.matchPercentage}
-              variant="success"
-              className="mt-3"
-            />
-            <p className="mt-1">{plant.matchPercentage}% Match</p>
-          </Col>
-          <Col xs={8}>
-            <p>{plant.data.description}</p>
-            <p>{plant.data.instructions} For more detailed instructions, click&nbsp;<a href={plant.data.link} target="_blank" rel="noreferrer">here.</a></p>
-            <p>{plant.data.fun_fact}</p>
-          </Col>
-        </Row>
-      </Modal.Body>
-    </Modal>
+          </div>
+        </div>
+
+        <div className={styles.rightContainer}>
+          <div className={styles.header}>
+            <div className={styles.headerLeft}>
+              <div
+                className={styles.rankBadge}
+                style={{
+                  fontSize: currentIndex + 1 >= 10 ? "4rem" : "5rem",
+                  paddingLeft: currentIndex + 1 >= 10 ? "0.25rem" : "0.5rem",
+                }}
+              >
+                {currentIndex + 1}
+              </div>
+            </div>
+            <div className={styles.headerRight}>
+              <span
+                role="heading"
+                aria-level="1"
+                className={styles.plantTitle}
+                style={{
+                  fontSize: plant.data.title.length > 10 ? "4rem" : "5rem",
+                  marginBottom:
+                    plant.data.title.length > 10 ? "-0.5rem" : "-1.25rem",
+                }}
+              >
+                {plant.data.title}
+              </span>
+              <div className={styles.matchContainer}>
+                <div className={styles.matchBar}>
+                  <div
+                    className={styles.matchFill}
+                    style={{ width: `${plant.matchPercentage}%` }}
+                  />
+                </div>
+                <span className={styles.matchLabel}>
+                  {plant.matchPercentage}%
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.body}>
+            <div className={styles.scientificName}>
+              {plant.data.scientific_name}{" "}
+              <span className={styles.officialName}>({plant.data.title})</span>
+            </div>
+
+            <p className={styles.description}>{plant.data.description}</p>
+            <div className={styles.funFact}>
+              <strong>Fun Fact: </strong>
+              {plant.data.fun_fact}
+            </div>
+
+            <div className={styles.careInstructions}>
+              <strong>Care Instructions: </strong>
+              {plant.data.instructions}
+            </div>
+
+            <p className={styles.source}>
+              Source:{" "}
+              <a href={plant.data.link} target="_blank" rel="noreferrer">
+                The Spruce
+              </a>
+            </p>
+          </div>
+
+          <div className={styles.footer}>
+            <button
+              className={styles.navButton}
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+            >
+              ← Prev. Plant
+            </button>
+            <button className={styles.navButton} onClick={onHide}>
+              <strong>Close Plant Information </strong>
+            </button>
+            <button
+              className={styles.navButton}
+              onClick={handleNext}
+              disabled={currentIndex === plantScores.length - 1}
+            >
+              Next Plant →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -45,13 +45,15 @@ const WelcomeCard = () => {
         <strong>Instructions:</strong>
       </p>
       <p>
-        As you navigate through the pages, make the selections that apply best to you and the space
-        where you want to keep your houseplant. For more information on each category, you can click "Learn More" 
-        to see how we define each thing. Once you make it to the end, you can review your profile and will have the option to
-        go back and change anything you need to. 
-        When you finalize all of your options, we will recommend your best three plant matches in our database with detailed
-        plant descriptions and links to care instructions. You will have the option to view all plants in our database and 
-        how well they match you as well. 
+        As you navigate through the pages, make the selections that apply best
+        to you and the space where you want to keep your houseplant. For more
+        information on each category, you can click "Learn More" to see how we
+        define each thing. Once you make it to the end, you can review your
+        profile and will have the option to go back and change anything you need
+        to. When you finalize all of your options, we will recommend your best
+        three plant matches in our database with detailed plant descriptions and
+        links to care instructions. You will have the option to view all plants
+        in our database and how well they match you as well.
       </p>
     </>
   );

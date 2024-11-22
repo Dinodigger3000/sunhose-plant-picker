@@ -64,7 +64,6 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.8rem;
-  height: 100%;
 }
 
 .question {

@@ -18,29 +18,30 @@
   position: relative;
   border: 1.5px solid var(--base);
   display: flex;
+  padding: 1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  padding: 1rem;
 }
 
 /* top left rectangle */
 .introLogoCard {
   composes: introCard;
   background: var(--color3);
+  display: flex;
+  align-items: stretch;
 }
 
 .introLogoInner {
   background: var(--color4);
   border: 1.5px solid var(--base);
-  padding: 1rem;
+  padding: 0.9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  flex: 1;
 }
 
 .introLogoText {
@@ -52,8 +53,7 @@
   text-stroke: 1.5px var(--base);
   -moz-text-stroke: 1.5px var(--base);
   -ms-text-stroke: 1.5px var(--base);
-  margin-top: -0.9rem;
-  margin-bottom: -1.7rem;
+  margin-bottom: -0.5rem;
 }
 
 .introDotRow {
@@ -78,8 +78,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
 }
 
 .introBadgeInner {
@@ -149,7 +147,7 @@
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
   font-size: var(--font-size-body);
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   text-align: left;
 }
 

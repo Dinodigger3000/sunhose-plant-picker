@@ -12,7 +12,9 @@ const InfoBox = () => (
     </div>
     <div className={styles.infoBoxContent}>
       <span className="question-number">Question 3</span>
-      <h2 className="title">Budget Range</h2>
+      <span role="heading" aria-level="1" className="title">
+        Budget Range
+      </span>
       <p className={styles.descriptionText}>
         Provide an estimate for the amount of money you are willing to spend on
         a houseplant.
@@ -23,9 +25,9 @@ const InfoBox = () => (
 
 const PriceBadge = () => (
   <div className={styles.priceBadge}>
-    <h2 className={styles.priceSymbol}>
+    <span className={styles.priceSymbol}>
       $ <br /> $
-    </h2>
+    </span>
   </div>
 );
 
