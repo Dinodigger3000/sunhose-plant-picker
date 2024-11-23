@@ -13,7 +13,7 @@ export function Pot(props) {
 
   return (
     <group group {...props}>
-      <animated.group position={[-1, -0.87, -5]} rotation={potRotation}>
+      <animated.group rotation={potRotation}>
         <mesh
           castShadow
           receiveShadow
@@ -51,7 +51,7 @@ export function Pot(props) {
           material={materials.outline}
         />
       </animated.group>
-      <mesh position={[-1, -0.16, -5]}>
+      <mesh position={[0, 0.74, 0]}>
         <planeGeometry args={[1, 1]} />
         <meshBasicMaterial transparent map={plantMaterial}/>
       </mesh>

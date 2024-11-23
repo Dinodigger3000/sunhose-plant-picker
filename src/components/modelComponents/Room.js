@@ -2,37 +2,15 @@ import React, { useRef, useEffect, useState, useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { createOutlineMaterial } from "../../shaders/OutlineMateral";
+import { createToonMaterial } from "../../shaders/ToonMaterial";
 import { useSpring, animated } from "@react-spring/three";
-import { getCurrentTheme, subscribeToThemeChanges } from "../ColorTheme";
+import { getCurrentTheme, subscribeToThemeChanges, defaultTheme } from "../ColorTheme";
 import { Pot } from "./Pot";
 
-// load the toon gradient texture once at site startup
-const gradientMap = new THREE.TextureLoader().load(
-  "/textures/fourTone.jpg",
-  function (texture) {
-    texture.minFilter = texture.magFilter = THREE.NearestFilter;
-  }
-);
-
-// default theme
-const defaultTheme = {
-  base: { r: 82, g: 45, b: 128 },
-  color3: { r: 255, g: 255, b: 255 },
-  color4: { r: 245, g: 245, b: 245 },
-};
-
-//create toon material (with default theme if current theme is null)
-const createToonMaterial = (color) => {
-  const currentTheme = getCurrentTheme() || defaultTheme;
-  return new THREE.MeshToonMaterial({
-    color: color || currentTheme.base,
-    gradientMap: gradientMap,
-  });
-};
 
 // room component that creates the 3D room model
 export function Room(props) {
-  const { profile } = props;
+  const { profile, plants } = props;
   const { nodes } = useGLTF("/models/room.glb");
   // track current theme colors
   const [theme, setTheme] = React.useState(getCurrentTheme());
@@ -136,7 +114,7 @@ export function Room(props) {
         />
       </group>
       {/* plant pot with rotate animation */}
-      <Pot profile={props.profile} materials={materials} />
+      <Pot profile={props.profile} materials={materials} position={[-1, -0.87, -5]}/>
       <animated.group //sun with rotate animation
         rotation={sunRotation}
       >

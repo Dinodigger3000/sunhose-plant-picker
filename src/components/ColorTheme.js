@@ -1,5 +1,14 @@
-let currentTheme = null;
 
+// default theme
+export const defaultTheme = {
+  base: { r: 39, g: 94, b: 56 },
+  color1: { r: 111, g: 226, b: 204 },
+  color2: { r: 119, g: 177, b: 137 },
+  color3: { r: 175, g: 202, b: 184 },
+  color4: { r: 226, g: 233, b: 228 },
+  color5: { r: 241, g: 224, b: 242 },
+};
+let currentTheme = defaultTheme;
 // Store theme change listeners
 const themeListeners = new Set();
 
