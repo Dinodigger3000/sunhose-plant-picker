@@ -26,11 +26,10 @@ export async function fetchPlantData(query, callBack) {
     const title = plant.id
       .replace(/_/g, " ")
       .replace(/\b\w/g, (char) => char.toUpperCase());
-    const url = getPlantImageURL(plant.id);
     return {
       id: plant.id,
       title: title,
-      imageUrl: url,
+      imageUrl: "/plantPics/" + plant.id + ".png",
       description: plant.data().description,
       scientific_name: plant.data().scientific_name,
       fun_fact: "Fun Fact: " + plant.data().fun_fact,
@@ -148,8 +147,3 @@ const calculateMatch = (plantData, profile) => {
 //         }
 //     });
 // };
-
-async function getPlantImageURL(id) {
-  const plantRef = ref(store, `plantPics/${id}.png`);
-  return getDownloadURL(plantRef);
-}

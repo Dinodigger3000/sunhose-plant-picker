@@ -9,12 +9,6 @@ function PlantModal({
   currentIndex,
   onNextPlant,
 }) {
-  const [imageUrl, setImageUrl] = React.useState("");
-
-  React.useEffect(() => {
-    if (!plant) return;
-    plant.data.imageUrl.then((url) => setImageUrl(url));
-  }, [plant]);
 
   if (!plant || !show) return null;
 
@@ -45,7 +39,7 @@ function PlantModal({
         <div className={styles.leftContainer}>
           <div className={styles.imageWrapper}>
             <img
-              src={imageUrl}
+              src={plant.data.imageUrl}
               alt={plant.data.title}
               className={styles.plantImage}
             />

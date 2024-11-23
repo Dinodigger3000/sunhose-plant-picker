@@ -3,11 +3,7 @@ import styles from "../../styles/PlantGridStyles/PlantCard.module.css";
 import { ReactComponent as Pot } from "../../assets/pot.svg";
 
 function PlantCard({ plant, onClick, rank }) {
-  const [imageUrl, setImageUrl] = React.useState("");
-
-  React.useEffect(() => {
-    plant.data.imageUrl.then((url) => setImageUrl(url));
-  }, [plant.data.imageUrl]);
+  
 
   return (
     <div
@@ -16,7 +12,7 @@ function PlantCard({ plant, onClick, rank }) {
       data-plant-id={plant.id}
     >
       <img
-        src={imageUrl}
+        src={plant.data.imageUrl}
         alt={plant.data.title}
         className={styles.plantImage}
       />
