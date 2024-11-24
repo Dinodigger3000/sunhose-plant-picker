@@ -71,6 +71,7 @@ const Results = ({ plantScores, changePage }) => {
                         Edit Profile
                     </button>
                 </div>
+            </div>
                 <PlantModal
                     plant={selectedPlant}
                     show={showModal}
@@ -81,7 +82,6 @@ const Results = ({ plantScores, changePage }) => {
                     )}
                     onNextPlant={handleNextPlant}
                 />
-            </div>
         </div>
     );
 };

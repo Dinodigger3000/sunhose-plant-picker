@@ -8,7 +8,6 @@ import { Canvas, useThree } from '@react-three/fiber';
 
 function ResponsiveCamera() {
     const { camera, size } = useThree();
-    const initialZ = 2;
 
     useEffect(() => {
         const updateCamera = () => {
@@ -68,14 +67,14 @@ export function Display({ topThreePlants, ...props }) {
 
 
                 <group {...props} dispose={null}>
-                    {/* <directionalLight
+                    <directionalLight
                         intensity={1}
                         decay={2}
                         color="#fffb00"
                         castShadow
                         position={[-7.59, 8.843, 4.482]}
                         rotation={[-0.627, 0.469, 2.158]}
-                    /> */}
+                    />
                     <ambientLight intensity={Math.PI / 2} />
                     <ResponsiveCamera />
                     {/* <OrbitControls /> */}
@@ -97,6 +96,12 @@ export function Display({ topThreePlants, ...props }) {
                         position={[-1.055, 1.66, -2.729]}
                         rotation={[-Math.PI / 2, 0, 0]}
                     />
+                    <pointLight
+        intensity={10.791}
+        decay={2}
+        position={[-0.86, -0.395, -6.261]}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
                     <pointLight
                         intensity={3}
                         decay={2}
