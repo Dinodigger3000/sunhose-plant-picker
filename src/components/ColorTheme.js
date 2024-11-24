@@ -188,39 +188,38 @@ export const setTheme = (baseColor) => {
 
     return colors;
   };
-
+  // update current theme and notify listeners
+  currentTheme = generateTheme(base);
   // make it so that the theme colors can be used throughout the app with var(--color-name)
   document.documentElement.style.setProperty(
     "--base",
-    generateTheme(base).base
+    currentTheme.base
   );
   document.documentElement.style.setProperty(
     "--color1",
-    generateTheme(base).color1
+    currentTheme.color1
   );
   document.documentElement.style.setProperty(
     "--color2",
-    generateTheme(base).color2
+    currentTheme.color2
   );
   document.documentElement.style.setProperty(
     "--color2-rgb",
-    `${generateTheme(base).color2.match(/\d+/g).join(", ")}`
+    `${currentTheme.color2.match(/\d+/g).join(", ")}`
   );
   document.documentElement.style.setProperty(
     "--color3",
-    generateTheme(base).color3
+    currentTheme.color3
   );
   document.documentElement.style.setProperty(
     "--color4",
-    generateTheme(base).color4
+    currentTheme.color4
   );
   document.documentElement.style.setProperty(
     "--color5",
-    generateTheme(base).color5
+    currentTheme.color5
   );
 
-  // update current theme and notify listeners
-  currentTheme = generateTheme(base);
   themeListeners.forEach((listener) => listener(currentTheme));
   return currentTheme;
 };

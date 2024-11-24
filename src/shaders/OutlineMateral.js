@@ -1,11 +1,12 @@
 import * as THREE from "three";
-import { getCurrentTheme } from "../components/ColorTheme";
+import { getCurrentTheme, defaultTheme } from "../components/ColorTheme";
 
 export function createOutlineMaterial(thickness = 0.005) {
   const baseColor = getCurrentTheme().base;
 
-  const [r, g, b] = [baseColor.r/255, baseColor.g/255, baseColor.b/255]; // Convert to 0-1 range for WebGL
-
+  // Parse the RGB values from the string
+  const rgb = baseColor.match(/\d+/g).map(Number);
+  const [r, g, b] = rgb.map((v) => v / 255); // Convert to 0-1 range for WebGL
   return new THREE.ShaderMaterial({
     vertexShader: /* glsl */ `
       void main() {
