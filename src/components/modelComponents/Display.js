@@ -4,12 +4,34 @@ import { createToonMaterial } from '../../shaders/ToonMaterial';
 import { createOutlineMaterial } from '../../shaders/OutlineMateral';
 import { getCurrentTheme, defaultTheme, subscribeToThemeChanges } from '../ColorTheme';
 import { PlantedPot } from './PlantedPot';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useThree } from '@react-three/fiber';
+
+function ResponsiveCamera() {
+    const { camera, size } = useThree();
+    const initialZ = 2;
+
+    useEffect(() => {
+        const updateCamera = () => {
+            const hFOV = 45; // desired horizontal fov, in degrees
+            camera.fov = Math.atan(Math.tan(hFOV * Math.PI / 360) / camera.aspect) * 360 / Math.PI; // degrees
+            camera.updateProjectionMatrix();
+        };
+
+        updateCamera();
+    }, [size, camera]);
+
+    return <PerspectiveCamera
+        makeDefault={true}
+        far={100}
+        near={0.1}
+    />
+}
 
 export function Display({ topThreePlants, ...props }) {
     const { nodes } = useGLTF('/models/display.glb');
     // track current theme colors
     const [theme, setTheme] = useState(getCurrentTheme());
+
     // memoize materials so that they don't get recreated
     const materials = useMemo(() => {
         const currentTheme = theme || defaultTheme;
@@ -23,6 +45,7 @@ export function Display({ topThreePlants, ...props }) {
             outline: createOutlineMaterial(0.005),
         };
     }, [theme]);
+
     console.log(topThreePlants);
     // set up theme change listener
     useEffect(() => {
@@ -40,74 +63,104 @@ export function Display({ topThreePlants, ...props }) {
     return (
         <Suspense fallback={null}>
 
-        <Canvas shadows={{}}>
+            <Canvas shadows={{}}>
 
 
-            <group {...props} dispose={null}>
-                <directionalLight
-                    intensity={1}
-                    decay={2}
-                    color="#fffb00"
-                    castShadow
-                    position={[-7.59, 8.843, 4.482]}
-                    rotation={[-0.627, 0.469, 2.158]}
-                    />
-                    <ambientLight intensity={0.5} />
-                <PerspectiveCamera
-                    makeDefault={true}
-                    far={100}
-                    near={0.1}
-                    fov={29.395}
-                    position={[0, 0.2, 0]}
-                    />
+
+                <group {...props} dispose={null}>
+                    {/* <directionalLight
+                        intensity={1}
+                        decay={2}
+                        color="#fffb00"
+                        castShadow
+                        position={[-7.59, 8.843, 4.482]}
+                        rotation={[-0.627, 0.469, 2.158]}
+                    /> */}
+                    <ambientLight intensity={Math.PI / 2} />
+                    <ResponsiveCamera />
                     {/* <OrbitControls /> */}
-                <pointLight
-                    intensity={4.791}
-                    decay={2}
-                    castShadow
-                    position={[0, 0.613, -2.575]}
-                    rotation={[-Math.PI / 2, 0, 0]}
+                    <pointLight
+                        intensity={3}
+                        decay={2}
+                        position={[4.83, 2.297, -7.688]}
+                        rotation={[-Math.PI / 2, 0, 0]}
                     />
-                {(topThreePlants.length <=3) && 
-                    <Suspense fallback={null} >
-                        <PlantedPot plant={topThreePlants[0]} materials={materials} position={[0, 0.05, -5]} />
-                        <PlantedPot plant={topThreePlants[1]} materials={materials} position={[1, 0.05, -5]} />
-                        <PlantedPot plant={topThreePlants[2]} materials={materials} position={[-1, 0.05, -5]} />
-                    </Suspense>
-                }
-                
-                
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Table.geometry}
-                    material={materials.color3}
-                    position={[0, -0.429, -5.318]}
+                    <pointLight
+                        intensity={6}
+                        decay={2}
+                        position={[-4.578, 3.236, -6.524]}
+                        rotation={[-Math.PI / 2, 0, 0]}
                     />
-                <group position={[0, 1.407, -5.115]}>
+                    <pointLight
+                        intensity={3}
+                        decay={2}
+                        position={[-1.055, 1.66, -2.729]}
+                        rotation={[-Math.PI / 2, 0, 0]}
+                    />
+                    <pointLight
+                        intensity={3}
+                        decay={2}
+                        position={[1.074, 1.66, -2.729]}
+                        rotation={[-Math.PI / 2, 0, 0]}
+                    />
+                    {(topThreePlants.length <= 3) &&
+                        <Suspense fallback={null} >
+                            <PlantedPot plant={topThreePlants[0]} materials={materials} position={[-1, 0.05, -5]} />
+                            <PlantedPot plant={topThreePlants[1]} materials={materials} position={[0, 0.05, -5]} />
+                            <PlantedPot plant={topThreePlants[2]} materials={materials} position={[1, 0.05, -5]} />
+                        </Suspense>
+                    }
+
+                    <group position={[0, -0.429, -5.318]}>
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes.Table.geometry}
+                            material={materials.color3}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes.Table.geometry}
+                            material={materials.outline}
+                        />
+                    </group>
+                    <group position={[0, 1.407, -5.115]}>
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes.Umbrella_1.geometry}
+                            material={materials.color4}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes.Umbrella_2.geometry}
+                            material={materials.color2}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes.Umbrella_1.geometry}
+                            material={materials.outline}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes.Umbrella_2.geometry}
+                            material={materials.outline}
+                        />
+                    </group>
                     <mesh
                         castShadow
                         receiveShadow
-                        geometry={nodes.Umbrella_1.geometry}
-                        material={materials.color4}
-                        />
-                    <mesh
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.Umbrella_2.geometry}
-                        material={materials.color2}
-                        />
+                        geometry={nodes.Backdrop.geometry}
+                        material={materials.color5}
+                        position={[0, -1.065, 0]}
+                    />
                 </group>
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Backdrop.geometry}
-                    material={materials.color5}
-                    position={[0, -1.065, 0]}
-                    />
-            </group>
-        </Canvas>
-                    </Suspense>)
+            </Canvas>
+        </Suspense>)
 }
 
 useGLTF.preload('/models/display.glb')
