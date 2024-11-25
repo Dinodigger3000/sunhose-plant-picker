@@ -32,7 +32,7 @@ export async function fetchPlantData(query, callBack) {
       imageUrl: "/plantPics/" + plant.id + ".png",
       description: plant.data().description,
       scientific_name: plant.data().scientific_name,
-      fun_fact: "Fun Fact: " + plant.data().fun_fact,
+      fun_fact: plant.data().fun_fact,
       instructions: plant.data().instructions,
       link: plant.data().link,
       data: plant.data(), // save the raw database values in case we need them later

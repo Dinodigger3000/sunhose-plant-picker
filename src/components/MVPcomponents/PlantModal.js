@@ -88,19 +88,17 @@ function PlantModal({
 
           <div className={styles.body}>
             <div className={styles.scientificName}>
-              {plant.data.scientific_name}{" "}
-              <span className={styles.officialName}>({plant.data.title})</span>
-            </div>
-
-            <p className={styles.description}>{plant.data.description}</p>
-            <div className={styles.funFact}>
-              <strong>Fun Fact: </strong>
-              {plant.data.fun_fact}
+              <p className={styles.description}>{plant.data.description}</p>
             </div>
 
             <div className={styles.careInstructions}>
               <strong>Care Instructions: </strong>
               {plant.data.instructions}
+            </div> 
+            
+            <div className={styles.funFact}>
+              <strong>Fun Fact: </strong>
+              {plant.data.fun_fact}
             </div>
 
             <p className={styles.source}>
