@@ -36,8 +36,9 @@ export function Room(props) {
   }, []);
 
   // render room model
-  const { sunAngle: sunRotation } = useSpring({
-    sunAngle: profile.lightLevel > 3 ? [0, 0, 0] : [0, 0.1, 0],
+  const { sunRotation, bowlPosition } = useSpring({
+    sunRotation: profile.lightLevel > 3 ? [0, 0, 0] : [0, 0.1, 0],
+    bowlPosition: profile.petSafe ? [-1.958, -1.284, -5.231] : [-1.958, -2.284, -5.231],
   });
   return (
     <group {...props} dispose={null}>
@@ -113,6 +114,25 @@ export function Room(props) {
           position={[-1, -1.247, -5]}
         />
       </group>
+      {/* pet bowls */}
+      <animated.group position={bowlPosition}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Bowl_1.geometry}
+          material={materials.color2}
+        />
+        <mesh
+          geometry={nodes.Bowl_1.geometry}
+          material={materials.outline}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Bowl_2.geometry}
+          material={materials.base}
+        />
+      </animated.group>
       {/* plant pot with rotate animation */}
       <Pot profile={props.profile} materials={materials} position={[-1, -0.87, -5]}/>
       <animated.group //sun with rotate animation
