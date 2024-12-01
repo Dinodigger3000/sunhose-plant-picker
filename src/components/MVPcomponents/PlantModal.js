@@ -101,6 +101,28 @@ function PlantModal({
               {plant.data.fun_fact}
             </div>
 
+            <p>
+              <strong>Matches: </strong>
+              <ul>
+                <li>{plant.data.match_text[0]}</li>
+                <li>{plant.data.match_text[1]}</li>
+                <li>{plant.data.match_text[2]}</li>
+                <li>{plant.data.match_text[3]}</li>
+                <li>{plant.data.match_text[4]}</li>
+              </ul>
+            </p>
+
+            <p>
+              <strong>Mismatches: </strong>
+              <ul>
+                <li>{plant.data.mismatch_text[0]}</li>
+                <li>{plant.data.mismatch_text[1]}</li>
+                <li>{plant.data.mismatch_text[2]}</li>
+                <li>{plant.data.mismatch_text[3]}</li>
+                <li>{plant.data.mismatch_text[4]}</li>
+              </ul>
+            </p>
+
             <p className={styles.source}>
               Source:{" "}
               <a href={plant.data.link} target="_blank" rel="noreferrer">
