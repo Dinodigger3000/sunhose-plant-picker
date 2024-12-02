@@ -72,87 +72,76 @@ export async function updatePlantMatches(userProfile, plantProfiles, callBack) {
 const calculateMatch = (plantData, profile) => {
   var matchPercentage = 0;
   //make sure these weights below add to 100
-  var weights = [51,24,12,8,5];
+  var weights = [51, 24, 12, 8, 5];
   plantData.match_text = [];
   plantData.mismatch_text = [];
 
-  //light level
 
-  var profile_light_text;
-
-  if (profile.lightLevel === 1) {
-    profile_light_text = "low";
-  } else if (profile.lightLevel === 2) {
-    profile_light_text = "medium";
-  } else if (profile.lightLevel === 3) {
-    profile_light_text = "high"; 
-  } else if (profile.lightLevel === 4) {
-    profile_light_text = "very high";
-  }
-
-  if (plantData.data.light_level.localeCompare(profile_light_text) === 0) {
-    matchPercentage = matchPercentage + weights[profile.priorities.indexOf("light")];
-    plantData.match_text.push("🌞 The recommended light level for this plant is " + profile_light_text + " light, which is what you selected.");
-  } else {
-    plantData.mismatch_text.push("🌞 The recommended light level for this plant is " + plantData.data.light_level + " light and you described your space as " + profile_light_text + " light.");
-  }
-
-  //pet safe
-  
-  if (profile.petSafe) {
-    if (plantData.data.pet_safe) {
-      matchPercentage = matchPercentage + weights[profile.priorities.indexOf("pets")];
-      plantData.match_text.push("🐾 This plant is pet safe!")
+  for (let i = 0; i < 5; i++) {
+    if (profile.priorities[i].localeCompare("light") === 0) {
+      var profile_light_text;
+      if (profile.lightLevel === 1) {
+        profile_light_text = "low";
+      } else if (profile.lightLevel === 2) {
+        profile_light_text = "medium";
+      } else if (profile.lightLevel === 3) {
+        profile_light_text = "high";
+      } else if (profile.lightLevel === 4) {
+        profile_light_text = "very high";
+      }
+      if (plantData.data.light_level.localeCompare(profile_light_text) === 0) {
+        matchPercentage = matchPercentage + weights[profile.priorities.indexOf("light")];
+        plantData.match_text.push("🌞 The recommended light level for this plant is " + profile_light_text + " light, which is what you selected.");
+      } else {
+        plantData.mismatch_text.push("🌞 The recommended light level for this plant is " + plantData.data.light_level + " light and you described your space as " + profile_light_text + " light.");
+      }
+    } else if (profile.priorities[i].localeCompare("pets") === 0) {
+      if (profile.petSafe) {
+        if (plantData.data.pet_safe) {
+          matchPercentage = matchPercentage + weights[profile.priorities.indexOf("pets")];
+          plantData.match_text.push("🐾 This plant is pet safe!")
+        } else {
+          plantData.mismatch_text.push("🐾 This plant is not pet safe!")
+        }
+      } else {
+        matchPercentage = matchPercentage + weights[profile.priorities.indexOf("pets")];
+        plantData.match_text.push("🐾 This plant is not pet safe, but you indicated that is something you were not worried about.")
+      }
+    } else if (profile.priorities[i].localeCompare("budget") === 0) {
+      if (plantData.data.avg_cost <= profile.budget) {
+        matchPercentage = matchPercentage + weights[profile.priorities.indexOf("budget")];
+        plantData.match_text.push("💰 The average cost of this plant is $" + plantData.data.avg_cost + ", which is within your $" + profile.budget + " budget.");
+      } else {
+        plantData.mismatch_text.push("💰 The average cost of this plant is $" + plantData.data.avg_cost + ", which is outside of your $" + profile.budget + " budget.")
+      }
+    } else if (profile.priorities[i].localeCompare("care") === 0) {
+      var plant_care_text;
+      if (plantData.data.care_level === 1) {
+        plant_care_text = "low";
+      } else if (plantData.data.care_level === 2) {
+        plant_care_text = "medium";
+      } else if (plantData.data.care_level === 3) {
+        plant_care_text = "high";
+      }
+      if (plantData.data.care_level <= profile.careLevel) {
+        matchPercentage = matchPercentage + weights[profile.priorities.indexOf("care")];
+        plantData.match_text.push("💗 This plant requires a " + plant_care_text + " level of care.")
+      } else {
+        plantData.mismatch_text.push("💗 This plant requires a " + plant_care_text + " level of care.")
+      }
     } else {
-      plantData.mismatch_text.push("🐾 This plant is not pet safe!")
+      if (profile.minTemp >= plantData.data.min_temp) { //if minimum house temperature is higher than the minimum plant temperature
+        if (profile.maxTemp <= plantData.data.max_temp) { //if maximum house temperature is less than the maximum plant temperature
+          matchPercentage = matchPercentage + weights[profile.priorities.indexOf("temp")];
+          plantData.match_text.push("🌡 The plant's recommended growing temperatures are within your indicated range.")
+        } else {
+          plantData.mismatch_text.push("🌡 The plant's recommended growing temperatures are outside of your indicated range.")
+        }
+      } else {
+        plantData.mismatch_text.push("🌡 The plant's recommended growing temperatures are outside of your indicated range.")
+      }
     }
-  } else {
-    matchPercentage = matchPercentage + weights[profile.priorities.indexOf("pets")];
-    plantData.match_text.push("🐾 This plant is not pet safe, but you indicated that is something you were not worried about.")
   }
-
-  //budget
-
-  if (plantData.data.avg_cost <= profile.budget) {
-    matchPercentage = matchPercentage + weights[profile.priorities.indexOf("budget")];
-    plantData.match_text.push("💰 The average cost of this plant is $" + plantData.data.avg_cost + ", which is within your $" + profile.budget + " budget.");
-  } else {
-    plantData.mismatch_text.push("💰 The average cost of this plant is $" + plantData.data.avg_cost + ", which is outside of your $" + profile.budget + " budget.")
-  }
-
-  //care level
-
-  var plant_care_text;
-
-  if (plantData.data.care_level === 1) {
-    plant_care_text = "low";
-  } else if (plantData.data.care_level === 2) {
-    plant_care_text = "medium";
-  } else if (plantData.data.care_level === 3) {
-    plant_care_text = "high"; 
-  }
-
-  if (plantData.data.care_level <= profile.careLevel) {
-    matchPercentage = matchPercentage + weights[profile.priorities.indexOf("care")];
-    plantData.match_text.push("💗 This plant requires a " + plant_care_text + " level of care.")
-  } else {
-    plantData.mismatch_text.push("💗 This plant requires a " + plant_care_text + " level of care.")
-  }
-
-  //temp in range
-
-  if (profile.minTemp >= plantData.data.min_temp) { //if minimum house temperature is higher than the minimum plant temperature
-    
-    if (profile.maxTemp <= plantData.data.max_temp) { //if maximum house temperature is less than the maximum plant temperature
-      matchPercentage = matchPercentage + weights[profile.priorities.indexOf("temp")];
-      plantData.match_text.push("🌡 The plant's recommended growing temperatures are within your indicated range.")
-    } else {
-      plantData.mismatch_text.push("🌡 The plant's recommended growing temperatures are outside of your indicated range.")
-    }
-  } else {
-    plantData.mismatch_text.push("🌡 The plant's recommended growing temperatures are outside of your indicated range.")
-  }
-
   return matchPercentage;
 };
 
