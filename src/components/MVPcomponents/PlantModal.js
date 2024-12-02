@@ -104,22 +104,18 @@ function PlantModal({
             <p>
               <strong>Matches: </strong>
               <ul>
-                <li>{plant.data.match_text[0]}</li>
-                <li>{plant.data.match_text[1]}</li>
-                <li>{plant.data.match_text[2]}</li>
-                <li>{plant.data.match_text[3]}</li>
-                <li>{plant.data.match_text[4]}</li>
+                {plant.data.match_text.map((match, index) => (
+                  <li key={index}>{match}</li>
+                ))}
               </ul>
             </p>
 
             <p>
               <strong>Mismatches: </strong>
               <ul>
-                <li>{plant.data.mismatch_text[0]}</li>
-                <li>{plant.data.mismatch_text[1]}</li>
-                <li>{plant.data.mismatch_text[2]}</li>
-                <li>{plant.data.mismatch_text[3]}</li>
-                <li>{plant.data.mismatch_text[4]}</li>
+                {plant.data.mismatch_text.map((mismatch, index) => (
+                  <li key={index}>{mismatch}</li>
+                ))}
               </ul>
             </p>
 
@@ -128,6 +124,8 @@ function PlantModal({
               <a href={plant.data.link} target="_blank" rel="noreferrer">
                 The Spruce
               </a>
+                
+              
             </p>
           </div>
 
