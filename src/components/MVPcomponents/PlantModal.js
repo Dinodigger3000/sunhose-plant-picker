@@ -105,7 +105,7 @@ function PlantModal({
               <strong>Matches: </strong>
               <ul>
                 {plant.data.match_text.map((match, index) => (
-                  <li key={index}>{match}</li>
+                  <p key={index}>{match}</p>
                 ))}
               </ul>
             </p>
@@ -114,7 +114,7 @@ function PlantModal({
               <strong>Mismatches: </strong>
               <ul>
                 {plant.data.mismatch_text.map((mismatch, index) => (
-                  <li key={index}>{mismatch}</li>
+                  <p key={index}>{mismatch}</p>
                 ))}
               </ul>
             </p>
