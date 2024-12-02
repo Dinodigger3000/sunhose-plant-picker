@@ -71,6 +71,8 @@ export async function updatePlantMatches(userProfile, plantProfiles, callBack) {
  */
 const calculateMatch = (plantData, profile) => {
   var matchPercentage = 0;
+  plantData.match_text = [];
+  plantData.mismatch_text = [];
 
   //light level
 
