@@ -61,9 +61,23 @@ const WelcomeCard = () => {
   const aboutUsModalContent = (
     <>
       <p>
-        <strong>some stuff</strong>
+        <strong>This project was completed as a part of Software Development, a course taught at Macalester College by Joslenne Peña. SUNHOSE was created by (from left to right):</strong>
       </p>
-      <p>about who we are?</p>
+      <p>
+        <strong>Alana Nadolski</strong>
+            <br></br>Alana is a Statistics and Computer Science double major who is making this project as a Junior. When she’s not busy with academics, she’s also a captain of the water polo team!
+            <br></br><i>Roles:</i> Plant Expert, Project Manager, Resident Mathematician
+      </p>
+      <p>
+        <strong>Nelson Mondale</strong>
+            <br></br>Nelson is a current senior with a Media and Cultural Studies major and Studio Art and Computer Science minors. He loves the Mississippi River, veggie hot dogs, and drawing aliens. 
+            <br></br><i>Roles:</i> UI Design + Implementation, Graphic Designer, Acronym Expert
+      </p>
+      <p>
+        <strong>Royce Johnson</strong>
+            <br></br>Royce is a sophomore Computer Science major. He is nowhere close to being an origami expert, but you can find him folding paper regularly. 
+            <br></br><i>Roles:</i> 3D Designer, System Administrator, Conflict Resolution Supervisor
+      </p>
     </>
   );
 
@@ -105,8 +119,8 @@ const WelcomeCard = () => {
       <Modal
         show={showAboutModal}
         onClose={() => setShowAboutModal(false)}
-        title="About the creators of SUNHOSE"
-        subheading=" "
+        title="About SUNHOSE and it's creators"
+        subheading="SUNHOSE is actually an acronym! It stands for: Sassy Unique New Houseplant Organizational System, Eyay!"
       >
         {aboutUsModalContent}
       </Modal>
