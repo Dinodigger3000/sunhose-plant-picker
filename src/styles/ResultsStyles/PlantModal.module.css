@@ -202,3 +202,84 @@
   .source a:hover {
     color: var(--color2);
   }
+  
+  .matchesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1.5rem 0;
+    border: 1.5px solid var(--base);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .matchColumn, .mismatchColumn {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+  }
+  
+  .mismatchColumn {
+    border-left: 1.5px solid var(--base);
+  }
+  
+  .matchColumnHeader, .mismatchColumnHeader {
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 1.5px solid var(--base);
+  }
+  
+  .matchColumnHeader {
+    color: #055E31;
+    background: #EFF3CC;
+  }
+  
+  .mismatchColumnHeader {
+    color: #800000;
+    background: #FFE6E6;
+  }
+  
+  .matchList {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+    overflow-y: auto;
+  }
+  
+  .matchItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+  
+  .matchItem:last-child {
+    margin-bottom: 0;
+  }
+  
+  .emojiCircle {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid var(--base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .matchColumn .emojiCircle {
+    background: #EFF3CC;
+    border-color: #055E31;
+  }
+  
+  .mismatchColumn .emojiCircle {
+    background: #FFE6E6;
+    border-color: #800000;
+  }
+  
+  .matchItemText {
+    flex-grow: 1;
+  }

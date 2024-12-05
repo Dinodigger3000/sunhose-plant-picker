@@ -55,6 +55,7 @@ const ProfileSummary = ({ profile, setCurrentPage, changePage }) => {
             className={`${styles.profileItem} ${styles.clickable}`}
             onClick={() => handleItemClick(1)} // back to light level page
           >
+            <span className={styles.editIcon}>✎</span>
             <span className={styles.itemTitle}>Light Level:</span>
             <span className={styles.itemValue}>
               {getLightLevelText(profile.lightLevel)}
@@ -65,6 +66,7 @@ const ProfileSummary = ({ profile, setCurrentPage, changePage }) => {
             className={`${styles.profileItem} ${styles.clickable}`}
             onClick={() => handleItemClick(2)} // back to care level page
           >
+            <span className={styles.editIcon}>✎</span>
             <span className={styles.itemTitle}>Care Level:</span>
             <span className={styles.itemValue}>
               {getCareLevelText(profile.careLevel)}
@@ -75,6 +77,7 @@ const ProfileSummary = ({ profile, setCurrentPage, changePage }) => {
             className={`${styles.profileItem} ${styles.clickable}`}
             onClick={() => handleItemClick(3)} // back to budget page
           >
+            <span className={styles.editIcon}>✎</span>
             <span className={styles.itemTitle}>Budget:</span>
             <span className={styles.itemValue}>${profile.budget}</span>
           </div>
@@ -83,6 +86,7 @@ const ProfileSummary = ({ profile, setCurrentPage, changePage }) => {
             className={`${styles.profileItem} ${styles.clickable}`}
             onClick={() => handleItemClick(4)} // back to pet safe page
           >
+            <span className={styles.editIcon}>✎</span>
             <span className={styles.itemTitle}>Pet Safe Required:</span>
             <span className={styles.itemValue}>
               {profile.petSafe ? "Yes" : "No"}
@@ -95,6 +99,7 @@ const ProfileSummary = ({ profile, setCurrentPage, changePage }) => {
             className={`${styles.profileItem} ${styles.clickable}`}
             onClick={() => handleItemClick(5)} // back to temperature page
           >
+            <span className={styles.editIcon}>✎</span>
             <span className={styles.itemTitle}>Temperature Range:</span>
             <span className={styles.itemValue}>
               {profile.minTemp}°F - {profile.maxTemp}°F
@@ -105,6 +110,7 @@ const ProfileSummary = ({ profile, setCurrentPage, changePage }) => {
             className={`${styles.profileItem} ${styles.clickable}`}
             onClick={() => handleItemClick(6)} // back to priority ranking page
           >
+            <span className={styles.editIcon}>✎</span>
             <span className={styles.itemTitle}>Priority Order:</span>
             <ol className={styles.priorityList}>
               {formatPriorities(profile.priorities).map((priority, index) => (

@@ -101,8 +101,8 @@ const TemperatureSlider = ({ profile, handleChange }) => {
   };
 
   useEffect(() => {
-    const minProgress = ((range.min - 30) / 70) * 100;
-    const maxProgress = ((range.max - 30) / 70) * 100;
+    const minProgress = ((range.min - 45) / 40) * 100;
+    const maxProgress = ((range.max - 45) / 40) * 100;
     document.documentElement.style.setProperty(
       "--min-progress",
       `${minProgress}%`
@@ -127,16 +127,16 @@ const TemperatureSlider = ({ profile, handleChange }) => {
             <div className={styles.progressBar} />
             <input
               type="range"
-              min="30"
-              max="100"
+              min="45"
+              max="85"
               value={range.min}
               onChange={handleRangeChange("min")}
               className={`${styles.tempSlider} ${styles.minSlider}`}
             />
             <input
               type="range"
-              min="30"
-              max="100"
+              min="45"
+              max="85"
               value={range.max}
               onChange={handleRangeChange("max")}
               className={`${styles.tempSlider} ${styles.maxSlider}`}
@@ -144,9 +144,9 @@ const TemperatureSlider = ({ profile, handleChange }) => {
           </div>
         </div>
         <div className={styles.sliderLabels}>
-          <span>30°F</span>
+          <span>45°F</span>
           <span>65°F</span>
-          <span>100°F</span>
+          <span>85°F</span>
         </div>
       </div>
       <div className={styles.edgeMarkerRight} />

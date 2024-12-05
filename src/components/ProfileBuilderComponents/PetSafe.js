@@ -81,10 +81,7 @@ const DescriptionBox = () => {
 };
 
 const PetSafetyQuestion = ({ profile, handleChange }) => {
-  const [hasSelected, setHasSelected] = useState(false);
-
   const handleClick = (value) => {
-    setHasSelected(true);
     handleChange({
       target: {
         name: "petSafe",
@@ -100,7 +97,7 @@ const PetSafetyQuestion = ({ profile, handleChange }) => {
         <div className={styles.buttonContainer}>
           <button
             className={`${styles.choiceButton} ${
-              hasSelected && profile?.petSafe === true ? styles.selected : ""
+              profile?.petSafe === true ? styles.selected : ""
             }`}
             onClick={() => handleClick(true)}
           >
@@ -108,7 +105,9 @@ const PetSafetyQuestion = ({ profile, handleChange }) => {
           </button>
           <button
             className={`${styles.choiceButton} ${
-              hasSelected && profile?.petSafe === false ? styles.selected : ""
+              profile?.petSafe === false && profile?.petSafe !== undefined
+                ? styles.selected
+                : ""
             }`}
             onClick={() => handleClick(false)}
           >

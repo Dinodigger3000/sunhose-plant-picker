@@ -39,7 +39,7 @@ const HeaderSection = () => (
 );
 
 const BudgetSlider = ({ profile, handleChange }) => {
-  const [selectedValue, setSelectedValue] = useState(profile?.budget || 50);
+  const [selectedValue, setSelectedValue] = useState(profile?.budget || 3);
 
   useEffect(() => {
     if (profile?.budget !== undefined) {
@@ -48,7 +48,7 @@ const BudgetSlider = ({ profile, handleChange }) => {
   }, [profile?.budget]);
 
   const handleSliderChange = (e) => {
-    const value = parseInt(e.target.value);
+    const value = Math.max(3, parseInt(e.target.value));
     setSelectedValue(value);
     handleChange({
       target: {

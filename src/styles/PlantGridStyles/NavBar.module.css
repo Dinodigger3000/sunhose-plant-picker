@@ -18,9 +18,11 @@
     font-size: 4rem;
     line-height: 1;
     margin-bottom: -0.5rem;
+    margin-top: 2rem;
+    padding-left: 2rem;
     -webkit-text-stroke: 1.5px var(--base);
     text-stroke: 1.5px var(--base);
-    text-align: center;
+    text-align: left;
   }
   
 .buttonContainer {
@@ -30,7 +32,7 @@
     margin-top: auto;
     width: 100%;
     padding: 1rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 1.5rem;
   }
   
 .navButton {

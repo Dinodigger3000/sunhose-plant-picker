@@ -91,6 +91,7 @@ const RankingSection = ({ profile, handleChange }) => {
                     >
                       <div className={styles.rankNumber}>{index + 1}</div>
                       <div className={styles.rankContent}>{item.content}</div>
+                      <div className={styles.rankDot}>⸬</div>
                     </div>
                   )}
                 </Draggable>

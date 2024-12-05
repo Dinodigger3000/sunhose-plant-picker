@@ -9,7 +9,6 @@ function PlantModal({
   currentIndex,
   onNextPlant,
 }) {
-
   if (!plant || !show) return null;
 
   const handleNext = () => {
@@ -94,38 +93,51 @@ function PlantModal({
             <div className={styles.careInstructions}>
               <strong>Care Instructions: </strong>
               {plant.data.instructions}
-            </div> 
-            
+            </div>
+
             <div className={styles.funFact}>
               <strong>Fun Fact: </strong>
               {plant.data.fun_fact}
             </div>
 
-            <p>
-              <strong>Matches: </strong>
-              <ul>
-                {plant.data.match_text.map((match, index) => (
-                  <p key={index}>{match}</p>
-                ))}
-              </ul>
-            </p>
-
-            <p>
-              <strong>Mismatches: </strong>
-              <ul>
-                {plant.data.mismatch_text.map((mismatch, index) => (
-                  <p key={index}>{mismatch}</p>
-                ))}
-              </ul>
-            </p>
+            <div className={styles.matchesContainer}>
+              <div className={styles.matchColumn}>
+                <h3 className={styles.matchColumnHeader}>Matches</h3>
+                <ul className={styles.matchList}>
+                  {plant.data.match_text.map((match, index) => (
+                    <li key={index} className={styles.matchItem}>
+                      <div className={styles.emojiCircle}>
+                        {match.split(" ")[0]}
+                      </div>
+                      <span className={styles.matchItemText}>
+                        {match.split(" ").slice(1).join(" ")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.mismatchColumn}>
+                <h3 className={styles.mismatchColumnHeader}>Mismatches</h3>
+                <ul className={styles.matchList}>
+                  {plant.data.mismatch_text.map((mismatch, index) => (
+                    <li key={index} className={styles.matchItem}>
+                      <div className={styles.emojiCircle}>
+                        {mismatch.split(" ")[0]}
+                      </div>
+                      <span className={styles.matchItemText}>
+                        {mismatch.split(" ").slice(1).join(" ")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
             <p className={styles.source}>
               Source:{" "}
               <a href={plant.data.link} target="_blank" rel="noreferrer">
                 The Spruce
               </a>
-                
-              
             </p>
           </div>
 

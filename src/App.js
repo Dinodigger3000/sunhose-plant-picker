@@ -17,7 +17,7 @@ function App() {
     lightLevel: 3,
     petSafe: false,
     careLevel: 1,
-    budget: 0,
+    budget: 3,
     maxTemp: 80,
     minTemp: 65,
     priorities: ["light", "care", "budget", "pets", "temp"],
@@ -65,7 +65,11 @@ function App() {
       )}{" "}
       {/* profile builder */}
       {currentPage === 1 && (
-        <Results plantScores={plantScores} changePage={changePage} />
+        <Results
+          plantScores={plantScores}
+          changePage={changePage}
+          resetProfile={resetProfile}
+        />
       )}{" "}
       {/* results page */}
       {currentPage === 2 && (

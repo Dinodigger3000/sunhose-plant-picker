@@ -13,12 +13,14 @@
 
 .modalContent {
   background: white;
+  font-size: 1.3rem;
+  line-height: 1.5;
   border: 1.5px solid var(--base);
   border-radius: 8px;
   max-width: 70%;
-  min-width: 70%;
+  min-width: 500px;
   max-height: 70%;
-  min-height: 70%;
+  min-height: 500px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -39,7 +41,7 @@
 }
 
 .modalTitle {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--base);
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
@@ -49,6 +51,7 @@
 .closeButton {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
+  font-size: 1.3rem;
   background: var(--color4);
   border: 1.5px solid var(--base);
   color: var(--base);
@@ -65,7 +68,7 @@
 }
 
 .modalBody {
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 1rem 3rem 3rem 3rem;
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
   overflow-y: auto;
