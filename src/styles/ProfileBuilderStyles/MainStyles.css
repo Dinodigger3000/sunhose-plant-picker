@@ -124,3 +124,11 @@ a:active {
   color: var(--color2);
   font-weight: bold;
 }
+
+.descriptionText {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: var(--font-size-body);
+  color: var(--base);
+  padding-right: 1rem;
+  text-align: left;
+}

@@ -45,6 +45,7 @@
 
 .lightInfoDescription {
   font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: var(--font-size-body);
   color: var(--base);
   padding-right: 1rem;
   text-align: left;

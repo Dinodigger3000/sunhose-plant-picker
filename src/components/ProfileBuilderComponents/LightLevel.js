@@ -48,10 +48,8 @@ const InfoCard = () => {
           </span>
         </div>
         <div className={styles.lightInfoRightColumn}>
-          <p className={styles.lightInfoDescription}>
-            Choose, on average, how much natural sunlight your space recieves.
-            Low light implies a space that recieves no natural light, while Very
-            High Light spaces get sunlight almost all day.
+          <p className={"descriptionText"}>
+            Choose, on average, how much direct sunlight your space recieves.
           </p>
           <button className="learn-more-btn" onClick={() => setShowModal(true)}>
             Learn More
@@ -94,7 +92,7 @@ const ContentSection = ({ profile, handleChange }) => (
 
 const LightLevelSlider = ({ profile, handleChange }) => {
   const [selectedLevel, setSelectedLevel] = useState(profile?.lightLevel || 0);
-  const levels = ["Low Light", "Medium Light", "High Light", "Very High Light"];
+  const levels = ["Low (0hrs)", "Medium (1-2hrs) ", "High (2-6hrs)", "Very High (6+hrs)"];
 
   const handleSliderChange = (e) => {
     const value = parseInt(e.target.value);

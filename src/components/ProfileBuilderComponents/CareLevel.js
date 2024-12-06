@@ -50,10 +50,9 @@ const DescriptionBox = () => {
         <div className="accent-dot" />
         <div className="accent-dot" />
       </div>
-      <p className={styles.descriptionText}>
+      <p className={"descriptionText"}>
         Choose how much time and effort you're willing to dedicate to plant
-        care. Low level plants are more forgiving, but high level plants require
-        very specific care to thrive.
+        care. Low level plants are forgiving, while high level plants need specific care.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More
