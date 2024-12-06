@@ -44,17 +44,14 @@ const WelcomeCard = () => {
       <p>
         <strong>Instructions:</strong>
       </p>
-      <p>
-        As you navigate through the pages, make the selections that apply best
-        to you and the space where you want to keep your houseplant. For more
-        information on each category, you can click "Learn More" to see how we
-        define each thing. Once you make it to the end, you can review your
-        profile and will have the option to go back and change anything you need
-        to. When you finalize all of your options, we will recommend your best
-        three plant matches in our database with detailed plant descriptions and
-        links to care instructions. You will have the option to view all plants
-        in our database and how well they match you as well.
-      </p>
+      <ol>
+        <li>Select the options that best describe the space where you plan to keep your houseplant.</li>
+          <ul><li>Click the "Learn More" button for more information if you're confused.</li></ul>
+        <li>Review and finalize your profile.</li>
+          <ul><li>If necessary, go back and change anything you missed.</li></ul>
+        <li>View your top three plant matches!</li>
+        <li>From here, you can view all matches, change your profile, or start over.</li>
+      </ol>
     </>
   );
 
