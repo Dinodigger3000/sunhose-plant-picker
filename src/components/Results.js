@@ -42,11 +42,11 @@ const Results = ({ plantScores, changePage, resetProfile }) => {
   useEffect(() => {
     const slideTimer = setTimeout(() => {
       setSlideUp(true);
-    }, 5000);
+    }, 1000);
 
     const removeTimer = setTimeout(() => {
       setLoading(false);
-    }, 6000);
+    }, 2000);
 
     return () => {
       clearTimeout(slideTimer);
