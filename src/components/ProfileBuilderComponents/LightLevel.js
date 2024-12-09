@@ -18,19 +18,19 @@ const InfoCard = () => {
       <p>
         <strong>Medium Light:</strong> There is a readable amount of daylight in
         the area, but it does not recieve any direct sunlight. North and South
-        facing windows are usually in this category, depending on how much light
-        they recieve.
+        facing windows are usually in this category.
       </p>
       <p>
-        <strong>High Light:</strong> The area recieves at least two hours of
-        direct sunlight daily. East and West facing windows typically are within
+        <strong>High Light:</strong> This describes areas that recieve sun from one direction, but directly and unblocked. East and West facing windows typically are within
         this category.
       </p>
       <p>
-        <strong>Very High Light:</strong> The area gets more than six hours of
-        direct sunlight every day. This usually fits areas such as corners with
-        windows on multiple sides or sunrooms.
+        <strong>Very High Light:</strong> This usually describes areas such as corners with
+        windows on multiple sides or sunrooms, as it is hard to get this much sun from one direction only. 
       </p>
+      <p><i>Note:</i> Some plants require an exact match for light, while others do not. Our matching algorithm requires an exact match, 
+      so if you get a plant you really like that you have a light mismatch on, we recommend clicking the link at the bottom of the plant's description
+      and checking if it actually works for you. </p>
     </>
   );
 
@@ -61,7 +61,7 @@ const InfoCard = () => {
         show={showModal}
         onClose={() => setShowModal(false)}
         title="Choosing a Light Level for Your Space"
-        subheading="Each plant has a light level preference, which should match the light level of your space. The light level of your space is the average amount of sunlight it receives throughout the day, and can be categorized into four levels:"
+        subheading="If hours of light per day is not enough to pick your light level, these descriptions may help:"
       >
         {lightLevelModalContent}
       </Modal>

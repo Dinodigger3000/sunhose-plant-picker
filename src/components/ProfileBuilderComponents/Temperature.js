@@ -11,17 +11,15 @@ const InfoBox = ({ showModal, setShowModal }) => {
   const temperatureModalContent = (
     <>
       <p>
-        To have the best estimate of what plants suit your space, guess the
-        range of temperatures you have throughout the year. If you have central
-        air and heating, this is easy as you can choose what your thermostat is
-        set at. Otherwise, make your best guess based on your experience in your
+        If you have central air and heating, choose what your thermostat is
+        set at throughout the year. Otherwise, make your best guess based on your experience in your
         space.
       </p>
 
       <p>
         Please note that temperature range does not need to be exact to find a
-        good plant selection, any guess estimate is helpful in building your
-        plant profile. A broad range is totally okay!
+        good plant selection, any estimate is helpful in building your
+        plant profile!
       </p>
     </>
   );
@@ -50,7 +48,7 @@ const InfoBox = ({ showModal, setShowModal }) => {
         show={showModal}
         onClose={() => setShowModal(false)}
         title="Understanding Temperature Ranges"
-        subheading="Houseplants are sensitive to the temperature of their environment, so it is important to estimate the lower and upper temperature ranges of your space so that plants can stay happy and healthy."
+        subheading="Many houseplants are sensitive to the temperature of their environment, and it is important they are kept in the right space so that the plants can stay happy and healthy."
       >
         {temperatureModalContent}
       </Modal>

@@ -123,7 +123,7 @@ const calculateMatch = (plantData, profile) => {
       } else if (plantData.data.care_level === 3) {
         plant_care_text = "high";
       }
-      if (plantData.data.care_level <= profile.careLevel) {
+      if (plantData.data.care_level <= profile.careLevel+1) {
         matchPercentage = matchPercentage + weights[profile.priorities.indexOf("care")];
         plantData.match_text.push("💗 This plant requires a " + plant_care_text + " level of care.")
       } else {

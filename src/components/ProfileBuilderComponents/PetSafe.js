@@ -26,13 +26,8 @@ const DescriptionBox = () => {
   const petSafeModalContent = (
     <>
       <p>
-        <strong>Toxic Plants:</strong> Some common houseplants can be harmful if
-        ingested by pets. Symptoms can range from mild (upset stomach) to severe
-        (organ failure).
-      </p>
-      <p>
-        Our plant picking algorithm considers pet safety mostly with cats and
-        dogs in mind. If you own another pet, we reccomend you seek out
+        Our plant picking algorithm considers pet safety with cats and
+        dogs in mind. If you own a different pet, we recommend you seek out
         the&nbsp;
         <a
           href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants"
@@ -70,7 +65,7 @@ const DescriptionBox = () => {
         show={showModal}
         onClose={() => setShowModal(false)}
         title="Pet Safety and Plants"
-        subheading="When choosing plants for a home with pets, it's important to consider their safety, as some plants can be toxic to pets if eaten."
+        subheading="Some common houseplants can be harmful if ingested by pets. Symptoms can range from mild (upset stomach) to severe (organ failure)."
       >
         {petSafeModalContent}
       </Modal>
