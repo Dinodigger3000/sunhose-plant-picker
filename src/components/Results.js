@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/ResultsStyles/Results.module.css";
 import PlantModal from "./MVPcomponents/PlantModal";
+import { setTheme } from "./ColorTheme";
 import { Display } from "./modelComponents/Display";
 
 const ResultCard = ({ plant, onClick }) => {
@@ -32,27 +33,36 @@ const ResultCard = ({ plant, onClick }) => {
   );
 };
 
-const Results = ({ plantScores, changePage, resetProfile }) => {
+const Results = ({
+  plantScores,
+  changePage,
+  resetProfile,
+  resultsPage,
+  setResultsPage,
+}) => {
   const topThreePlants = plantScores ? plantScores.slice(0, 3) : [];
   const [selectedPlant, setSelectedPlant] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(resultsPage === 0);
   const [slideUp, setSlideUp] = useState(false);
 
   useEffect(() => {
-    const slideTimer = setTimeout(() => {
-      setSlideUp(true);
-    }, 1000);
+    if (resultsPage === 0) {
+      const slideTimer = setTimeout(() => {
+        setSlideUp(true);
+      }, 2500);
 
-    const removeTimer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+      const removeTimer = setTimeout(() => {
+        setLoading(false);
+        setResultsPage(1);
+      }, 3500);
 
-    return () => {
-      clearTimeout(slideTimer);
-      clearTimeout(removeTimer);
-    };
-  }, []);
+      return () => {
+        clearTimeout(slideTimer);
+        clearTimeout(removeTimer);
+      };
+    }
+  }, [resultsPage, setResultsPage]);
 
   const handleCardClick = (plant) => {
     setSelectedPlant(plant);
@@ -67,6 +77,11 @@ const Results = ({ plantScores, changePage, resetProfile }) => {
   const handleNextPlant = (nextPlant) => {
     setSelectedPlant(nextPlant);
   };
+
+  useEffect(() => {
+    const baseColor = { r: 30, g: 99, b: 64 };
+    setTheme(baseColor);
+  }, []);
 
   return (
     <div className={"app-container"}>

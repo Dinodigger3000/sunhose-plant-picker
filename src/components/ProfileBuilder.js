@@ -19,6 +19,10 @@ const ProfileBuilder = ({
   changePage,
   initialPage = 0,
   initialProfile,
+  petSafePage,
+  setPetSafePage,
+  reviewPage,
+  setReviewPage,
 }) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [profile, setProfile] = useState(initialProfile);
@@ -71,6 +75,8 @@ const ProfileBuilder = ({
         onContinue: () => setCurrentPage(5),
         profile: profile,
         handleChange: handleChange,
+        petSafePage: petSafePage,
+        setPetSafePage: setPetSafePage,
       },
     },
     {
@@ -95,6 +101,8 @@ const ProfileBuilder = ({
         profile: profile,
         setCurrentPage: setCurrentPage,
         changePage: changePage,
+        reviewPage: reviewPage,
+        setReviewPage: setReviewPage,
       },
     },
   ];
@@ -104,7 +112,6 @@ const ProfileBuilder = ({
     return (
       <div className="app-container">
         <Viewport profile={profile} />
-
         <div className="layout">
           <NavigationButtons
             currentPage={currentPage}
@@ -112,6 +119,11 @@ const ProfileBuilder = ({
             setCurrentPage={setCurrentPage}
           />
           <Component {...props} />
+          <ReturnToReviewButton
+            setCurrentPage={setCurrentPage}
+            reviewPage={reviewPage}
+            currentPage={currentPage}
+          />
         </div>
       </div>
     );
@@ -136,6 +148,22 @@ const ProfileBuilder = ({
             Next Page
           </button>
         </div>
+      </div>
+    );
+  };
+
+  const ReturnToReviewButton = ({
+    setCurrentPage,
+    reviewPage,
+    currentPage,
+  }) => {
+    if (reviewPage === 0 || currentPage === 7) return null;
+
+    return (
+      <div className="return-review-container">
+        <button className="return-review-btn" onClick={() => setCurrentPage(7)}>
+          Return to Profile Review
+        </button>
       </div>
     );
   };

@@ -28,7 +28,12 @@ function App() {
   const [query, setQuery] = useState(collection(db, "plants"));
   const [plantData, setPlantData] = useState();
   const [plantScores, setPlantScores] = useState(null);
+
   const [builderPage, setBuilderPage] = useState(0);
+  const [resultsPage, setResultsPage] = useState(0);
+  const [petSafePage, setPetSafePage] = useState(0);
+
+  const [reviewPage, setReviewPage] = useState(0);
 
   useEffect(() => {
     // fetch plant data
@@ -51,6 +56,9 @@ function App() {
     setSavedProfile(defaultProfile);
     setCurrentPage(0);
     setBuilderPage(0);
+    setPetSafePage(0);
+    setResultsPage(0);
+    setReviewPage(0);
   };
 
   return (
@@ -61,6 +69,10 @@ function App() {
           changePage={changePage}
           initialPage={builderPage}
           initialProfile={savedProfile}
+          petSafePage={petSafePage}
+          setPetSafePage={setPetSafePage}
+          reviewPage={reviewPage}
+          setReviewPage={setReviewPage}
         />
       )}{" "}
       {/* profile builder */}
@@ -69,6 +81,8 @@ function App() {
           plantScores={plantScores}
           changePage={changePage}
           resetProfile={resetProfile}
+          resultsPage={resultsPage}
+          setResultsPage={setResultsPage}
         />
       )}{" "}
       {/* results page */}

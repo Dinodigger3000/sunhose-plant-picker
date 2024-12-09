@@ -127,11 +127,21 @@ const ProfileSummary = ({ profile, setCurrentPage, changePage }) => {
   );
 };
 
-const Review = ({ profile, setCurrentPage, changePage }) => {
+const Review = ({
+  profile,
+  setCurrentPage,
+  changePage,
+  reviewPage,
+  setReviewPage,
+}) => {
   useEffect(() => {
     const baseColor = { r: 34, g: 97, b: 97 };
     setTheme(baseColor);
-  }, []);
+
+    if (reviewPage === 0) {
+      setReviewPage(1);
+    }
+  }, [reviewPage, setReviewPage]);
 
   return (
     <div className={styles.reviewContent}>

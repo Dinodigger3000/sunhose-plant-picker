@@ -80,7 +80,12 @@ const DescriptionBox = () => {
   );
 };
 
-const PetSafetyQuestion = ({ profile, handleChange }) => {
+const PetSafetyQuestion = ({
+  profile,
+  handleChange,
+  petSafePage,
+  setPetSafePage,
+}) => {
   const handleClick = (value) => {
     handleChange({
       target: {
@@ -88,6 +93,7 @@ const PetSafetyQuestion = ({ profile, handleChange }) => {
         value: value,
       },
     });
+    setPetSafePage(1);
   };
 
   return (
@@ -97,7 +103,11 @@ const PetSafetyQuestion = ({ profile, handleChange }) => {
         <div className={styles.buttonContainer}>
           <button
             className={`${styles.choiceButton} ${
-              profile?.petSafe === true ? styles.selected : ""
+              petSafePage === 0
+                ? ""
+                : profile?.petSafe === true
+                ? styles.selected
+                : ""
             }`}
             onClick={() => handleClick(true)}
           >
@@ -105,7 +115,9 @@ const PetSafetyQuestion = ({ profile, handleChange }) => {
           </button>
           <button
             className={`${styles.choiceButton} ${
-              profile?.petSafe === false && profile?.petSafe !== undefined
+              petSafePage === 0
+                ? ""
+                : profile?.petSafe === false && profile?.petSafe !== undefined
                 ? styles.selected
                 : ""
             }`}
@@ -134,14 +146,24 @@ const HeaderSection = () => (
   </div>
 );
 
-const ContentSection = ({ profile, handleChange }) => (
+const ContentSection = ({
+  profile,
+  handleChange,
+  petSafePage,
+  setPetSafePage,
+}) => (
   <div className={styles.petSafeContent}>
-    <PetSafetyQuestion profile={profile} handleChange={handleChange} />
+    <PetSafetyQuestion
+      profile={profile}
+      handleChange={handleChange}
+      petSafePage={petSafePage}
+      setPetSafePage={setPetSafePage}
+    />
     <DogBadge />
   </div>
 );
 
-const PetSafe = ({ profile, handleChange }) => {
+const PetSafe = ({ profile, handleChange, petSafePage, setPetSafePage }) => {
   useEffect(() => {
     const baseColor = { r: 143, g: 88, b: 5 };
     setTheme(baseColor);
@@ -150,7 +172,12 @@ const PetSafe = ({ profile, handleChange }) => {
   return (
     <>
       <HeaderSection />
-      <ContentSection profile={profile} handleChange={handleChange} />
+      <ContentSection
+        profile={profile}
+        handleChange={handleChange}
+        petSafePage={petSafePage}
+        setPetSafePage={setPetSafePage}
+      />
     </>
   );
 };

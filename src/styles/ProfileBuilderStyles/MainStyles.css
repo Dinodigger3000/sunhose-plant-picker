@@ -132,3 +132,25 @@ a:active {
   padding-right: 1rem;
   text-align: left;
 }
+.return-review-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.return-review-btn {
+  background: var(--color3);
+  font-weight: bold;
+  color: var(--base);
+  border: 1.5px solid var(--base);
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.return-review-btn:hover {
+  background: var(--color2);
+}

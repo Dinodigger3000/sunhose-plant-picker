@@ -153,10 +153,6 @@
 
 .profileItem:hover .editIcon {
   font-weight: bold;
-  text-decoration: underline;
-  text-decoration-thickness: 0.25px;
-  text-decoration-color: var(--base);
-  text-underline-offset: 0.2rem;
 }
 
 .profileItem:hover .itemTitle {
