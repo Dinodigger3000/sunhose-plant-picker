@@ -60,10 +60,8 @@ const DescriptionBox = () => {
         <div className="accent-dot" />
         <div className="accent-dot" />
       </div>
-      <p className={styles.descriptionText}>
-        Some houseplants can be toxic to pets if eaten. If you have a pet that
-        you are worried about, make sure to indicate that here for better plant
-        recommendations.
+      <p className={"descriptionText"}>
+        Some houseplants can be toxic to pets if eaten. Indicate here if you have a pet that you are worried about.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More

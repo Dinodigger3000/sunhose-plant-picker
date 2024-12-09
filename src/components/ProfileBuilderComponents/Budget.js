@@ -15,9 +15,8 @@ const InfoBox = () => (
       <span role="heading" aria-level="1" className="title">
         Budget Range
       </span>
-      <p className={styles.descriptionText}>
-        Provide an estimate for the amount of money you are willing to spend on
-        a houseplant.
+      <p className={"descriptionText"}>
+        Estimate how much money you are willing to spend.
       </p>
     </div>
   </div>

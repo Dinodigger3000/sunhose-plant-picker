@@ -64,10 +64,9 @@ const DescriptionBox = ({ showModal, setShowModal }) => (
       <div className="accent-dot" />
       <div className="accent-dot" />
     </div>
-    <p className={styles.descriptionText}>
-      Choose the temperature range your space typically is throughout the year.
-      Consider both the coldest winter and hottest summer temperatures that you
-      have indoors.
+    <p className={"descriptionText"}>
+      Tell us your typical indoor temperatures.
+      Consider both the coldest winter and hottest summer temperatures of your space.
     </p>
     <button className="learn-more-btn" onClick={() => setShowModal(true)}>
       Learn More

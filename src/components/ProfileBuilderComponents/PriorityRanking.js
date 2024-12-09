@@ -15,10 +15,10 @@ const InfoBox = () => (
       <span role="heading" aria-level="1" className="title">
         Priority Ranking
       </span>
-      <p className={styles.descriptionText}>
+      <p className={"descriptionText"}>
         Use the drag and drop feature to rank the factors most important to you
         in selecting the perfect plant for your space. These rankings will be
-        used to calculate your plant match.
+        used to personalize your plant match.
       </p>
     </div>
   </div>
@@ -65,8 +65,8 @@ const RankingSection = ({ profile, handleChange }) => {
 
   return (
     <div className={styles.rankingBox}>
-      <p className={styles.rankingInstruction}>
-        Drag and drop elements according to your ranking:
+      <p className={"descriptionText"}>
+        Drag and drop elements below:
       </p>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable-list">
