@@ -52,6 +52,16 @@ const WelcomeCard = () => {
         <li>View your top three plant matches!</li>
         <li>From here, you can view all matches, change your profile, or start over.</li>
       </ol>
+      <p>
+        <strong>Dependencies:</strong> This website uses React, React Three Fiber, and Firebase. A full list of all packages used can be found in the ReadMe on our&nbsp;
+        <a
+          href="https://github.com/Dinodigger3000/sunhose-plant-picker"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub page.
+        </a>
+      </p>
     </>
   );
 
