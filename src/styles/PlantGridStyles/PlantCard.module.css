@@ -32,7 +32,6 @@
   position: absolute;
   height: 100%;
   width: auto;
-  left: -14%;
   z-index: 1;
 }
 
@@ -47,9 +46,10 @@
   }
   
 .potIcon {
+  position: absolute;
   width: 80%;
+  top: 75%;
   height: auto;
-  margin-bottom: -32.5%;
   fill: var(--color4);
   stroke: var(--base);
   stroke-width: 4.5px;
