@@ -11,12 +11,12 @@ function PlantCard({ plant, onClick, rank }) {
       onClick={() => onClick(plant)}
       data-plant-id={plant.id}
     >
-      <img
-        src={plant.data.imageUrl}
-        alt={plant.data.title}
-        className={styles.plantImage}
-      />
       <div className={styles.imageContainer}>
+        <img
+          src={plant.data.imageUrl}
+          alt={plant.data.title}
+          className={styles.plantImage}
+        />
         <Pot className={styles.potIcon} />
       </div>
       <div className={styles.contentContainer}>
