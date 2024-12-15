@@ -46,6 +46,7 @@ npm run start
 
 - SUNHOSE plant picker is currently not suited for mobile devices, as the UI is not optimized for smaller screens.
 - SUNHOSE plant picker sometimes encounters visual glitches when the user is using the Mozilla Firefox browser.
+- Lower-end devices may experience performance issues when running the app, due to 3D models and animations.
 
 ## References
 
