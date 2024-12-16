@@ -70,6 +70,7 @@ const WelcomeCard = () => {
       <p>
         <strong>This project was completed as a part of Software Development, a course taught at Macalester College by Joslenne Peña. SUNHOSE was created by (from left to right):</strong>
       </p>
+      <img src="\plant_research_selfie_10-2.jpg" style={{ width: '100%', border: '1.5px solid var(--base)', borderRadius: '8px'}}/>
       <p>
         <strong>Alana Nadolski</strong>
             <br></br>Alana is a Statistics and Computer Science double major who is making this project as a Junior. When she’s not busy with academics, she’s also a captain of the water polo team!

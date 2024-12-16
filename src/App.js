@@ -14,7 +14,7 @@ import Results from "./components/Results";
 
 function App() {
   const defaultProfile = {
-    lightLevel: 3,
+    lightLevel: 4,
     petSafe: false,
     careLevel: 1,
     budget: 3,
