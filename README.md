@@ -10,8 +10,7 @@ Sunhose plant picker is a React JS Web App hosted on Firebase that enables users
 
 ## FAQ
 
-- **How was plant data collected?**Plant data and standards for profile building such as light and care levels were collected from The Complete Guide to Indoor Plants.
-  Specific information about each plant were collected from [The Spruce](https://www.thespruce.com/) and [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Main_Page).
+- **How was plant data collected?** Plant data and standards for profile building such as light and care levels were collected from The Complete Guide to Indoor Plants. Specific information about each plant were collected from [The Spruce](https://www.thespruce.com/) and [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Main_Page).
 
 - **How was plant data stored, and how many plants are there?**
   Plant data is stored in a Firebase database, and there are currently 18 plants in the database. The database was designed with scalability in mind, and can be easily expanded to include more plants.
