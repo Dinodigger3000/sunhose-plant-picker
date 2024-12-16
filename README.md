@@ -50,4 +50,30 @@ npm run start
 
 ## References
 
-## Thank you for reading!
+### Documentation Resources
+
+- [React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction)
+- [Beautiful Drag and Drop](https://beautiful-dnd.github.io/beautiful-dnd/)
+- [Firebase](https://firebase.google.com/)
+- [MDN CSS Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [W3Schools CSS Documentation](https://www.w3schools.com/cssref/index.php)
+- [Bootstrap CSS Documentation _(Bootstrap Components were used for our MVP, but are not used in the final product)_](https://getbootstrap.com/docs/3.4/css/)
+
+### Plant Data Resources
+
+- [The Complete Guide to Indoor Plants](https://www.thespruce.com/complete-guide-to-indoor-plants-4128682)
+- [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Main_Page)
+
+### AI Tools
+
+- [Github Copilot](https://github.com/features/copilot)
+- [Claude Sonnet 3.5](https://www.anthropic.com/en/blog/introducing-claude-3-5-sonnet)
+
+### Tutorials, Guides, and Other Resources in Use
+
+- [Responsive Typography with CSS Clamp - Tom is Loading on Youtube](https://www.youtube.com/watch?v=erqRw3E-vn4)
+- [Drag and Drop in React with React Beautiful DnD - Colby Fayock on Youtube](https://www.youtube.com/watch?v=aYZRRyukuIw)
+- [Understanding Grid Layouts — StackOverflow](https://stackoverflow.com/questions/47587892/how-does-css-grid-layout-works)
+- [How to Use SVG Components in a React Project — Telerik](https://www.telerik.com/blogs/how-to-use-svg-react)
+
+## Thank you for reading and Happy Plant Picking!
