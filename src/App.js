@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import "./styles/App.css";
 import "./styles/fonts.css";
 
-import PlantGrid from "./components/MVPcomponents/PlantGrid";
+import PlantGrid from "./components/PlantResultComponents/PlantGrid";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db, store } from "./firebase";

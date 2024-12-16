@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/ProfileBuilderStyles/CareLevel.module.css";
 import "../../styles/ProfileBuilderStyles/MainStyles.css";
-import { ReactComponent as Hearts } from "../../assets/hearts.svg";
+import { ReactComponent as Hearts } from "../../assets/icons/hearts.svg";
 import { setTheme } from "../ColorTheme";
 import Modal from "./Modal";
 
@@ -52,7 +52,8 @@ const DescriptionBox = () => {
       </div>
       <p className={"descriptionText"}>
         Choose how much time and effort you're willing to dedicate to plant
-        care. Low level plants are forgiving, while high level plants need specific care.
+        care. Low level plants are forgiving, while high level plants need
+        specific care.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More

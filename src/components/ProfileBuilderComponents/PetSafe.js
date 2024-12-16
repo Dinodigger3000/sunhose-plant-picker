@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/ProfileBuilderStyles/PetSafe.module.css";
 import "../../styles/ProfileBuilderStyles/MainStyles.css";
-import { ReactComponent as Dog } from "../../assets/dog.svg";
+import { ReactComponent as Dog } from "../../assets/icons/dog.svg";
 import { setTheme } from "../ColorTheme";
 import Modal from "./Modal";
 
@@ -26,9 +26,8 @@ const DescriptionBox = () => {
   const petSafeModalContent = (
     <>
       <p>
-        Our plant picking algorithm considers pet safety with cats and
-        dogs in mind. If you own a different pet, we recommend you seek out
-        the&nbsp;
+        Our plant picking algorithm considers pet safety with cats and dogs in
+        mind. If you own a different pet, we recommend you seek out the&nbsp;
         <a
           href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants"
           target="_blank"
@@ -56,7 +55,8 @@ const DescriptionBox = () => {
         <div className="accent-dot" />
       </div>
       <p className={"descriptionText"}>
-        Some houseplants can be toxic to pets if eaten. Indicate here if you have a pet that you are worried about.
+        Some houseplants can be toxic to pets if eaten. Indicate here if you
+        have a pet that you are worried about.
       </p>
       <button className="learn-more-btn" onClick={() => setShowModal(true)}>
         Learn More

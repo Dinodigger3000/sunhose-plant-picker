@@ -1,4 +1,8 @@
-/* Layout Sections */
+/* ===================
+   Grid Layout
+   =================== */
+
+/* Header section with info card and sunrise badge */
 .lightHeaderSection {
   display: grid;
   grid-template-columns: 82% 16%;
@@ -6,13 +10,18 @@
   margin-bottom: 2%;
 }
 
+/* Content section containing the light level slider */
 .lightContentSection {
   display: grid;
   grid-template-columns: 100%;
   gap: 2%;
 }
 
-/* Info Card Styles */
+/* ===================
+   Info Card
+   =================== */
+
+/* Main info card container */
 .lightCard {
   background: white;
   position: relative;
@@ -21,6 +30,7 @@
   padding: 1.5rem;
 }
 
+/* Two-column layout for info content */
 .lightInfoContent {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -28,6 +38,7 @@
   padding-top: 1.5rem;
 }
 
+/* Left column with title and question number */
 .lightInfoLeftColumn {
   display: flex;
   flex-direction: column;
@@ -35,6 +46,7 @@
   width: 100%;
 }
 
+/* Right column with description and learn more button */
 .lightInfoRightColumn {
   display: flex;
   flex-direction: column;
@@ -43,6 +55,7 @@
   align-items: flex-start;
 }
 
+/* Description text styling */
 .lightInfoDescription {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-size: var(--font-size-body);
@@ -51,7 +64,11 @@
   text-align: left;
 }
 
-/* Sunrise Badge Styles */
+/* ===================
+   Sunrise Badge
+   =================== */
+
+/* Outer badge container */
 .lightSunriseBadge {
   position: relative;
   background: var(--color3);
@@ -61,9 +78,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
+/* Inner white container for sunrise icon */
 .lightSunriseInner {
   position: relative;
   background: white;
@@ -77,6 +94,7 @@
   overflow: hidden;
 }
 
+/* Sunrise icon styling */
 .lightSunriseIcon {
   padding-top: 55%;
   padding-left: 32%;
@@ -90,7 +108,11 @@
   overflow: hidden;
 }
 
-/* Slider Styles */
+/* ===================
+   Light Level Slider
+   =================== */
+
+/* Main slider container */
 .lightSliderBox {
   position: relative;
   border: 1.5px solid var(--base);
@@ -99,6 +121,7 @@
   background: white;
 }
 
+/* Slider content wrapper */
 .lightSliderContainer {
   display: flex;
   flex-direction: column;
@@ -106,7 +129,7 @@
   position: relative;
 }
 
-/* Slider Input Styles */
+/* Custom range input styling */
 .lightSlider {
   -webkit-appearance: none;
   width: 100%;
@@ -117,6 +140,7 @@
   z-index: 2;
 }
 
+/* Slider thumb (handle) styling */
 .lightSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 24px;
@@ -128,11 +152,16 @@
   z-index: 2;
 }
 
+/* Hover state for slider thumb */
 .lightSlider::-webkit-slider-thumb:hover {
   background: var(--color4);
 }
 
-/* Slider Ticks and Labels */
+/* ===================
+   Slider Ticks and Labels
+   =================== */
+
+/* Container for tick marks */
 .lightSliderTicks {
   position: absolute;
   width: calc(100% - 24px);
@@ -143,6 +172,7 @@
   z-index: 1;
 }
 
+/* Individual tick mark */
 .lightTick {
   width: 1.5px;
   height: 15px;
@@ -150,6 +180,7 @@
   transform: translateY(-105%);
 }
 
+/* Container for slider labels */
 .lightSliderLabels {
   display: flex;
   justify-content: space-between;
@@ -157,6 +188,7 @@
   width: 100%;
 }
 
+/* Individual label styling */
 .lightSliderLabel {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);

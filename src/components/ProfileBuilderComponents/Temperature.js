@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/ProfileBuilderStyles/Temperature.module.css";
 import "../../styles/ProfileBuilderStyles/MainStyles.css";
 
-import { ReactComponent as ThermometerIcon } from "../../assets/thermometer.svg";
+import { ReactComponent as ThermometerIcon } from "../../assets/icons/thermometer.svg";
 
 import { setTempertureTheme, setTheme } from "../ColorTheme";
 import Modal from "./Modal";
@@ -11,15 +11,15 @@ const InfoBox = ({ showModal, setShowModal }) => {
   const temperatureModalContent = (
     <>
       <p>
-        If you have central air and heating, choose what your thermostat is
-        set at throughout the year. Otherwise, make your best guess based on your experience in your
-        space.
+        If you have central air and heating, choose what your thermostat is set
+        at throughout the year. Otherwise, make your best guess based on your
+        experience in your space.
       </p>
 
       <p>
         Please note that temperature range does not need to be exact to find a
-        good plant selection, any estimate is helpful in building your
-        plant profile!
+        good plant selection, any estimate is helpful in building your plant
+        profile!
       </p>
     </>
   );
@@ -63,8 +63,8 @@ const DescriptionBox = ({ showModal, setShowModal }) => (
       <div className="accent-dot" />
     </div>
     <p className={"descriptionText"}>
-      Tell us your typical indoor temperatures.
-      Consider both the coldest winter and hottest summer temperatures of your space.
+      Tell us your typical indoor temperatures. Consider both the coldest winter
+      and hottest summer temperatures of your space.
     </p>
     <button className="learn-more-btn" onClick={() => setShowModal(true)}>
       Learn More

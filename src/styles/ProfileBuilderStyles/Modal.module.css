@@ -1,3 +1,8 @@
+/* ===================
+   Modal Overlay
+   =================== */
+
+/* background overlay */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -11,6 +16,11 @@
   z-index: 1000;
 }
 
+/* ===================
+   Modal Container
+   =================== */
+
+/* Main modal container */
 .modalContent {
   background: white;
   font-size: 1.3rem;
@@ -25,9 +35,13 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
 }
 
+/* ===================
+   Modal Header
+   =================== */
+
+/* Header section */
 .modalHeader {
   background: var(--color3);
   border-bottom: 1.5px solid var(--base);
@@ -40,6 +54,7 @@
   padding: 1rem 1.5rem;
 }
 
+/* Modal title styling */
 .modalTitle {
   font-size: 1.5rem;
   color: var(--base);
@@ -48,6 +63,7 @@
   margin: 0;
 }
 
+/* Close button styling */
 .closeButton {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
@@ -63,10 +79,15 @@
 }
 
 .closeButton:hover {
-  background: var(--color1);
+  background: var(--color2);
   color: var(--color4);
 }
 
+/* ===================
+   Modal Body
+   =================== */
+
+/* Main content area */
 .modalBody {
   padding: 1rem 3rem 3rem 3rem;
   font-family: "Alte Haas Grotesk", sans-serif;
@@ -88,5 +109,5 @@
   border: 1.5px solid var(--base);
   border-radius: 8px;
   padding: 1rem 1.5rem;
-  margin: 1.5rem 1.5rem 1.5rem 1.5rem;
+  margin: 1.5rem;
 }

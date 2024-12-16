@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { getCurrentTheme, defaultTheme } from "../components/ColorTheme";
+import { getCurrentTheme, defaultTheme } from "../../components/ColorTheme";
 
 export function createOutlineMaterial(thickness = 0.005) {
   const baseColor = getCurrentTheme().base;

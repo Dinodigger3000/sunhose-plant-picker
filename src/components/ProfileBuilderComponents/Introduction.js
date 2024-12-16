@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/ProfileBuilderStyles/Introduction.module.css";
 import "../../styles/ProfileBuilderStyles/MainStyles.css";
 
-import { ReactComponent as Clover } from "../../assets/clover.svg";
-import { ReactComponent as Arrow } from "../../assets/arrow.svg";
+import { ReactComponent as Clover } from "../../assets/icons/clover.svg";
+import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
 import { setTheme } from "../ColorTheme";
 import Modal from "./Modal";
 
@@ -45,15 +45,30 @@ const WelcomeCard = () => {
         <strong>Instructions:</strong>
       </p>
       <ol>
-        <li>Select the options that best describe the space where you plan to keep your houseplant.</li>
-          <ul><li>Click the "Learn More" button for more information if you're confused.</li></ul>
+        <li>
+          Select the options that best describe the space where you plan to keep
+          your houseplant.
+        </li>
+        <ul>
+          <li>
+            Click the "Learn More" button for more information if you're
+            confused.
+          </li>
+        </ul>
         <li>Review and finalize your profile.</li>
-          <ul><li>If necessary, go back and change anything you missed.</li></ul>
+        <ul>
+          <li>If necessary, go back and change anything you missed.</li>
+        </ul>
         <li>View your top three plant matches!</li>
-        <li>From here, you can view all matches, change your profile, or start over.</li>
+        <li>
+          From here, you can view all matches, change your profile, or start
+          over.
+        </li>
       </ol>
       <p>
-        <strong>Dependencies:</strong> This website uses React, React Three Fiber, and Firebase. A full list of all packages used can be found in the ReadMe on our&nbsp;
+        <strong>Dependencies:</strong> This website uses React, React Three
+        Fiber, and Firebase. A full list of all packages used can be found in
+        the ReadMe on our&nbsp;
         <a
           href="https://github.com/Dinodigger3000/sunhose-plant-picker"
           target="_blank"
@@ -68,23 +83,45 @@ const WelcomeCard = () => {
   const aboutUsModalContent = (
     <>
       <p>
-        <strong>This project was completed as a part of Software Development, a course taught at Macalester College by Joslenne Peña. SUNHOSE was created by (from left to right):</strong>
+        <strong>
+          This project was completed as a part of Software Development, a course
+          taught at Macalester College by Joslenne Peña. SUNHOSE was created by
+          (from left to right):
+        </strong>
       </p>
-      <img src="\plant_research_selfie_10-2.jpg" style={{ width: '100%', border: '1.5px solid var(--base)', borderRadius: '8px'}}/>
+      <img
+        src="\plant_research_selfie_10-2.jpg"
+        style={{
+          width: "100%",
+          border: "1.5px solid var(--base)",
+          borderRadius: "8px",
+        }}
+      />
       <p>
         <strong>Alana Nadolski</strong>
-            <br></br>Alana is a Statistics and Computer Science double major who is making this project as a Junior. When she’s not busy with academics, she’s also a captain of the water polo team!
-            <br></br><i>Roles:</i> Plant Expert, Project Manager, Resident Mathematician
+        <br></br>Alana is a Statistics and Computer Science double major who is
+        making this project as a Junior. When she’s not busy with academics,
+        she’s also a captain of the water polo team!
+        <br></br>
+        <i>Roles:</i> Plant Expert, Project Manager, Resident Mathematician
       </p>
       <p>
         <strong>Nelson Mondale</strong>
-            <br></br>Nelson is a current senior with a Media and Cultural Studies major and Studio Art and Computer Science minors. He loves the Mississippi River, veggie hot dogs, and drawing aliens. 
-            <br></br><i>Roles:</i> UI Design + Implementation, Graphic Designer, Acronym Expert
+        <br></br>Nelson is a current senior with a Media and Cultural Studies
+        major and Studio Art and Computer Science minors. He loves the
+        Mississippi River, veggie hot dogs, and drawing aliens.
+        <br></br>
+        <i>Roles:</i> UI Design + Implementation, Graphic Designer, Acronym
+        Expert
       </p>
       <p>
         <strong>Royce Johnson</strong>
-            <br></br>Royce is a sophomore Computer Science major. He is nowhere close to being an origami expert, but you can find him folding paper regularly. 
-            <br></br><i>Roles:</i> 3D Designer, System Administrator, Conflict Resolution Supervisor
+        <br></br>Royce is a sophomore Computer Science major. He is nowhere
+        close to being an origami expert, but you can find him folding paper
+        regularly.
+        <br></br>
+        <i>Roles:</i> 3D Designer, System Administrator, Conflict Resolution
+        Supervisor
       </p>
     </>
   );

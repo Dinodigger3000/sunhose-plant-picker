@@ -1,3 +1,8 @@
+/* ===================
+   Main Layout
+   =================== */
+
+/* Main content grid */
 .reviewContent {
   margin-top: -2.5rem;
   display: grid;
@@ -5,6 +10,27 @@
   gap: 1rem;
 }
 
+/* Two column summary */
+.summaryColumns {
+  display: grid;
+  grid-template-columns: 40% 58%;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Column containers */
+.leftColumn,
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ===================
+   Info Box
+   =================== */
+
+/* Main Info */
 .infoBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -16,6 +42,34 @@
   margin-bottom: 1rem;
 }
 
+.customTitle {
+  font-family: "Whoopass", sans-serif;
+  letter-spacing: 0.125em;
+  color: var(--color3);
+  font-size: var(--font-size-page-title);
+  line-height: 1;
+  margin-bottom: -2rem;
+  -webkit-text-stroke: 1.5px var(--base);
+  text-stroke: 1.5px var(--base);
+  text-align: center;
+  display: block;
+}
+
+/* Clickable Profile Elements */
+.clickableHeading {
+  font-family: "Alte Haas Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--base);
+  text-align: center;
+  padding: 1rem 0 0.5rem 0;
+}
+
+/* ===================
+   Summary Box
+   =================== */
+
+
 .summaryBox {
   background: white;
   border: 1.5px solid var(--base);
@@ -26,19 +80,10 @@
   flex-direction: column;
 }
 
-.summaryColumns {
-  display: grid;
-  grid-template-columns: 40% 58%;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
+/* ===================
+   Profile Items
+   =================== */
 
-.leftColumn,
-.rightColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
 
 .profileItem {
   display: flex;
@@ -57,6 +102,7 @@
   background: var(--color3);
 }
 
+/* Profile Item Title */
 .itemTitle {
   font-family: "Alte Haas Grotesk", sans-serif;
   align-self: flex-start;
@@ -64,12 +110,41 @@
   flex: 0 0 auto;
 }
 
+/* Profile Item Value */
 .itemValue {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
   font-weight: bold;
   flex: 1;
 }
+
+/* Edit Icon */
+.editIcon {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  font-size: 1.2rem;
+  color: var(--base);
+  transition: opacity 0.2s;
+}
+
+.profileItem:hover .editIcon {
+  font-weight: bold;
+}
+
+.profileItem:hover .itemTitle {
+  font-weight: bold;
+}
+
+/* Last item in right column */
+.rightColumn .profileItem:last-child {
+  flex: 1;
+}
+
+/* ===================
+   Priority List
+   =================== */
+
 
 .priorityList {
   flex: 1;
@@ -83,23 +158,16 @@
   width: 100%;
 }
 
+
 .priorityItem {
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
 }
 
-.customTitle {
-  font-family: "Whoopass", sans-serif;
-  letter-spacing: 0.125em;
-  color: var(--color3);
-  font-size: var(--font-size-page-title);
-  line-height: 1;
-  margin-bottom: -2rem;
-  -webkit-text-stroke: 1.5px var(--base);
-  text-stroke: 1.5px var(--base);
-  text-align: center;
-  display: block;
-}
+/* ===================
+   Discover Button
+   =================== */
+
 
 .discoverButton {
   width: 60%;
@@ -127,34 +195,4 @@
   text-stroke: 1.5px var(--base);
   letter-spacing: 0.125em;
   font-size: 2.5rem;
-}
-
-.clickableHeading {
-  font-family: "Alte Haas Grotesk", sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--base);
-  text-align: center;
-  padding: 1rem 0 0.5rem 0;
-}
-
-.rightColumn .profileItem:last-child {
-  flex: 1;
-}
-
-.editIcon {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.6rem;
-  font-size: 1.2rem;
-  color: var(--base);
-  transition: opacity 0.2s;
-}
-
-.profileItem:hover .editIcon {
-  font-weight: bold;
-}
-
-.profileItem:hover .itemTitle {
-  font-weight: bold;
 }

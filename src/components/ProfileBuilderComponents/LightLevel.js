@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/ProfileBuilderStyles/LightLevel.module.css";
 import "../../styles/ProfileBuilderStyles/MainStyles.css";
-import { ReactComponent as Sunrise } from "../../assets/sunrise.svg";
+import { ReactComponent as Sunrise } from "../../assets/icons/sunrise.svg";
 import { setTheme } from "../ColorTheme";
 import Modal from "./Modal";
 
@@ -21,16 +21,22 @@ const InfoCard = () => {
         facing windows are usually in this category.
       </p>
       <p>
-        <strong>High Light:</strong> This describes areas that recieve sun from one direction, but directly and unblocked. East and West facing windows typically are within
-        this category.
+        <strong>High Light:</strong> This describes areas that recieve sun from
+        one direction, but directly and unblocked. East and West facing windows
+        typically are within this category.
       </p>
       <p>
-        <strong>Very High Light:</strong> This usually describes areas such as corners with
-        windows on multiple sides or sunrooms, as it is hard to get this much sun from one direction only. 
+        <strong>Very High Light:</strong> This usually describes areas such as
+        corners with windows on multiple sides or sunrooms, as it is hard to get
+        this much sun from one direction only.
       </p>
-      <p><i>Note:</i> Some plants require an exact match for light, while others do not. Our matching algorithm requires an exact match, 
-      so if you get a plant you really like that you have a light mismatch on, we recommend clicking the link at the bottom of the plant's description
-      and checking if it actually works for you. </p>
+      <p>
+        <i>Note:</i> Some plants require an exact match for light, while others
+        do not. Our matching algorithm requires an exact match, so if you get a
+        plant you really like that you have a light mismatch on, we recommend
+        clicking the link at the bottom of the plant's description and checking
+        if it actually works for you.{" "}
+      </p>
     </>
   );
 
@@ -92,7 +98,12 @@ const ContentSection = ({ profile, handleChange }) => (
 
 const LightLevelSlider = ({ profile, handleChange }) => {
   const [selectedLevel, setSelectedLevel] = useState(profile?.lightLevel || 0);
-  const levels = ["Low (0hrs)", "Medium (1-2hrs) ", "High (2-6hrs)", "Very High (6+hrs)"];
+  const levels = [
+    "Low (0hrs)",
+    "Medium (1-2hrs) ",
+    "High (2-6hrs)",
+    "Very High (6+hrs)",
+  ];
 
   const handleSliderChange = (e) => {
     const value = parseInt(e.target.value);

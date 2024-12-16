@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/ResultsStyles/Results.module.css";
-import PlantModal from "./MVPcomponents/PlantModal";
+import PlantModal from "./PlantResultComponents/PlantModal";
 import { setTheme } from "./ColorTheme";
 import { Display } from "./modelComponents/Display";
 

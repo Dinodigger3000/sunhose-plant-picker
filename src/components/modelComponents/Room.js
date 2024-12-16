@@ -1,12 +1,15 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import { createOutlineMaterial } from "../../shaders/OutlineMateral";
-import { createToonMaterial } from "../../shaders/ToonMaterial";
+import { createOutlineMaterial } from "../../assets/shaders/OutlineMateral";
+import { createToonMaterial } from "../../assets/shaders/ToonMaterial";
 import { useSpring, animated } from "@react-spring/three";
-import { getCurrentTheme, subscribeToThemeChanges, defaultTheme } from "../ColorTheme";
+import {
+  getCurrentTheme,
+  subscribeToThemeChanges,
+  defaultTheme,
+} from "../ColorTheme";
 import { Pot } from "./Pot";
-
 
 // room component that creates the 3D room model
 export function Room(props) {
@@ -38,7 +41,9 @@ export function Room(props) {
   // render room model
   const { sunRotation, bowlPosition } = useSpring({
     sunRotation: profile.lightLevel > 3 ? [0, 0, 0] : [0, 0.1, 0],
-    bowlPosition: profile.petSafe ? [-1.958, -1.284, -5.231] : [-1.958, -2.284, -5.231],
+    bowlPosition: profile.petSafe
+      ? [-1.958, -1.284, -5.231]
+      : [-1.958, -2.284, -5.231],
   });
   return (
     <group {...props} dispose={null}>
@@ -122,10 +127,7 @@ export function Room(props) {
           geometry={nodes.Bowl_1.geometry}
           material={materials.color2}
         />
-        <mesh
-          geometry={nodes.Bowl_1.geometry}
-          material={materials.outline}
-        />
+        <mesh geometry={nodes.Bowl_1.geometry} material={materials.outline} />
         <mesh
           castShadow
           receiveShadow
@@ -134,7 +136,11 @@ export function Room(props) {
         />
       </animated.group>
       {/* plant pot with rotate animation */}
-      <Pot profile={props.profile} materials={materials} position={[-1, -0.87, -5]}/>
+      <Pot
+        profile={props.profile}
+        materials={materials}
+        position={[-1, -0.87, -5]}
+      />
       <animated.group //sun with rotate animation
         rotation={sunRotation}
       >

@@ -1,4 +1,8 @@
-/* top row */
+/* ===================
+   Grid Layout
+   =================== */
+
+/* Header section - contains info box and description box */
 .careLevelHeader {
   display: grid;
   grid-template-columns: 34% 64%;
@@ -6,13 +10,16 @@
   margin-bottom: 2%;
 }
 
-/* bottom row */
+/* Content section - contains slider and hearts badge */
 .careLevelContent {
   display: grid;
   grid-template-columns: 58% 40%;
   gap: 2%;
 }
 
+/* ===================
+   Info Box
+   =================== */
 .infoBox {
   background: white;
   border: 1.5px solid var(--base);
@@ -27,6 +34,9 @@
   padding-top: 1.5rem;
 }
 
+/* ===================
+   Description Box
+   =================== */
 .descriptionBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -46,6 +56,11 @@
   margin-bottom: 1rem;
 }
 
+/* ===================
+   Care Level Slider
+   =================== */
+
+/* Main slider container */
 .careSliderBox {
   position: relative;
   border: 1.5px solid var(--base);
@@ -56,6 +71,7 @@
   align-items: stretch;
 }
 
+/* Inner container with different background */
 .innerBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -64,6 +80,7 @@
   flex: 1;
 }
 
+/* Slider wrapper with padding */
 .sliderContainer {
   padding: 1.5rem;
   display: flex;
@@ -72,6 +89,7 @@
   position: relative;
 }
 
+/* Tick marks container */
 .sliderTicks {
   position: absolute;
   width: calc(100% - 3rem);
@@ -82,6 +100,7 @@
   z-index: 1;
 }
 
+/* Individual tick mark */
 .tick {
   width: 1.5px;
   height: 1rem;
@@ -89,6 +108,7 @@
   transform: translateY(-105%);
 }
 
+/* Custom range input styling */
 .careSlider {
   -webkit-appearance: none;
   width: 100%;
@@ -99,6 +119,7 @@
   z-index: 2;
 }
 
+/* Slider thumb Style */
 .careSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 1.5rem;
@@ -110,10 +131,12 @@
   z-index: 2;
 }
 
+/* Hover state for slider thumb */
 .careSlider::-webkit-slider-thumb:hover {
   background: var(--color4);
 }
 
+/* Container for slider labels */
 .sliderLabels {
   margin-top: -0.75rem;
   display: flex;
@@ -122,6 +145,7 @@
   width: 100%;
 }
 
+/* Individual label styling */
 .sliderLabel {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-weight: bold;
@@ -131,6 +155,7 @@
   line-height: 1.2;
 }
 
+/* Position adjustments for first and last labels */
 .sliderLabel:first-child {
   text-align: left;
   left: 0;
@@ -141,6 +166,9 @@
   transform: translateX(-70%);
 }
 
+/* ===================
+   Hearts Badge
+   =================== */
 .heartsBadge {
   background: white;
   border: 1.5px solid var(--base);

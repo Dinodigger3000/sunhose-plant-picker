@@ -1,18 +1,26 @@
-/* Layout Sections */
+/* ===================
+   Grid Layout
+   =================== */
+
+/* Header Section*/
 .priorityHeader {
   display: grid;
   grid-template-columns: 48% 50%;
   gap: 2%;
-
 }
 
+/* Content Section */
 .priorityContent {
   display: grid;
   grid-template-columns: 100%;
   gap: 2%;
 }
 
-/* Info Box Styles */
+/* ===================
+   Info Box Component
+   =================== */
+
+/* Main info box */
 .infoBox {
   background: white;
   border: 1.5px solid var(--base);
@@ -21,6 +29,7 @@
   position: relative;
 }
 
+/* Info box Wrapper */
 .infoBoxContent {
   display: flex;
   flex-direction: column;
@@ -34,6 +43,11 @@
   margin-top: 1rem;
 }
 
+/* ===================
+   Ranking Box
+   =================== */
+
+/* Main ranking container */
 .rankingBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -48,12 +62,18 @@
   margin-bottom: 1.5rem;
 }
 
+
 .rankingList {
   background: var(--color3);
   border-radius: 8px;
   padding: 0.7rem;
 }
 
+/* ===================
+   Ranking Item
+   =================== */
+
+/* The Draggable Item */
 .rankingItem {
   display: flex;
   align-items: center;
@@ -66,10 +86,12 @@
   user-select: none;
 }
 
+/* Style while dragging */
 .rankingItem:active {
   cursor: grabbing;
 }
 
+/* Circle number indicator */
 .rankNumber {
   width: 30px;
   height: 30px;
@@ -92,6 +114,7 @@
   flex: 1;
 }
 
+/* Pencil Icon */
 .rankDot {
   margin-top: -0.2rem;
   color: var(--base);
@@ -99,11 +122,17 @@
   margin-right: 0.5rem;
 }
 
+/* ===================
+   Drag and Drop
+   =================== */
+
+/* Currently dragging item */
 .dragging {
   background: var(--color3) !important;
   box-shadow: 0 5px 10px var(--color2);
 }
 
+/* Drop Area Highlight */
 .draggingOver {
   background-color: var(--color2);
   border-radius: 10px;

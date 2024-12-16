@@ -1,4 +1,8 @@
-/* Layout Sections */
+/* ===================
+   Main Layout
+   =================== */
+
+/* Main grid layouts for budget sections */
 .budgetHeader {
   display: grid;
   grid-template-columns: 82% 16%;
@@ -12,7 +16,9 @@
   gap: 2%;
 }
 
-/* Info Box Styles */
+/* ===================
+   Info Box
+   =================== */
 .infoBox {
   background: white;
   border: 1.5px solid var(--base);
@@ -29,14 +35,9 @@
   gap: 0.2rem;
 }
 
-.descriptionText {
-  font-family: "Alte Haas Grotesk", sans-serif;
-  margin-top: -0.1rem;
-  color: var(--base);
-  text-align: left;
-}
-
-/* Price Badge Styles */
+/* ===================
+   Price Badge Component
+   =================== */
 .priceBadge {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -58,7 +59,11 @@
   padding-top: 1.2rem;
 }
 
-/* Slider Styles */
+/* ===================
+   Budget Slider Component
+   =================== */
+
+/* Slider container and edge markers */
 .budgetSliderBox {
   overflow: hidden;
   position: relative;
@@ -69,20 +74,23 @@
   background: var(--color4);
 }
 
-.edgeMarkerLeft {
-  width: 5%;
-  height: 100%;
-  border-right: 1.5px solid var(--base);
-  background: var(--color3);
-}
-
+/* Left and right edge markers */
+.edgeMarkerLeft,
 .edgeMarkerRight {
   width: 5%;
   height: 100%;
-  border-left: 1.5px solid var(--base);
   background: var(--color3);
 }
 
+.edgeMarkerLeft {
+  border-right: 1.5px solid var(--base);
+}
+
+.edgeMarkerRight {
+  border-left: 1.5px solid var(--base);
+}
+
+/* Main slider content area */
 .sliderMainContent {
   flex: 1;
   display: flex;
@@ -93,6 +101,7 @@
   padding: 1.5rem 2rem;
 }
 
+/* Budget display text */
 .currentBudget {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-size: 1.2rem;
@@ -100,12 +109,14 @@
   color: var(--base);
 }
 
+/* Slider container and input styling */
 .sliderContainer {
   position: relative;
   width: 100%;
   padding: 1rem 0;
 }
 
+/* Custom slider styling */
 .budgetSlider {
   -webkit-appearance: none;
   width: 100%;
@@ -115,6 +126,7 @@
   position: relative;
 }
 
+/* Slider track line */
 .budgetSlider::before {
   content: '';
   position: absolute;
@@ -127,11 +139,13 @@
   z-index: 0;
 }
 
+/* Slider track styling */
 .budgetSlider::-webkit-slider-runnable-track {
   height: 15px;
   background: transparent;
 }
 
+/* Slider thumb (handle) styling */
 .budgetSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 30px;
@@ -145,6 +159,7 @@
   z-index: 2;
 }
 
+/* Progress bar fill */
 .budgetSlider::after {
   content: '';
   position: absolute;
@@ -160,6 +175,7 @@
   z-index: 1;
 }
 
+/* Slider value labels */
 .sliderLabels {
   width: 100%;
   margin-top: -0.5rem;

@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "../../styles/PlantGridStyles/PlantCard.module.css";
-import { ReactComponent as Pot } from "../../assets/pot.svg";
+import { ReactComponent as Pot } from "../../assets/icons/pot.svg";
 
 function PlantCard({ plant, onClick, rank }) {
-  
-
   return (
     <div
       className={styles.card}

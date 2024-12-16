@@ -1,4 +1,8 @@
-/* top row */
+/* ===================
+   Grid Layout
+   =================== */
+
+/* Header section with logo and clover badge */
 .introHeaderSection {
   display: grid;
   grid-template-columns: 80% 18%;
@@ -6,14 +10,18 @@
   margin-bottom: 2%;
 }
 
-/* bottom row */
+/* Content section with welcome message and continue button */
 .introContentSection {
   display: grid;
   grid-template-columns: 60% 38%;
   grid-gap: 2%;
 }
 
-/* cards */
+/* ===================
+   Base Card 
+   =================== */
+
+/* Common styles for all cards */
 .introCard {
   position: relative;
   border: 1.5px solid var(--base);
@@ -25,7 +33,11 @@
   border-radius: 8px;
 }
 
-/* top left rectangle */
+/* ===================
+   Logo Section
+   =================== */
+
+/* Logo card container */
 .introLogoCard {
   composes: introCard;
   background: var(--color3);
@@ -33,6 +45,7 @@
   align-items: stretch;
 }
 
+/* Inner container for logo content */
 .introLogoInner {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -56,6 +69,7 @@
   margin-bottom: -0.5rem;
 }
 
+/* Dot Row Beneath Logo */
 .introDotRow {
   display: flex;
   gap: 10px;
@@ -69,6 +83,11 @@
   background: white;
 }
 
+/* ===================
+   Clover Icon Badge
+   =================== */
+
+/* Outer Container */
 .introBadge {
   position: relative;
   background: var(--color4);
@@ -80,6 +99,7 @@
   align-items: center;
 }
 
+/* Inner badge circle */
 .introBadgeInner {
   position: relative;
   background: white;
@@ -93,6 +113,7 @@
   overflow: hidden;
 }
 
+/* Clover icon styling */
 .introBadgeIcon {
   fill: var(--color3);
   stroke: var(--base);
@@ -106,34 +127,17 @@
   overflow: visible;
 }
 
+/* ===================
+   Welcome Card
+   =================== */
+
+/* Welcome message container */
 .introWelcomeCard {
   composes: introCard;
   background: white;
   align-items: stretch;
   justify-content: flex-start;
   padding: 1rem;
-}
-
-.introContinueCard {
-  composes: introCard;
-  background: var(--color4);
-  align-items: stretch;
-  justify-content: space-between;
-  padding: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.introContinueCard:hover {
-  background: var(--color3);
-}
-
-.introContinueCard:hover .introContinueText {
-  color: var(--color4);
-}
-
-.introContinueCard:hover .introContinueIcon {
-  fill: var(--color4);
 }
 
 .introWelcomeContent {
@@ -151,6 +155,35 @@
   text-align: left;
 }
 
+/* ===================
+   Continue Card
+   =================== */
+
+/* Continue button card with hover effects */
+.introContinueCard {
+  composes: introCard;
+  background: var(--color4);
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover states for continue card */
+.introContinueCard:hover {
+  background: var(--color3);
+}
+
+.introContinueCard:hover .introContinueText {
+  color: var(--color4);
+}
+
+.introContinueCard:hover .introContinueIcon {
+  fill: var(--color4);
+}
+
+/* Continue card content layout */
 .introContinueContent {
   display: flex;
   flex-direction: column;
@@ -159,7 +192,7 @@
   height: 100%;
 }
 
-
+/* Continue Arrow icon */
 .introContinueIcon {
   fill: var(--color3);
   stroke: var(--base);

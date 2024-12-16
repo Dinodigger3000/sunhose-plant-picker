@@ -1,4 +1,8 @@
-/* Layout Sections */
+/* ===================
+   Grid Layout
+   =================== */
+
+/* Header Section */
 .tempHeader {
   display: grid;
   grid-template-columns: 45% 53%;
@@ -7,6 +11,7 @@
   margin-bottom: 2%;
 }
 
+/* Content Section */
 .tempContent {
   display: grid;
   grid-template-columns: 100%;
@@ -14,7 +19,10 @@
   flex: 0 0 40%;
 }
 
-/* Info Box Styles */
+/* ===================
+   Info Box Component
+   =================== */
+
 .infoBox {
   background: white;
   border: 1.5px solid var(--base);
@@ -29,7 +37,47 @@
   padding-top: 1.5rem;
 }
 
-/* Description Box Styles */
+.infoBoxHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Icon container */
+.iconContainer {
+  background: var(--color4);
+  border: 1.5px solid var(--base);
+  border-radius: 8px;
+  padding: 0.5rem;
+  height: 8rem;
+  width: 80%;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+/* Thermometer icon */
+.thermometerIcon {
+  fill: var(--color3);
+  stroke: var(--base);
+  stroke-width: 1.5px;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Text container */
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ===================
+   Description Box
+   =================== */
+
+/* Main Description */
 .descriptionBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -41,6 +89,7 @@
   position: relative;
 }
 
+
 .descriptionText {
   padding-top: 6%;
   text-align: left;
@@ -49,7 +98,11 @@
   margin-bottom: 1rem;
 }
 
-/* Slider Styles */
+/* ===================
+   Temperature Slider
+   =================== */
+
+/* Main slider container */
 .tempSliderBox {
   position: relative;
   overflow: hidden;
@@ -60,20 +113,23 @@
   align-items: center;
 }
 
-.edgeMarkerLeft {
-  width: 5%;
-  height: 100%;
-  border-right: 1.5px solid var(--base);
-  background: var(--color3);
-}
-
+/* edge marker ticks */
+.edgeMarkerLeft,
 .edgeMarkerRight {
   width: 5%;
   height: 100%;
-  border-left: 1.5px solid var(--base);
   background: var(--color3);
 }
 
+.edgeMarkerLeft {
+  border-right: 1.5px solid var(--base);
+}
+
+.edgeMarkerRight {
+  border-left: 1.5px solid var(--base);
+}
+
+/* Main slider content area */
 .sliderMainContent {
   flex: 1;
   display: flex;
@@ -84,6 +140,7 @@
   padding: 1.5rem 2rem;
 }
 
+/* current temperature display */
 .currentTemp {
   font-family: "Alte Haas Grotesk", sans-serif;
   align-self: flex-start;
@@ -103,6 +160,11 @@
   height: 15px;
 }
 
+/* ===================
+   Range Slider 
+   =================== */
+
+/* slider style */
 .tempSlider {
   -webkit-appearance: none;
   position: absolute;
@@ -115,6 +177,25 @@
   pointer-events: none;
 }
 
+/* slider thumb */
+.tempSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color2);
+  border: 1.5px solid var(--base);
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+.tempSlider::-webkit-slider-thumb:hover {
+  background: var(--color4);
+}
+
+/* Base line */
 .baseLine {
   position: absolute;
   top: 50%;
@@ -126,6 +207,7 @@
   z-index: 1;
 }
 
+/* the edge markers */
 .baseLine::before,
 .baseLine::after {
   content: '';
@@ -145,23 +227,7 @@
   right: 0;
 }
 
-.tempSlider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  pointer-events: auto;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--color2);
-  border: 1.5px solid var(--base);
-  cursor: pointer;
-  position: relative;
-  z-index: 3;
-}
-
-.tempSlider::-webkit-slider-thumb:hover {
-  background: var(--color4);
-}
-
+/* progress bar between thumbs */
 .progressBar {
   position: absolute;
   top: 3px;
@@ -182,53 +248,11 @@
   z-index: 1;
 }
 
-.tempSlider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  z-index: 0;
-}
-
+/* temp labels */
 .sliderLabels {
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   font-family: "Alte Haas Grotesk", sans-serif;
   color: var(--base);
-}
-
-.infoBoxHeader {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.iconContainer {
-  background: var(--color4);
-  border: 1.5px solid var(--base);
-  border-radius: 8px;
-  padding: 0.5rem;
-  height: 8rem;
-  width: 80%;
-  align-items: center;
-  margin-top: 0.5rem;
-}
-
-.thermometerIcon {
-  fill: var(--color3);
-  stroke: var(--base);
-  stroke-width: 1.5px;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.textContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }

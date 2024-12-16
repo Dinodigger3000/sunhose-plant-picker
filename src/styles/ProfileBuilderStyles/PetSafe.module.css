@@ -1,4 +1,8 @@
-/* Layout styles */
+/* ===================
+   Grid Layout
+   =================== */
+
+/* Header section with info and description boxes */
 .petSafeHeader {
   display: grid;
   grid-template-columns: 34% 64%;
@@ -6,13 +10,18 @@
   margin-bottom: 2%;
 }
 
+/* Content section with safety question and dog badge */
 .petSafeContent {
   display: grid;
   grid-template-columns: 58% 40%;
   gap: 2%;
 }
 
-/* Info and description boxes  */
+/* ===================
+   Info Box Component
+   =================== */
+
+/* Main info box container */
 .infoBox {
   background: white;
   border: 1.5px solid var(--base);
@@ -21,12 +30,18 @@
   position: relative;
 }
 
+/* Info box content wrapper */
 .infoBoxContent {
   display: flex;
   flex-direction: column;
   padding-top: 1.5rem;
 }
 
+/* ===================
+   Description Box
+   =================== */
+
+/* Main description box container */
 .descriptionBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -38,6 +53,7 @@
   position: relative;
 }
 
+/* Description text styling */
 .descriptionText {
   padding-top: 6%;
   text-align: left;
@@ -46,7 +62,11 @@
   margin-bottom: 1rem;
 }
 
-/* Pet safety question box styles */
+/* ===================
+   Pet Safety Question
+   =================== */
+
+/* Main question box container */
 .petSafetyBox {
   position: relative;
   border: 1.5px solid var(--base);
@@ -55,6 +75,7 @@
   background: var(--color3);
 }
 
+/* Inner content container */
 .innerBox {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -66,6 +87,7 @@
   gap: 0.8rem;
 }
 
+/* Question text styling */
 .question {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-size: 1.1rem;
@@ -73,12 +95,14 @@
   margin: 0;
 }
 
+/* Button container layout */
 .buttonContainer {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
+/* Choice button styling */
 .choiceButton {
   font-family: "Alte Haas Grotesk", sans-serif;
   font-size: 1.1rem;
@@ -91,6 +115,7 @@
   transition: all 0.2s ease;
 }
 
+/* Button hover and selected states */
 .choiceButton:hover {
   background: var(--color4);
 }
@@ -99,7 +124,11 @@
   background: var(--color3);
 }
 
-/* Dog badge styles */
+/* ===================
+   Dog Badge
+   =================== */
+
+/* Outer badge container */
 .dogBadge {
   background: var(--color4);
   border: 1.5px solid var(--base);
@@ -111,6 +140,7 @@
   align-items: center;
 }
 
+/* Inner white circle container */
 .dogBadgeInner {
   position: relative;
   background: white;
@@ -124,6 +154,7 @@
   overflow: hidden;
 }
 
+/* Dog SVG Icon */
 .dogIcon {
   fill: var(--color3);
   stroke: var(--base);
