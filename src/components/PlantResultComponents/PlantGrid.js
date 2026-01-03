@@ -11,16 +11,6 @@ function PlantGrid({ plantScores, changePage, resetProfile }) {
   };
   const handleResults = () => changePage(1);
 
-  const [scores, setPlantScores] = React.useState(plantScores);
-  useEffect(() => {
-    async function getPlantScores() {
-      const plantProfiles = await plantScores;
-      setPlantScores(plantProfiles);
-    }
-
-    getPlantScores();
-  }, [plantScores]);
-
   const [selectedPlant, setSelectedPlant] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -46,9 +36,9 @@ function PlantGrid({ plantScores, changePage, resetProfile }) {
         onResults={handleResults}
       />
       <div className={styles.gridWrapper}>
-        {scores && (
+        {plantScores && (
           <div className={styles.gridContainer}>
-            {scores.map((plant, index) => (
+            {plantScores.map((plant, index) => (
               <PlantCard
                 key={plant.id}
                 plant={plant}
@@ -62,9 +52,9 @@ function PlantGrid({ plantScores, changePage, resetProfile }) {
           plant={selectedPlant}
           show={showModal}
           onHide={handleCloseModal}
-          plantScores={scores}
+          plantScores={plantScores}
           currentIndex={
-            scores ? scores.findIndex((p) => p.id === selectedPlant?.id) : 0
+            plantScores ? plantScores.findIndex((p) => p.id === selectedPlant?.id) : 0
           }
           onNextPlant={handleNextPlant}
         />

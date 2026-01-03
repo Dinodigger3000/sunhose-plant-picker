@@ -1,41 +1,18 @@
-import {
-  collection,
-  onSnapshot,
-  query,
-  getDocs,
-  doc,
-  getDoc,
-  updateDoc,
-  orderBy,
-  Timestamp,
-  runTransaction,
-  where,
-  getFirestore,
-} from "firebase/firestore";
-import { ref, getDownloadURL } from "firebase/storage";
-import { db, store } from "./firebase";
+import plantJson from "./plantData.json";
 
-export async function fetchPlantData(query, callBack) {
-  const plants = await getDocs(query);
-  if (plants.empty) {
-    console.log("No plants found!");
-    return [];
-  }
-  const plantProfiles = plants.docs.map((plant) => {
-    console.log("plant " + plant.data());
-    const title = plant.id
-      .replace(/_/g, " ")
-      .replace(/\b\w/g, (char) => char.toUpperCase());
+export function fetchPlantData(callBack) {
+  const plantProfiles = plantJson.map((plant) => {
+    const title = plant.title || plant.id.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
     return {
       id: plant.id,
       title: title,
       imageUrl: "/plantPics/" + plant.id + ".png",
-      description: plant.data().description,
-      scientific_name: plant.data().scientific_name,
-      fun_fact: plant.data().fun_fact,
-      instructions: plant.data().instructions,
-      link: plant.data().link,
-      data: plant.data(), // save the raw database values in case we need them later
+      description: plant.description,
+      scientific_name: plant.scientific_name,
+      fun_fact: plant.fun_fact,
+      instructions: plant.instructions,
+      link: plant.link,
+      data: plant.data || {},
       match_text: [],
       mismatch_text: [],
     };
@@ -43,13 +20,11 @@ export async function fetchPlantData(query, callBack) {
   callBack(plantProfiles);
 }
 
-export async function updatePlantMatches(userProfile, plantProfiles, callBack) {
+export function updatePlantMatches(userProfile, plantProfiles, callBack) {
   // returns an array that looks like this, feel free to change the structure!
   // [{id: "snake_plant", data: {data}, matchPercentage: 50}, {id: "spider_plant",  data: {data}, matchPercentage: 50}, ...]
-  await plantProfiles;
   if (!plantProfiles) {
-    console.log("No plants found!");
-    return [];
+    return;
   }
   const scores = plantProfiles.map((plant) => {
     return {

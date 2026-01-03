@@ -5,8 +5,6 @@ import "./styles/fonts.css";
 
 import PlantGrid from "./components/PlantResultComponents/PlantGrid";
 
-import { collection, getDocs } from "firebase/firestore";
-import { db, store } from "./firebase";
 import { fetchPlantData, updatePlantMatches } from "./plantData";
 
 import ProfileBuilder from "./components/ProfileBuilder";
@@ -25,7 +23,6 @@ function App() {
 
   const [savedProfile, setSavedProfile] = useState(defaultProfile);
   const [currentPage, setCurrentPage] = useState(0); // 0 = profile builder, 1 = results page, 2 = plant grid
-  const [query, setQuery] = useState(collection(db, "plants"));
   const [plantData, setPlantData] = useState();
   const [plantScores, setPlantScores] = useState(null);
 
@@ -36,9 +33,8 @@ function App() {
   const [reviewPage, setReviewPage] = useState(0);
 
   useEffect(() => {
-    // fetch plant data
-    fetchPlantData(query, setPlantData);
-  }, [query]);
+    fetchPlantData(setPlantData);
+  }, []);
 
   useEffect(() => {
     updatePlantMatches(savedProfile, plantData, setPlantScores);
